@@ -1,23 +1,27 @@
 ###############################################################################
 #
-# IAR ELF Linker V8.30.2.160/W32 for ARM                  23/Nov/2018  18:47:06
+# IAR ELF Linker V8.30.2.160/W32 for ARM                  24/Nov/2018  14:14:08
 # Copyright 2007-2018 IAR Systems AB.
 #
-#    Output file  =  \\Mac\Home\Desktop\HexapodFW\Debug\Exe\LEDBlinker.out
-#    Map file     =  \\Mac\Home\Desktop\HexapodFW\Debug\List\LEDBlinker.map
+#    Output file  =  
+#        \\Mac\Home\Documents\GitHub\HXPOD\HexapodFW\Debug\Exe\LEDBlinker.out
+#    Map file     =  
+#        \\Mac\Home\Documents\GitHub\HXPOD\HexapodFW\Debug\List\LEDBlinker.map
 #    Command line =  
-#        -f C:\Users\vladik\AppData\Local\Temp\EWB2FD.tmp
-#        (\\Mac\Home\Desktop\HexapodFW\Debug\Obj\ADC.o
-#        \\Mac\Home\Desktop\HexapodFW\Debug\Obj\cstartup_M.o
-#        \\Mac\Home\Desktop\HexapodFW\Debug\Obj\GPIO.o
-#        \\Mac\Home\Desktop\HexapodFW\Debug\Obj\I2C.o
-#        \\Mac\Home\Desktop\HexapodFW\Debug\Obj\main.o
-#        \\Mac\Home\Desktop\HexapodFW\Debug\Obj\PCA9685.o
-#        \\Mac\Home\Desktop\HexapodFW\Debug\Obj\Timer.o --no_out_extension -o
-#        \\Mac\Home\Desktop\HexapodFW\Debug\Exe\LEDBlinker.out --redirect
-#        _Printf=_PrintfFullNoMb --redirect _Scanf=_ScanfFullNoMb --map
-#        \\Mac\Home\Desktop\HexapodFW\Debug\List\LEDBlinker.map --config
-#        "C:\Program Files (x86)\IAR Systems\Embedded Workbench
+#        -f C:\Users\vladik\AppData\Local\Temp\EW456A.tmp
+#        (\\Mac\Home\Documents\GitHub\HXPOD\HexapodFW\Debug\Obj\ADC.o
+#        \\Mac\Home\Documents\GitHub\HXPOD\HexapodFW\Debug\Obj\cstartup_M.o
+#        \\Mac\Home\Documents\GitHub\HXPOD\HexapodFW\Debug\Obj\GPIO.o
+#        \\Mac\Home\Documents\GitHub\HXPOD\HexapodFW\Debug\Obj\I2C.o
+#        \\Mac\Home\Documents\GitHub\HXPOD\HexapodFW\Debug\Obj\main.o
+#        \\Mac\Home\Documents\GitHub\HXPOD\HexapodFW\Debug\Obj\PCA9685.o
+#        \\Mac\Home\Documents\GitHub\HXPOD\HexapodFW\Debug\Obj\Timer.o
+#        --no_out_extension -o
+#        \\Mac\Home\Documents\GitHub\HXPOD\HexapodFW\Debug\Exe\LEDBlinker.out
+#        --redirect _Printf=_PrintfFullNoMb --redirect _Scanf=_ScanfFullNoMb
+#        --map
+#        \\Mac\Home\Documents\GitHub\HXPOD\HexapodFW\Debug\List\LEDBlinker.map
+#        --config "C:\Program Files (x86)\IAR Systems\Embedded Workbench
 #        8.1\arm\config\linker\TexasInstruments\TM4C123GH6.icf" --semihosting
 #        --entry __iar_program_start --vfe --text_out locale)
 #
@@ -135,7 +139,7 @@ command line/config:
     -------------------------------------------
     Total:
 
-\\Mac\Home\Desktop\HexapodFW\Debug\Obj: [1]
+\\Mac\Home\Documents\GitHub\HXPOD\HexapodFW\Debug\Obj: [1]
     ADC.o                 412
     GPIO.o                 80
     I2C.o                 396
@@ -248,7 +252,7 @@ floorl                        0x58d         Code  Gb  floor.o [3]
 main                          0xf5d   0xac  Code  Gb  main.o [1]
 
 
-[1] = \\Mac\Home\Desktop\HexapodFW\Debug\Obj
+[1] = \\Mac\Home\Documents\GitHub\HXPOD\HexapodFW\Debug\Obj
 [2] = dl7M_tln.a
 [3] = m7M_tls.a
 [4] = rt7M_tl.a
