@@ -48,7 +48,7 @@ void I2C_InitPort1(void){
     //TPR = (16MHz/(2*(6+4)*100000))-1;
     //TPR = 7
     //Write the I2CMTPR register with the value of 0x0000.0007.
-    I2C1_MTPR_R=0x9;
+    I2C1_MTPR_R=0x7;
 
 }
 
