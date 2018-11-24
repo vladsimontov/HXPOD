@@ -1,5 +1,5 @@
 /*
-Module to Control Timer A.
+Module to control PCA9685 to drive servo motors
 */
 
 #include <stdint.h>
