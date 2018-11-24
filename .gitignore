@@ -77,3 +77,4 @@ dkms.conf
 *.map
 HexapodFW/Debug/List/LEDBlinker.map
 HexapodFW/Debug/List/LEDBlinker.map
+*.map
