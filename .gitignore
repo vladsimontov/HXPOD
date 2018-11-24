@@ -55,6 +55,16 @@
 *.dbgdt
 *.crun
 *.dep
+*.map
+*.pbd
+*.browse
+*.linf
+*.pbd.linf
+*.pbw
+*.bat
+*.cspy.bat
+*.cspy
+*.cspy.ps1
 
 # Kernel Module Compile Results
 *.mod*
