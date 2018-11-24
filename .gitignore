@@ -41,6 +41,30 @@
 *.su
 *.idb
 *.pdb
+*.out
+*.sim
+*.map
+*.o
+*.xcl
+*.pbi
+*.pdb
+*.wsdt
+*.crun
+*.cspy
+*.dnx
+*.dbgdt
+*.crun
+*.dep
+*.map
+*.pbd
+*.browse
+*.linf
+*.pbd.linf
+*.pbw
+*.bat
+*.cspy.bat
+*.cspy
+*.cspy.ps1
 
 # Kernel Module Compile Results
 *.mod*
@@ -50,3 +74,4 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+*.map
