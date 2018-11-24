@@ -75,3 +75,4 @@ Module.symvers
 Mkfile.old
 dkms.conf
 *.map
+HexapodFW/Debug/List/LEDBlinker.map
