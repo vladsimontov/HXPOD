@@ -41,6 +41,20 @@
 *.su
 *.idb
 *.pdb
+*.out
+*.sim
+*.map
+*.o
+*.xcl
+*.pbi
+*.pdb
+*.wsdt
+*.crun
+*.cspy
+*.dnx
+*.dbgdt
+*.crun
+*.dep
 
 # Kernel Module Compile Results
 *.mod*
