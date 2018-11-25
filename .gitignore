@@ -87,3 +87,8 @@ HexapodFW/Debug/Obj/LEDBlinker.pbw
 HexapodFW/LEDBlinker.dep
 HexapodFW/settings/LabBlinker.wsdt
 HexapodFW/settings/LEDBlinker.dbgdt
+*.dep
+*.wsdt
+*.crun
+*.dbgdt
+*.dnx
