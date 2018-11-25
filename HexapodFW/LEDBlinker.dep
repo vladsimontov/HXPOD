@@ -7,13 +7,6 @@
         <outputs>
             <file>$PROJ_DIR$\src\lib\cstartup_M.c</file>
             <file>$PROJ_DIR$\src\ADC.c</file>
-            <file>$PROJ_DIR$\Debug\Obj\cstartup_M.o</file>
-            <file>$PROJ_DIR$\Debug\Obj\ADC.o</file>
-            <file>$PROJ_DIR$\Debug\Obj\GPIO.o</file>
-            <file>$PROJ_DIR$\Debug\Obj\I2C.o</file>
-            <file>$PROJ_DIR$\Debug\Obj\PCA9685.o</file>
-            <file>$PROJ_DIR$\Debug\Obj\Timer.o</file>
-            <file>$PROJ_DIR$\Debug\Obj\main.o</file>
             <file>$PROJ_DIR$\src\ADC.h</file>
             <file>$PROJ_DIR$\src\GPIO.c</file>
             <file>$PROJ_DIR$\src\GPIO.h</file>
@@ -24,6 +17,13 @@
             <file>$PROJ_DIR$\src\Timer.c</file>
             <file>$PROJ_DIR$\src\Timer.h</file>
             <file>$PROJ_DIR$\main.c</file>
+            <file>$PROJ_DIR$\Debug\Obj\cstartup_M.o</file>
+            <file>$PROJ_DIR$\Debug\Obj\ADC.o</file>
+            <file>$PROJ_DIR$\Debug\Obj\GPIO.o</file>
+            <file>$PROJ_DIR$\Debug\Obj\I2C.o</file>
+            <file>$PROJ_DIR$\Debug\Obj\PCA9685.o</file>
+            <file>$PROJ_DIR$\Debug\Obj\Timer.o</file>
+            <file>$PROJ_DIR$\Debug\Obj\main.o</file>
             <file>$PROJ_DIR$\Debug\Obj\cstartup_M.pbi</file>
             <file>$PROJ_DIR$\Debug\Obj\ADC.pbi</file>
             <file>$PROJ_DIR$\Debug\Obj\GPIO.pbi</file>
@@ -60,7 +60,7 @@
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 2</file>
+                    <file> 12</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
@@ -73,7 +73,7 @@
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 3</file>
+                    <file> 13</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
@@ -83,7 +83,7 @@
             <inputs>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 28 29 30 11 9 31 32 33 17 34 35 36</file>
+                    <file> 28 29 30 4 2 31 32 33 10 34 35 36</file>
                 </tool>
             </inputs>
         </file>
@@ -92,7 +92,7 @@
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 4</file>
+                    <file> 14</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
@@ -102,7 +102,7 @@
             <inputs>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 17 29 33 36 11 30 35 34 31 28 32</file>
+                    <file> 10 29 33 36 4 30 35 34 31 28 32</file>
                 </tool>
             </inputs>
         </file>
@@ -111,7 +111,7 @@
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 5</file>
+                    <file> 15</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
@@ -121,7 +121,7 @@
             <inputs>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 11 30 13 35 29 33 34 31 28 32 36</file>
+                    <file> 4 30 6 35 29 33 34 31 28 32 36</file>
                 </tool>
             </inputs>
         </file>
@@ -130,7 +130,7 @@
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 6</file>
+                    <file> 16</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
@@ -140,7 +140,7 @@
             <inputs>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 30 35 11 15 38 29 37 39 33 34 13 31 28 32 36</file>
+                    <file> 30 35 4 8 38 29 37 39 33 34 6 31 28 32 36</file>
                 </tool>
             </inputs>
         </file>
@@ -149,7 +149,7 @@
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 7</file>
+                    <file> 17</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
@@ -159,7 +159,7 @@
             <inputs>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 30 11 17 35 29 33 34 31 28 32 36</file>
+                    <file> 30 4 10 35 29 33 34 31 28 32 36</file>
                 </tool>
             </inputs>
         </file>
@@ -168,7 +168,7 @@
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 8</file>
+                    <file> 18</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
@@ -178,7 +178,7 @@
             <inputs>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 30 35 32 13 33 15 37 34 17 29 31 28 36</file>
+                    <file> 30 35 32 6 33 8 37 34 10 29 31 28 36</file>
                 </tool>
             </inputs>
         </file>

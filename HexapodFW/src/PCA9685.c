@@ -10,39 +10,54 @@ Module to control PCA9685 to drive servo motors
 #include "I2C.h"
 #include <math.h>
 
-void PCA9685_Init(void){
-#define MODE2 (0x01)
-  uint8_t mode2Status = 0xff;
+void PCA9685_Init(void)
+/*
+Initialization function to prep PCA9685 for use. This function will set the MODE1
+and MODE2 registers per datasheet.
+*/
+{
   i2c_status_t writePrescale = I2C_WriteBytes(PCA_9685_ADDR, MODE1,0x81,WRITE);  
-  i2c_status_t prescaleStatus = I2C_Read(PCA_9685_ADDR, MODE2, &mode2Status);
-    i2c_status_t writePrescaleMOde2 = I2C_WriteBytes(PCA_9685_ADDR, MODE2,0x04,WRITE);  
-
-
-  
+  i2c_status_t writePrescaleMOde2 = I2C_WriteBytes(PCA_9685_ADDR, MODE2,0x04,WRITE);
+  //Need to #def the 0x81 and 0x04
 }
-pca9685_status_t PCA9685_Restart(void){
+
+pca9685_status_t PCA9685_Restart(void)
+/*
+Function to software restart the PCA. This is necessary after the operating
+frequency has changed
+*/
+{
   uint8_t modeStatus=0x00;
   uint8_t enableSleep = 0x00;
   uint32_t delayCounter = 0;
   uint8_t verifyRestart = 0x0;
   
   //All leds off (write 1 to 4th bit of ALL_LED_OFF_H register)
-i2c_status_t writeOff = I2C_WriteBytes(PCA_9685_ADDR, (0xFD), (0x01 << 4), WRITE);
+i2c_status_t writeOff = I2C_WriteBytes(PCA_9685_ADDR, ALL_LED_OFF_H, (0x01 << 4), WRITE);
+i2c_status_t writeOff1 = I2C_WriteBytes(PCA_9685_ADDR, ALL_LED_OFF_L, (0x01 << 4), WRITE);
 
-i2c_status_t writeOff1 = I2C_WriteBytes(PCA_9685_ADDR, (0xFC), (0x01 << 4), WRITE);
-
-  
-  
+  //get current MODE register value
   i2c_status_t prescaleStatus = I2C_Read(PCA_9685_ADDR, MODE1, &modeStatus);
+  
+  //trigger a restart if the bit is high
   if((modeStatus & RESTART) == RESTART){
     enableSleep = (modeStatus & (~SLEEP)); //Clear the sleep bit
+    
+    //arbitrary delay here. Need to scope out this delay, this delay may not be necessary
     while(delayCounter < 100000u){
       delayCounter++;
     }
+    
     i2c_status_t writePrescale = I2C_WriteBytes(PCA_9685_ADDR, MODE1, (modeStatus | RESTART), WRITE);
+    
+    //arbitrary delay here. Need to scope out this delay
+    while(delayCounter < 100000u){
+      delayCounter++;
+    }
   }
-    i2c_status_t verifyRestartStatus = I2C_Read(PCA_9685_ADDR, MODE1, &verifyRestart);
-
+  
+  i2c_status_t verifyRestartStatus = I2C_Read(PCA_9685_ADDR, MODE1, &verifyRestart);
+  //verify that the restart happened and set the flag
 }
 
 pca9685_status_t PCA9685_Sleep(void)
@@ -87,7 +102,8 @@ pca9685_status_t PCA9685_Wake(void)
 }
 
 pca9685_status_t PCA9685_UpdatePWMFrequency(uint16_t newFrequency)
-/*Sets the new desired frequency of the pwm. Must be between 24hz and 1526hz
+/*
+Sets the new desired frequency of the pwm. Must be between 24hz and 1526hz
 */
 {
   uint32_t delayCounter = 0;
@@ -107,24 +123,34 @@ pca9685_status_t PCA9685_UpdatePWMFrequency(uint16_t newFrequency)
   uint8_t newMode = ((oldMode & 0x7f) | SLEEP); // check if sleep is 1, otherwise prescale writes are blocked
   i2c_status_t writePrescale = I2C_WriteBytes(PCA_9685_ADDR, MODE1, (uint8_t)(newMode),WRITE);  
  
+  //write new value
   i2c_status_t prescaleStatus = I2C_WriteBytes(PCA_9685_ADDR, PRESCALE, (uint8_t) prescale,WRITE);  
+  
+  //reset the original mode register
   i2c_status_t writePrescale1 = I2C_WriteBytes(PCA_9685_ADDR, MODE1, (uint8_t)(oldMode),WRITE);  
   
+  //bit of a delay here to allow things to stabilize
   while(delayCounter < 100000u){
         delayCounter++;
       }
   uint8_t verifyOldMode = 0x00;
   i2c_status_t verifyModeStatus = I2C_Read(PCA_9685_ADDR, MODE1, &verifyOldMode);
 
-  if(writePrescale1 == i2c_OK)
+  //check to make sure the old mode was reset
+  if(verifyOldMode == oldMode)
     return PCA_9685_OK;
   else
     return PCA_9685_NOT_SET;
 
-  
 }
 
-void PCA9685_convertDutyCycleToCounts(float dutyCycle, uint16_t * highCount, uint16_t * lowCount){
+void PCA9685_convertDutyCycleToCounts(float dutyCycle, uint16_t * highCount, uint16_t * lowCount)
+/*
+Function to convert a duty cycle into counts that are accepted by the PCA.
+dutyCycle must be a precent between 0 and 100
+Counts will be passed back
+*/
+{
   
   //Operating frequency is 60hz. One period is 1/60hz = 0.01666666666
   //100% duty cycle is 0x0FFF, 4095 counts
@@ -141,6 +167,60 @@ void PCA9685_convertDutyCycleToCounts(float dutyCycle, uint16_t * highCount, uin
   *lowCount = onCounts & 0xff;
 
 }
+void PCA9685_setServo(float degree, uint8_t leg)
+/*
+Function to set the servos to a certain position. Passing in the degree will set
+the motor, while specifiying the leg will specifiy which leg to apply changes to.
+*/
+{
+  if (degree < 0.0) degree = 0.0;
+  if (degree > 180.0) degree = 180.0;
+  
+  if(leg > 11) leg = 11;
+   
+  uint16_t highCount = 0;
+  uint16_t lowCount = 0;  
+  
+  //Set address of new leg  
+  uint8_t addr_off_h= (9 + (4*leg));
+  uint8_t addr_off_l= (8 + (4*leg));
+  uint8_t addr_on_h = (7 + (4*leg));
+  uint8_t addr_on_l = (6 + (4*leg));
+  
+  //find out on time
+  float onTime = ((ONE_MSEC/ MAX_ROTATION) * degree) + ONE_MSEC; //0 degrees = 1ms on time, 180 degrees = 2ms
+  //onTime = ((onTime* 1.0489) - 0.0039); //calibrating the cycle time.
+  float dutyCycle = (onTime/PERIOD) * 100.0;
+  
+  PCA9685_convertDutyCycleToCounts(dutyCycle, &highCount, &lowCount);
+  
+  //Write to the address
+  i2c_status_t write1 = I2C_WriteBytes(PCA_9685_ADDR, addr_off_h, (uint8_t)highCount, WRITE);
+  i2c_status_t write2 = I2C_WriteBytes(PCA_9685_ADDR, addr_off_l, lowCount, WRITE);
+  i2c_status_t write3 = I2C_WriteBytes(PCA_9685_ADDR, addr_on_h,  0x0F, WRITE);
+  i2c_status_t write4 = I2C_WriteBytes(PCA_9685_ADDR, addr_on_l,  0xFF, WRITE);
+  
+}
+
+#if 0
+void PCA9685_SetLeg(float dutyCycle, uint8_t legNum){
+  uint16_t highCount = 0;
+  uint16_t lowCount = 0;
+  
+  uint8_t addr_off_h= (9 + (4*legNum));
+  uint8_t addr_off_l= (8 + (4*legNum));
+  uint8_t addr_on_h = (7 + (4*legNum));
+  uint8_t addr_on_l = (6 + (4*legNum));
+  
+  
+  PCA9685_convertDutyCycleToCounts(dutyCycle, &highCount, &lowCount);
+  
+  i2c_status_t write1 = I2C_WriteBytes(PCA_9685_ADDR, addr_off_h, (uint8_t)highCount, WRITE);
+  i2c_status_t write2 = I2C_WriteBytes(PCA_9685_ADDR, addr_off_l, lowCount, WRITE);
+  i2c_status_t write3 = I2C_WriteBytes(PCA_9685_ADDR, addr_on_h,  0x0F, WRITE);
+  i2c_status_t write4 = I2C_WriteBytes(PCA_9685_ADDR, addr_on_l,  0xFF, WRITE);
+}
+
 
 void PCA9685_SetDegreeCycle(float degree){
  //Sets channel 4 to duty cycle that pertains to the degree of movement. May need
@@ -161,3 +241,4 @@ void PCA9685_SetDutyCycle(float dutyCycle){
   i2c_status_t write3 = I2C_WriteBytes(PCA_9685_ADDR,LED4_ON_H, 0x0F, WRITE);
   i2c_status_t write4 = I2C_WriteBytes(PCA_9685_ADDR,LED4_ON_L, 0xFF, WRITE);
 }
+#endif
