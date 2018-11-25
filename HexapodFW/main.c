@@ -7,7 +7,7 @@
 #include "src/PCA9685.h"
 
 int main(void) {
-  
+
   I2C_InitPort1();
 
   PCA9685_Init();
@@ -15,7 +15,7 @@ int main(void) {
   PCA9685_Restart();
 
   while(1){
-    
+
     PCA9685_setServo(90, 5);
     PCA9685_setServo(90, 0);
     PCA9685_setServo(90, 11);
