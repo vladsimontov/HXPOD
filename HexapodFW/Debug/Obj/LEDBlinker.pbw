@@ -1,5 +1,497 @@
 [
   {
+    "ID": "c:@F@__iar_program_start",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void __iar_program_start(void)",
+    "location": {
+      "column": "13",
+      "line": "15",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
+    },
+    "name": "__iar_program_start",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@NMI_Handler",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void NMI_Handler(void)",
+    "location": {
+      "column": "13",
+      "line": "17",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
+    },
+    "name": "NMI_Handler",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@HardFault_Handler",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void HardFault_Handler(void)",
+    "location": {
+      "column": "13",
+      "line": "18",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
+    },
+    "name": "HardFault_Handler",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@MemManage_Handler",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void MemManage_Handler(void)",
+    "location": {
+      "column": "13",
+      "line": "19",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
+    },
+    "name": "MemManage_Handler",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@BusFault_Handler",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void BusFault_Handler(void)",
+    "location": {
+      "column": "13",
+      "line": "20",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
+    },
+    "name": "BusFault_Handler",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@UsageFault_Handler",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void UsageFault_Handler(void)",
+    "location": {
+      "column": "13",
+      "line": "21",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
+    },
+    "name": "UsageFault_Handler",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@SVC_Handler",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void SVC_Handler(void)",
+    "location": {
+      "column": "13",
+      "line": "22",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
+    },
+    "name": "SVC_Handler",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@DebugMon_Handler",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void DebugMon_Handler(void)",
+    "location": {
+      "column": "13",
+      "line": "23",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
+    },
+    "name": "DebugMon_Handler",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@PendSV_Handler",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void PendSV_Handler(void)",
+    "location": {
+      "column": "13",
+      "line": "24",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
+    },
+    "name": "PendSV_Handler",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@SysTick_Handler",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void SysTick_Handler(void)",
+    "location": {
+      "column": "13",
+      "line": "25",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
+    },
+    "name": "SysTick_Handler",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@ADC0_Handler",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void ADC0_Handler(void)",
+    "location": {
+      "column": "13",
+      "line": "26",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
+    },
+    "name": "ADC0_Handler",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@TimerA_Handler",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void TimerA_Handler(void)",
+    "location": {
+      "column": "13",
+      "line": "27",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
+    },
+    "name": "TimerA_Handler",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@PortF_Handler",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void PortF_Handler(void)",
+    "location": {
+      "column": "13",
+      "line": "28",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
+    },
+    "name": "PortF_Handler",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:cstartup_M.c@T@intfunc",
+    "What": "Typedef",
+    "defdec": "Def",
+    "display": "void (*)(void)",
+    "location": {
+      "column": "16",
+      "line": "30",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
+    },
+    "name": "intfunc",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@UA@intvec_elem",
+    "What": "Union",
+    "defdec": "Def",
+    "display": "",
+    "location": {
+      "column": "9",
+      "line": "31",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
+    },
+    "members": [
+      {
+        "ID": "c:@UA@intvec_elem@FI@__fun",
+        "What": "FieldDecl",
+        "defdec": "Def",
+        "display": "__fun",
+        "location": {
+          "column": "25",
+          "line": "31",
+          "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
+        },
+        "name": "__fun",
+        "origin": "project_file",
+        "scope": "_anonymous_cstartup_M_c_31_9"
+      },
+      {
+        "ID": "c:@UA@intvec_elem@FI@__ptr",
+        "What": "FieldDecl",
+        "defdec": "Def",
+        "display": "__ptr",
+        "location": {
+          "column": "39",
+          "line": "31",
+          "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
+        },
+        "name": "__ptr",
+        "origin": "project_file",
+        "scope": "_anonymous_cstartup_M_c_31_9"
+      },
+      {
+        "ID": "c:cstartup_M.c@T@intvec_elem",
+        "What": "TypedefDecl",
+        "defdec": "Def",
+        "display": "union intvec_elem",
+        "location": {
+          "column": "48",
+          "line": "31",
+          "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
+        },
+        "name": "intvec_elem",
+        "origin": "project_file",
+        "scope": "_anonymous_cstartup_M_c_31_9"
+      }
+    ],
+    "name": "",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@__vector_table",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "__vector_table",
+    "location": {
+      "column": "19",
+      "line": "44",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
+    },
+    "name": "__vector_table",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@NMI_Handler",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void NMI_Handler(void)",
+    "location": {
+      "column": "13",
+      "line": "101",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
+    },
+    "name": "NMI_Handler",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@HardFault_Handler",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void HardFault_Handler(void)",
+    "location": {
+      "column": "13",
+      "line": "103",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
+    },
+    "name": "HardFault_Handler",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@MemManage_Handler",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void MemManage_Handler(void)",
+    "location": {
+      "column": "13",
+      "line": "105",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
+    },
+    "name": "MemManage_Handler",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@BusFault_Handler",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void BusFault_Handler(void)",
+    "location": {
+      "column": "13",
+      "line": "107",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
+    },
+    "name": "BusFault_Handler",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@UsageFault_Handler",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void UsageFault_Handler(void)",
+    "location": {
+      "column": "13",
+      "line": "109",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
+    },
+    "name": "UsageFault_Handler",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@SVC_Handler",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void SVC_Handler(void)",
+    "location": {
+      "column": "13",
+      "line": "111",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
+    },
+    "name": "SVC_Handler",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@DebugMon_Handler",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void DebugMon_Handler(void)",
+    "location": {
+      "column": "13",
+      "line": "113",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
+    },
+    "name": "DebugMon_Handler",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@PendSV_Handler",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void PendSV_Handler(void)",
+    "location": {
+      "column": "13",
+      "line": "115",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
+    },
+    "name": "PendSV_Handler",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@SysTick_Handler",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void SysTick_Handler(void)",
+    "location": {
+      "column": "13",
+      "line": "117",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
+    },
+    "name": "SysTick_Handler",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@TimerA_Handler",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void TimerA_Handler(void)",
+    "location": {
+      "column": "13",
+      "line": "119",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
+    },
+    "name": "TimerA_Handler",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@PortF_Handler",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void PortF_Handler(void)",
+    "location": {
+      "column": "13",
+      "line": "121",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
+    },
+    "name": "PortF_Handler",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@ADC0_Handler",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void ADC0_Handler(void)",
+    "location": {
+      "column": "13",
+      "line": "123",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
+    },
+    "name": "ADC0_Handler",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@__cmain",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void __cmain(void)",
+    "location": {
+      "column": "6",
+      "line": "126",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
+    },
+    "name": "__cmain",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@__iar_init_core",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void __iar_init_core(void)",
+    "location": {
+      "column": "13",
+      "line": "127",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
+    },
+    "name": "__iar_init_core",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@__iar_init_vfp",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void __iar_init_vfp(void)",
+    "location": {
+      "column": "13",
+      "line": "128",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
+    },
+    "name": "__iar_init_vfp",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@__iar_program_start",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void __iar_program_start(void)",
+    "location": {
+      "column": "6",
+      "line": "131",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
+    },
+    "name": "__iar_program_start",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
     "ID": "c:tm4c123gh6pm.h@2033@macro@__TM4C123GH6PM_H__",
     "What": "MacroDef",
     "defdec": "Def",
@@ -98650,498 +99142,6 @@
     "scope": null
   },
   {
-    "ID": "c:@F@__iar_program_start",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "void __iar_program_start(void)",
-    "location": {
-      "column": "13",
-      "line": "15",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
-    },
-    "name": "__iar_program_start",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@NMI_Handler",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "void NMI_Handler(void)",
-    "location": {
-      "column": "13",
-      "line": "17",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
-    },
-    "name": "NMI_Handler",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@HardFault_Handler",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "void HardFault_Handler(void)",
-    "location": {
-      "column": "13",
-      "line": "18",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
-    },
-    "name": "HardFault_Handler",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@MemManage_Handler",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "void MemManage_Handler(void)",
-    "location": {
-      "column": "13",
-      "line": "19",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
-    },
-    "name": "MemManage_Handler",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@BusFault_Handler",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "void BusFault_Handler(void)",
-    "location": {
-      "column": "13",
-      "line": "20",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
-    },
-    "name": "BusFault_Handler",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@UsageFault_Handler",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "void UsageFault_Handler(void)",
-    "location": {
-      "column": "13",
-      "line": "21",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
-    },
-    "name": "UsageFault_Handler",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@SVC_Handler",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "void SVC_Handler(void)",
-    "location": {
-      "column": "13",
-      "line": "22",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
-    },
-    "name": "SVC_Handler",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@DebugMon_Handler",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "void DebugMon_Handler(void)",
-    "location": {
-      "column": "13",
-      "line": "23",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
-    },
-    "name": "DebugMon_Handler",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@PendSV_Handler",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "void PendSV_Handler(void)",
-    "location": {
-      "column": "13",
-      "line": "24",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
-    },
-    "name": "PendSV_Handler",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@SysTick_Handler",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "void SysTick_Handler(void)",
-    "location": {
-      "column": "13",
-      "line": "25",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
-    },
-    "name": "SysTick_Handler",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@ADC0_Handler",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "void ADC0_Handler(void)",
-    "location": {
-      "column": "13",
-      "line": "26",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
-    },
-    "name": "ADC0_Handler",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@TimerA_Handler",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "void TimerA_Handler(void)",
-    "location": {
-      "column": "13",
-      "line": "27",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
-    },
-    "name": "TimerA_Handler",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@PortF_Handler",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "void PortF_Handler(void)",
-    "location": {
-      "column": "13",
-      "line": "28",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
-    },
-    "name": "PortF_Handler",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:cstartup_M.c@T@intfunc",
-    "What": "Typedef",
-    "defdec": "Def",
-    "display": "void (*)(void)",
-    "location": {
-      "column": "16",
-      "line": "30",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
-    },
-    "name": "intfunc",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@UA@intvec_elem",
-    "What": "Union",
-    "defdec": "Def",
-    "display": "",
-    "location": {
-      "column": "9",
-      "line": "31",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
-    },
-    "members": [
-      {
-        "ID": "c:@UA@intvec_elem@FI@__fun",
-        "What": "FieldDecl",
-        "defdec": "Def",
-        "display": "__fun",
-        "location": {
-          "column": "25",
-          "line": "31",
-          "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
-        },
-        "name": "__fun",
-        "origin": "project_file",
-        "scope": "_anonymous_cstartup_M_c_31_9"
-      },
-      {
-        "ID": "c:@UA@intvec_elem@FI@__ptr",
-        "What": "FieldDecl",
-        "defdec": "Def",
-        "display": "__ptr",
-        "location": {
-          "column": "39",
-          "line": "31",
-          "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
-        },
-        "name": "__ptr",
-        "origin": "project_file",
-        "scope": "_anonymous_cstartup_M_c_31_9"
-      },
-      {
-        "ID": "c:cstartup_M.c@T@intvec_elem",
-        "What": "TypedefDecl",
-        "defdec": "Def",
-        "display": "union intvec_elem",
-        "location": {
-          "column": "48",
-          "line": "31",
-          "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
-        },
-        "name": "intvec_elem",
-        "origin": "project_file",
-        "scope": "_anonymous_cstartup_M_c_31_9"
-      }
-    ],
-    "name": "",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@__vector_table",
-    "What": "Variable",
-    "defdec": "Def",
-    "display": "__vector_table",
-    "location": {
-      "column": "19",
-      "line": "44",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
-    },
-    "name": "__vector_table",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@NMI_Handler",
-    "What": "Function",
-    "defdec": "Def",
-    "display": "void NMI_Handler(void)",
-    "location": {
-      "column": "13",
-      "line": "101",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
-    },
-    "name": "NMI_Handler",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@HardFault_Handler",
-    "What": "Function",
-    "defdec": "Def",
-    "display": "void HardFault_Handler(void)",
-    "location": {
-      "column": "13",
-      "line": "103",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
-    },
-    "name": "HardFault_Handler",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@MemManage_Handler",
-    "What": "Function",
-    "defdec": "Def",
-    "display": "void MemManage_Handler(void)",
-    "location": {
-      "column": "13",
-      "line": "105",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
-    },
-    "name": "MemManage_Handler",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@BusFault_Handler",
-    "What": "Function",
-    "defdec": "Def",
-    "display": "void BusFault_Handler(void)",
-    "location": {
-      "column": "13",
-      "line": "107",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
-    },
-    "name": "BusFault_Handler",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@UsageFault_Handler",
-    "What": "Function",
-    "defdec": "Def",
-    "display": "void UsageFault_Handler(void)",
-    "location": {
-      "column": "13",
-      "line": "109",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
-    },
-    "name": "UsageFault_Handler",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@SVC_Handler",
-    "What": "Function",
-    "defdec": "Def",
-    "display": "void SVC_Handler(void)",
-    "location": {
-      "column": "13",
-      "line": "111",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
-    },
-    "name": "SVC_Handler",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@DebugMon_Handler",
-    "What": "Function",
-    "defdec": "Def",
-    "display": "void DebugMon_Handler(void)",
-    "location": {
-      "column": "13",
-      "line": "113",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
-    },
-    "name": "DebugMon_Handler",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@PendSV_Handler",
-    "What": "Function",
-    "defdec": "Def",
-    "display": "void PendSV_Handler(void)",
-    "location": {
-      "column": "13",
-      "line": "115",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
-    },
-    "name": "PendSV_Handler",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@SysTick_Handler",
-    "What": "Function",
-    "defdec": "Def",
-    "display": "void SysTick_Handler(void)",
-    "location": {
-      "column": "13",
-      "line": "117",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
-    },
-    "name": "SysTick_Handler",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@TimerA_Handler",
-    "What": "Function",
-    "defdec": "Def",
-    "display": "void TimerA_Handler(void)",
-    "location": {
-      "column": "13",
-      "line": "119",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
-    },
-    "name": "TimerA_Handler",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@PortF_Handler",
-    "What": "Function",
-    "defdec": "Def",
-    "display": "void PortF_Handler(void)",
-    "location": {
-      "column": "13",
-      "line": "121",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
-    },
-    "name": "PortF_Handler",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@ADC0_Handler",
-    "What": "Function",
-    "defdec": "Def",
-    "display": "void ADC0_Handler(void)",
-    "location": {
-      "column": "13",
-      "line": "123",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
-    },
-    "name": "ADC0_Handler",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@__cmain",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "void __cmain(void)",
-    "location": {
-      "column": "6",
-      "line": "126",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
-    },
-    "name": "__cmain",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@__iar_init_core",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "void __iar_init_core(void)",
-    "location": {
-      "column": "13",
-      "line": "127",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
-    },
-    "name": "__iar_init_core",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@__iar_init_vfp",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "void __iar_init_vfp(void)",
-    "location": {
-      "column": "13",
-      "line": "128",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
-    },
-    "name": "__iar_init_vfp",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@__iar_program_start",
-    "What": "Function",
-    "defdec": "Def",
-    "display": "void __iar_program_start(void)",
-    "location": {
-      "column": "6",
-      "line": "131",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\lib\\cstartup_M.c"
-    },
-    "name": "__iar_program_start",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
     "ID": "c:@SW1_PRESSED",
     "What": "Variable",
     "defdec": "Dec",
@@ -100261,694 +100261,6 @@
     },
     "name": "I2C_WriteManyBytes",
     "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:stdbool.h@92@macro@_STDBOOL",
-    "What": "MacroDef",
-    "defdec": "Def",
-    "display": "_STDBOOL",
-    "location": {
-      "column": "9",
-      "line": "5",
-      "path": "C:\\Program Files (x86)\\IAR Systems\\Embedded Workbench 8.1\\arm\\inc\\c\\stdbool.h"
-    },
-    "name": "_STDBOOL",
-    "origin": "system_include",
-    "scope": null
-  },
-  {
-    "ID": "c:stdbool.h@188@macro@bool",
-    "What": "MacroDef",
-    "defdec": "Def",
-    "display": "bool",
-    "location": {
-      "column": "11",
-      "line": "13",
-      "path": "C:\\Program Files (x86)\\IAR Systems\\Embedded Workbench 8.1\\arm\\inc\\c\\stdbool.h"
-    },
-    "name": "bool",
-    "origin": "system_include",
-    "scope": null
-  },
-  {
-    "ID": "c:stdbool.h@212@macro@true",
-    "What": "MacroDef",
-    "defdec": "Def",
-    "display": "true",
-    "location": {
-      "column": "11",
-      "line": "14",
-      "path": "C:\\Program Files (x86)\\IAR Systems\\Embedded Workbench 8.1\\arm\\inc\\c\\stdbool.h"
-    },
-    "name": "true",
-    "origin": "system_include",
-    "scope": null
-  },
-  {
-    "ID": "c:stdbool.h@232@macro@false",
-    "What": "MacroDef",
-    "defdec": "Def",
-    "display": "false",
-    "location": {
-      "column": "11",
-      "line": "15",
-      "path": "C:\\Program Files (x86)\\IAR Systems\\Embedded Workbench 8.1\\arm\\inc\\c\\stdbool.h"
-    },
-    "name": "false",
-    "origin": "system_include",
-    "scope": null
-  },
-  {
-    "ID": "c:stdbool.h@258@macro@__bool_true_false_are_defined",
-    "What": "MacroDef",
-    "defdec": "Def",
-    "display": "__bool_true_false_are_defined",
-    "location": {
-      "column": "9",
-      "line": "18",
-      "path": "C:\\Program Files (x86)\\IAR Systems\\Embedded Workbench 8.1\\arm\\inc\\c\\stdbool.h"
-    },
-    "name": "__bool_true_false_are_defined",
-    "origin": "system_include",
-    "scope": null
-  },
-  {
-    "ID": "c:PCA9685.h@58@macro@PCA9685",
-    "What": "MacroDef",
-    "defdec": "Def",
-    "display": "PCA9685",
-    "location": {
-      "column": "9",
-      "line": "5",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
-    },
-    "name": "PCA9685",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:PCA9685.h@77@macro@ONE_MSEC",
-    "What": "MacroDef",
-    "defdec": "Def",
-    "display": "ONE_MSEC",
-    "location": {
-      "column": "9",
-      "line": "7",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
-    },
-    "name": "ONE_MSEC",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:PCA9685.h@101@macro@MAX_ROTATION",
-    "What": "MacroDef",
-    "defdec": "Def",
-    "display": "MAX_ROTATION",
-    "location": {
-      "column": "9",
-      "line": "8",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
-    },
-    "name": "MAX_ROTATION",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:PCA9685.h@128@macro@PERIOD",
-    "What": "MacroDef",
-    "defdec": "Def",
-    "display": "PERIOD",
-    "location": {
-      "column": "9",
-      "line": "9",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
-    },
-    "name": "PERIOD",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:PCA9685.h@161@macro@PCA9685_ADDR",
-    "What": "MacroDef",
-    "defdec": "Def",
-    "display": "PCA9685_ADDR",
-    "location": {
-      "column": "9",
-      "line": "12",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
-    },
-    "name": "PCA9685_ADDR",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:PCA9685.h@191@macro@PCA9685_READ",
-    "What": "MacroDef",
-    "defdec": "Def",
-    "display": "PCA9685_READ",
-    "location": {
-      "column": "9",
-      "line": "13",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
-    },
-    "name": "PCA9685_READ",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:PCA9685.h@220@macro@PCA9685_WRITE",
-    "What": "MacroDef",
-    "defdec": "Def",
-    "display": "PCA9685_WRITE",
-    "location": {
-      "column": "9",
-      "line": "14",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
-    },
-    "name": "PCA9685_WRITE",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:PCA9685.h@254@macro@PCA_9685_ADDR",
-    "What": "MacroDef",
-    "defdec": "Def",
-    "display": "PCA_9685_ADDR",
-    "location": {
-      "column": "9",
-      "line": "17",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
-    },
-    "name": "PCA_9685_ADDR",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:PCA9685.h@284@macro@MODE1",
-    "What": "MacroDef",
-    "defdec": "Def",
-    "display": "MODE1",
-    "location": {
-      "column": "9",
-      "line": "18",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
-    },
-    "name": "MODE1",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:PCA9685.h@306@macro@PRESCALE",
-    "What": "MacroDef",
-    "defdec": "Def",
-    "display": "PRESCALE",
-    "location": {
-      "column": "9",
-      "line": "19",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
-    },
-    "name": "PRESCALE",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:PCA9685.h@331@macro@SLEEP",
-    "What": "MacroDef",
-    "defdec": "Def",
-    "display": "SLEEP",
-    "location": {
-      "column": "9",
-      "line": "20",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
-    },
-    "name": "SLEEP",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:PCA9685.h@375@macro@RESTART",
-    "What": "MacroDef",
-    "defdec": "Def",
-    "display": "RESTART",
-    "location": {
-      "column": "9",
-      "line": "21",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
-    },
-    "name": "RESTART",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:PCA9685.h@399@macro@MIN_HZ",
-    "What": "MacroDef",
-    "defdec": "Def",
-    "display": "MIN_HZ",
-    "location": {
-      "column": "9",
-      "line": "22",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
-    },
-    "name": "MIN_HZ",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:PCA9685.h@420@macro@MAX_HZ",
-    "What": "MacroDef",
-    "defdec": "Def",
-    "display": "MAX_HZ",
-    "location": {
-      "column": "9",
-      "line": "23",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
-    },
-    "name": "MAX_HZ",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:PCA9685.h@442@macro@CLKRATE",
-    "What": "MacroDef",
-    "defdec": "Def",
-    "display": "CLKRATE",
-    "location": {
-      "column": "9",
-      "line": "24",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
-    },
-    "name": "CLKRATE",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:PCA9685.h@474@macro@LED4_ON_L",
-    "What": "MacroDef",
-    "defdec": "Def",
-    "display": "LED4_ON_L",
-    "location": {
-      "column": "9",
-      "line": "28",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
-    },
-    "name": "LED4_ON_L",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:PCA9685.h@501@macro@LED4_ON_H",
-    "What": "MacroDef",
-    "defdec": "Def",
-    "display": "LED4_ON_H",
-    "location": {
-      "column": "9",
-      "line": "29",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
-    },
-    "name": "LED4_ON_H",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:PCA9685.h@528@macro@LED4_OFF_L",
-    "What": "MacroDef",
-    "defdec": "Def",
-    "display": "LED4_OFF_L",
-    "location": {
-      "column": "9",
-      "line": "30",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
-    },
-    "name": "LED4_OFF_L",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:PCA9685.h@555@macro@LED4_OFF_H",
-    "What": "MacroDef",
-    "defdec": "Def",
-    "display": "LED4_OFF_H",
-    "location": {
-      "column": "9",
-      "line": "31",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
-    },
-    "name": "LED4_OFF_H",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:@E@pca9685_status",
-    "What": "Enum",
-    "defdec": "Def",
-    "display": "pca9685_status",
-    "fields": [
-      {
-        "ID": "c:@E@pca9685_status@PCA_9685_OK",
-        "What": "Enumerator",
-        "defdec": "Def",
-        "display": "PCA_9685_OK",
-        "location": {
-          "column": "3",
-          "line": "38",
-          "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
-        },
-        "name": "PCA_9685_OK",
-        "origin": "user_include",
-        "scope": null
-      },
-      {
-        "ID": "c:@E@pca9685_status@PCA_9685_NOT_SET",
-        "What": "Enumerator",
-        "defdec": "Def",
-        "display": "PCA_9685_NOT_SET",
-        "location": {
-          "column": "3",
-          "line": "39",
-          "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
-        },
-        "name": "PCA_9685_NOT_SET",
-        "origin": "user_include",
-        "scope": null
-      },
-      {
-        "ID": "c:@E@pca9685_status@PCA_9685_UNRESPONSIVE",
-        "What": "Enumerator",
-        "defdec": "Def",
-        "display": "PCA_9685_UNRESPONSIVE",
-        "location": {
-          "column": "3",
-          "line": "40",
-          "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
-        },
-        "name": "PCA_9685_UNRESPONSIVE",
-        "origin": "user_include",
-        "scope": null
-      },
-      {
-        "ID": "c:@E@pca9685_status@PCA_9685_TIMEOUT",
-        "What": "Enumerator",
-        "defdec": "Def",
-        "display": "PCA_9685_TIMEOUT",
-        "location": {
-          "column": "3",
-          "line": "41",
-          "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
-        },
-        "name": "PCA_9685_TIMEOUT",
-        "origin": "user_include",
-        "scope": null
-      },
-      {
-        "ID": "c:@E@pca9685_status@PCA_9685_OTHER",
-        "What": "Enumerator",
-        "defdec": "Def",
-        "display": "PCA_9685_OTHER",
-        "location": {
-          "column": "3",
-          "line": "42",
-          "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
-        },
-        "name": "PCA_9685_OTHER",
-        "origin": "user_include",
-        "scope": null
-      },
-      {
-        "ID": "c:@E@pca9685_status@PCA_9685_UNKNOWN",
-        "What": "Enumerator",
-        "defdec": "Def",
-        "display": "PCA_9685_UNKNOWN",
-        "location": {
-          "column": "3",
-          "line": "43",
-          "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
-        },
-        "name": "PCA_9685_UNKNOWN",
-        "origin": "user_include",
-        "scope": null
-      }
-    ],
-    "location": {
-      "column": "14",
-      "line": "34",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
-    },
-    "name": "pca9685_status",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@PCA9685_Wake",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "pca9685_status_t PCA9685_Wake(void)",
-    "location": {
-      "column": "18",
-      "line": "47",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
-    },
-    "name": "PCA9685_Wake",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@PCA9685_Wake",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "pca9685_status_t PCA9685_Wake(void)",
-    "location": {
-      "column": "18",
-      "line": "47",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
-    },
-    "name": "PCA9685_Wake",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@PCA9685_Sleep",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "pca9685_status_t PCA9685_Sleep(void)",
-    "location": {
-      "column": "18",
-      "line": "48",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
-    },
-    "name": "PCA9685_Sleep",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@PCA9685_Sleep",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "pca9685_status_t PCA9685_Sleep(void)",
-    "location": {
-      "column": "18",
-      "line": "48",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
-    },
-    "name": "PCA9685_Sleep",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@PCA9685_UpdatePWMFrequency",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "pca9685_status_t PCA9685_UpdatePWMFrequency(uint16_t)",
-    "location": {
-      "column": "18",
-      "line": "49",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
-    },
-    "name": "PCA9685_UpdatePWMFrequency",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@PCA9685_UpdatePWMFrequency",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "pca9685_status_t PCA9685_UpdatePWMFrequency(uint16_t)",
-    "location": {
-      "column": "18",
-      "line": "49",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
-    },
-    "name": "PCA9685_UpdatePWMFrequency",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@PCA9685_Restart",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "pca9685_status_t PCA9685_Restart(void)",
-    "location": {
-      "column": "18",
-      "line": "50",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
-    },
-    "name": "PCA9685_Restart",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@PCA9685_Restart",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "pca9685_status_t PCA9685_Restart(void)",
-    "location": {
-      "column": "18",
-      "line": "50",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
-    },
-    "name": "PCA9685_Restart",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@PCA9685_SetPWM_Ch4",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "pca9685_status_t PCA9685_SetPWM_Ch4(uint8_t)",
-    "location": {
-      "column": "18",
-      "line": "51",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
-    },
-    "name": "PCA9685_SetPWM_Ch4",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@PCA9685_Init",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "void PCA9685_Init(void)",
-    "location": {
-      "column": "6",
-      "line": "52",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
-    },
-    "name": "PCA9685_Init",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@PCA9685_Init",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "void PCA9685_Init(void)",
-    "location": {
-      "column": "6",
-      "line": "52",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
-    },
-    "name": "PCA9685_Init",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@PCA9685_SetDutyCycle",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "void PCA9685_SetDutyCycle(float)",
-    "location": {
-      "column": "6",
-      "line": "54",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
-    },
-    "name": "PCA9685_SetDutyCycle",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@PCA9685_SetDutyCycle",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "void PCA9685_SetDutyCycle(float)",
-    "location": {
-      "column": "6",
-      "line": "54",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
-    },
-    "name": "PCA9685_SetDutyCycle",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@PCA9685_SetDegreeCycle",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "void PCA9685_SetDegreeCycle(float)",
-    "location": {
-      "column": "6",
-      "line": "55",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
-    },
-    "name": "PCA9685_SetDegreeCycle",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@PCA9685_SetDegreeCycle",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "void PCA9685_SetDegreeCycle(float)",
-    "location": {
-      "column": "6",
-      "line": "55",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
-    },
-    "name": "PCA9685_SetDegreeCycle",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@PCA9685_convertDutyCycleToCounts",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "void PCA9685_convertDutyCycleToCounts(float, uint16_t *, uint16_t *)",
-    "location": {
-      "column": "6",
-      "line": "57",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
-    },
-    "name": "PCA9685_convertDutyCycleToCounts",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@PCA9685_convertDutyCycleToCounts",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "void PCA9685_convertDutyCycleToCounts(float, uint16_t *, uint16_t *)",
-    "location": {
-      "column": "6",
-      "line": "57",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
-    },
-    "name": "PCA9685_convertDutyCycleToCounts",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@main",
-    "What": "Function",
-    "defdec": "Def",
-    "display": "int main(void)",
-    "location": {
-      "column": "5",
-      "line": "9",
-      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\main.c"
-    },
-    "name": "main",
-    "origin": "project_file",
     "scope": null
   },
   {
@@ -106050,6 +105362,610 @@
     "scope": null
   },
   {
+    "ID": "c:PCA9685.h@58@macro@PCA9685",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "PCA9685",
+    "location": {
+      "column": "9",
+      "line": "5",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
+    },
+    "name": "PCA9685",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:PCA9685.h@77@macro@ONE_MSEC",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "ONE_MSEC",
+    "location": {
+      "column": "9",
+      "line": "7",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
+    },
+    "name": "ONE_MSEC",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:PCA9685.h@101@macro@MAX_ROTATION",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "MAX_ROTATION",
+    "location": {
+      "column": "9",
+      "line": "8",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
+    },
+    "name": "MAX_ROTATION",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:PCA9685.h@128@macro@PERIOD",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "PERIOD",
+    "location": {
+      "column": "9",
+      "line": "9",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
+    },
+    "name": "PERIOD",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:PCA9685.h@161@macro@PCA9685_ADDR",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "PCA9685_ADDR",
+    "location": {
+      "column": "9",
+      "line": "12",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
+    },
+    "name": "PCA9685_ADDR",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:PCA9685.h@191@macro@PCA9685_READ",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "PCA9685_READ",
+    "location": {
+      "column": "9",
+      "line": "13",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
+    },
+    "name": "PCA9685_READ",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:PCA9685.h@220@macro@PCA9685_WRITE",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "PCA9685_WRITE",
+    "location": {
+      "column": "9",
+      "line": "14",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
+    },
+    "name": "PCA9685_WRITE",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:PCA9685.h@254@macro@PCA_9685_ADDR",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "PCA_9685_ADDR",
+    "location": {
+      "column": "9",
+      "line": "17",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
+    },
+    "name": "PCA_9685_ADDR",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:PCA9685.h@284@macro@MODE1",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "MODE1",
+    "location": {
+      "column": "9",
+      "line": "18",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
+    },
+    "name": "MODE1",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:PCA9685.h@306@macro@PRESCALE",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "PRESCALE",
+    "location": {
+      "column": "9",
+      "line": "19",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
+    },
+    "name": "PRESCALE",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:PCA9685.h@331@macro@SLEEP",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "SLEEP",
+    "location": {
+      "column": "9",
+      "line": "20",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
+    },
+    "name": "SLEEP",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:PCA9685.h@375@macro@RESTART",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "RESTART",
+    "location": {
+      "column": "9",
+      "line": "21",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
+    },
+    "name": "RESTART",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:PCA9685.h@399@macro@MIN_HZ",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "MIN_HZ",
+    "location": {
+      "column": "9",
+      "line": "22",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
+    },
+    "name": "MIN_HZ",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:PCA9685.h@420@macro@MAX_HZ",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "MAX_HZ",
+    "location": {
+      "column": "9",
+      "line": "23",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
+    },
+    "name": "MAX_HZ",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:PCA9685.h@442@macro@CLKRATE",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "CLKRATE",
+    "location": {
+      "column": "9",
+      "line": "24",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
+    },
+    "name": "CLKRATE",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:PCA9685.h@474@macro@LED4_ON_L",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "LED4_ON_L",
+    "location": {
+      "column": "9",
+      "line": "28",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
+    },
+    "name": "LED4_ON_L",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:PCA9685.h@501@macro@LED4_ON_H",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "LED4_ON_H",
+    "location": {
+      "column": "9",
+      "line": "29",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
+    },
+    "name": "LED4_ON_H",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:PCA9685.h@528@macro@LED4_OFF_L",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "LED4_OFF_L",
+    "location": {
+      "column": "9",
+      "line": "30",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
+    },
+    "name": "LED4_OFF_L",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:PCA9685.h@555@macro@LED4_OFF_H",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "LED4_OFF_H",
+    "location": {
+      "column": "9",
+      "line": "31",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
+    },
+    "name": "LED4_OFF_H",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@E@pca9685_status",
+    "What": "Enum",
+    "defdec": "Def",
+    "display": "pca9685_status",
+    "fields": [
+      {
+        "ID": "c:@E@pca9685_status@PCA_9685_OK",
+        "What": "Enumerator",
+        "defdec": "Def",
+        "display": "PCA_9685_OK",
+        "location": {
+          "column": "3",
+          "line": "38",
+          "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
+        },
+        "name": "PCA_9685_OK",
+        "origin": "user_include",
+        "scope": null
+      },
+      {
+        "ID": "c:@E@pca9685_status@PCA_9685_NOT_SET",
+        "What": "Enumerator",
+        "defdec": "Def",
+        "display": "PCA_9685_NOT_SET",
+        "location": {
+          "column": "3",
+          "line": "39",
+          "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
+        },
+        "name": "PCA_9685_NOT_SET",
+        "origin": "user_include",
+        "scope": null
+      },
+      {
+        "ID": "c:@E@pca9685_status@PCA_9685_UNRESPONSIVE",
+        "What": "Enumerator",
+        "defdec": "Def",
+        "display": "PCA_9685_UNRESPONSIVE",
+        "location": {
+          "column": "3",
+          "line": "40",
+          "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
+        },
+        "name": "PCA_9685_UNRESPONSIVE",
+        "origin": "user_include",
+        "scope": null
+      },
+      {
+        "ID": "c:@E@pca9685_status@PCA_9685_TIMEOUT",
+        "What": "Enumerator",
+        "defdec": "Def",
+        "display": "PCA_9685_TIMEOUT",
+        "location": {
+          "column": "3",
+          "line": "41",
+          "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
+        },
+        "name": "PCA_9685_TIMEOUT",
+        "origin": "user_include",
+        "scope": null
+      },
+      {
+        "ID": "c:@E@pca9685_status@PCA_9685_OTHER",
+        "What": "Enumerator",
+        "defdec": "Def",
+        "display": "PCA_9685_OTHER",
+        "location": {
+          "column": "3",
+          "line": "42",
+          "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
+        },
+        "name": "PCA_9685_OTHER",
+        "origin": "user_include",
+        "scope": null
+      },
+      {
+        "ID": "c:@E@pca9685_status@PCA_9685_UNKNOWN",
+        "What": "Enumerator",
+        "defdec": "Def",
+        "display": "PCA_9685_UNKNOWN",
+        "location": {
+          "column": "3",
+          "line": "43",
+          "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
+        },
+        "name": "PCA_9685_UNKNOWN",
+        "origin": "user_include",
+        "scope": null
+      }
+    ],
+    "location": {
+      "column": "14",
+      "line": "34",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
+    },
+    "name": "pca9685_status",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@PCA9685_Wake",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "pca9685_status_t PCA9685_Wake(void)",
+    "location": {
+      "column": "18",
+      "line": "47",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
+    },
+    "name": "PCA9685_Wake",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@PCA9685_Wake",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "pca9685_status_t PCA9685_Wake(void)",
+    "location": {
+      "column": "18",
+      "line": "47",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
+    },
+    "name": "PCA9685_Wake",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@PCA9685_Sleep",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "pca9685_status_t PCA9685_Sleep(void)",
+    "location": {
+      "column": "18",
+      "line": "48",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
+    },
+    "name": "PCA9685_Sleep",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@PCA9685_Sleep",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "pca9685_status_t PCA9685_Sleep(void)",
+    "location": {
+      "column": "18",
+      "line": "48",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
+    },
+    "name": "PCA9685_Sleep",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@PCA9685_UpdatePWMFrequency",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "pca9685_status_t PCA9685_UpdatePWMFrequency(uint16_t)",
+    "location": {
+      "column": "18",
+      "line": "49",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
+    },
+    "name": "PCA9685_UpdatePWMFrequency",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@PCA9685_UpdatePWMFrequency",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "pca9685_status_t PCA9685_UpdatePWMFrequency(uint16_t)",
+    "location": {
+      "column": "18",
+      "line": "49",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
+    },
+    "name": "PCA9685_UpdatePWMFrequency",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@PCA9685_Restart",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "pca9685_status_t PCA9685_Restart(void)",
+    "location": {
+      "column": "18",
+      "line": "50",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
+    },
+    "name": "PCA9685_Restart",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@PCA9685_Restart",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "pca9685_status_t PCA9685_Restart(void)",
+    "location": {
+      "column": "18",
+      "line": "50",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
+    },
+    "name": "PCA9685_Restart",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@PCA9685_SetPWM_Ch4",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "pca9685_status_t PCA9685_SetPWM_Ch4(uint8_t)",
+    "location": {
+      "column": "18",
+      "line": "51",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
+    },
+    "name": "PCA9685_SetPWM_Ch4",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@PCA9685_Init",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void PCA9685_Init(void)",
+    "location": {
+      "column": "6",
+      "line": "52",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
+    },
+    "name": "PCA9685_Init",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@PCA9685_Init",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void PCA9685_Init(void)",
+    "location": {
+      "column": "6",
+      "line": "52",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
+    },
+    "name": "PCA9685_Init",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@PCA9685_SetDutyCycle",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void PCA9685_SetDutyCycle(float)",
+    "location": {
+      "column": "6",
+      "line": "54",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
+    },
+    "name": "PCA9685_SetDutyCycle",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@PCA9685_SetDutyCycle",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void PCA9685_SetDutyCycle(float)",
+    "location": {
+      "column": "6",
+      "line": "54",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
+    },
+    "name": "PCA9685_SetDutyCycle",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@PCA9685_SetDegreeCycle",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void PCA9685_SetDegreeCycle(float)",
+    "location": {
+      "column": "6",
+      "line": "55",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
+    },
+    "name": "PCA9685_SetDegreeCycle",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@PCA9685_SetDegreeCycle",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void PCA9685_SetDegreeCycle(float)",
+    "location": {
+      "column": "6",
+      "line": "55",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
+    },
+    "name": "PCA9685_SetDegreeCycle",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@PCA9685_convertDutyCycleToCounts",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void PCA9685_convertDutyCycleToCounts(float, uint16_t *, uint16_t *)",
+    "location": {
+      "column": "6",
+      "line": "57",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
+    },
+    "name": "PCA9685_convertDutyCycleToCounts",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@PCA9685_convertDutyCycleToCounts",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void PCA9685_convertDutyCycleToCounts(float, uint16_t *, uint16_t *)",
+    "location": {
+      "column": "6",
+      "line": "57",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\PCA9685.h"
+    },
+    "name": "PCA9685_convertDutyCycleToCounts",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
     "ID": "c:DLib_float_setup.h@126@macro@_DLIB_FLOAT_SETUP",
     "What": "MacroDef",
     "defdec": "Def",
@@ -106638,6 +106554,76 @@
     "scope": null
   },
   {
+    "ID": "c:stdbool.h@92@macro@_STDBOOL",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "_STDBOOL",
+    "location": {
+      "column": "9",
+      "line": "5",
+      "path": "C:\\Program Files (x86)\\IAR Systems\\Embedded Workbench 8.1\\arm\\inc\\c\\stdbool.h"
+    },
+    "name": "_STDBOOL",
+    "origin": "system_include",
+    "scope": null
+  },
+  {
+    "ID": "c:stdbool.h@188@macro@bool",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "bool",
+    "location": {
+      "column": "11",
+      "line": "13",
+      "path": "C:\\Program Files (x86)\\IAR Systems\\Embedded Workbench 8.1\\arm\\inc\\c\\stdbool.h"
+    },
+    "name": "bool",
+    "origin": "system_include",
+    "scope": null
+  },
+  {
+    "ID": "c:stdbool.h@212@macro@true",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "true",
+    "location": {
+      "column": "11",
+      "line": "14",
+      "path": "C:\\Program Files (x86)\\IAR Systems\\Embedded Workbench 8.1\\arm\\inc\\c\\stdbool.h"
+    },
+    "name": "true",
+    "origin": "system_include",
+    "scope": null
+  },
+  {
+    "ID": "c:stdbool.h@232@macro@false",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "false",
+    "location": {
+      "column": "11",
+      "line": "15",
+      "path": "C:\\Program Files (x86)\\IAR Systems\\Embedded Workbench 8.1\\arm\\inc\\c\\stdbool.h"
+    },
+    "name": "false",
+    "origin": "system_include",
+    "scope": null
+  },
+  {
+    "ID": "c:stdbool.h@258@macro@__bool_true_false_are_defined",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "__bool_true_false_are_defined",
+    "location": {
+      "column": "9",
+      "line": "18",
+      "path": "C:\\Program Files (x86)\\IAR Systems\\Embedded Workbench 8.1\\arm\\inc\\c\\stdbool.h"
+    },
+    "name": "__bool_true_false_are_defined",
+    "origin": "system_include",
+    "scope": null
+  },
+  {
     "ID": "c:@F@TimerA_Handler",
     "What": "Function",
     "defdec": "Dec",
@@ -106788,6 +106774,20 @@
       "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\src\\Timer.c"
     },
     "name": "delayCounter",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@main",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "int main(void)",
+    "location": {
+      "column": "5",
+      "line": "9",
+      "path": "C:\\Users\\Lauren\\Documents\\GitHub\\HXPOD\\HexapodFW\\main.c"
+    },
+    "name": "main",
     "origin": "project_file",
     "scope": null
   }

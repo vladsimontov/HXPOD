@@ -75,3 +75,10 @@ Module.symvers
 Mkfile.old
 dkms.conf
 *.map
+HexapodFW/Debug/Obj/LEDBlinker.pbd
+HexapodFW/Debug/Obj/LEDBlinker.pbd.browse
+HexapodFW/Debug/Obj/LEDBlinker.pbd.linf
+HexapodFW/Debug/Obj/LEDBlinker.pbw
+HexapodFW/LEDBlinker.dep
+HexapodFW/settings/LabBlinker.wsdt
+HexapodFW/settings/LEDBlinker.dbgdt
