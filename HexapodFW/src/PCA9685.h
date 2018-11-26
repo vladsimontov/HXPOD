@@ -58,6 +58,6 @@ void PCA9685_SetDutyCycle(float dutyCycle);
 void PCA9685_SetDegreeCycle(float degree);
 
 void PCA9685_convertDutyCycleToCounts(float dutyCycle, uint16_t * highCount, uint16_t * lowCount);
-void PCA9685_setServo(float degree, uint8_t leg);
+void PCA9685_setServo(uint8_t leg, float degree);
 void PCA9685_SetLeg(float dutyCycle, uint8_t legNum);
 #endif

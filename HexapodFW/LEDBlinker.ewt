@@ -2384,6 +2384,12 @@
             <name>$PROJ_DIR$\src\ADC.h</name>
         </file>
         <file>
+            <name>$PROJ_DIR$\src\Gaits.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\Gaits.h</name>
+        </file>
+        <file>
             <name>$PROJ_DIR$\src\GPIO.c</name>
         </file>
         <file>
@@ -2406,6 +2412,12 @@
         </file>
         <file>
             <name>$PROJ_DIR$\src\Timer.h</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\UART.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\UART.h</name>
         </file>
     </group>
     <file>
