@@ -2,19 +2,19 @@
 #define I2C_H
 
 #define RCGCI2C         (*((volatile uint32_t *)0x400FE620)) /*Register 65: Inter-Integrated Circuit Run Mode Clock Gating Control (RCGCI2C), offset 0x620 p.348*/
-  #define R0            (0x01)  /*I2C Module 0 Run Mode Clock Gating Control*/ 
+#define R0            (0x01)  /*I2C Module 0 Run Mode Clock Gating Control*/ 
   //Gate 0 uses PB2/PB3 for SCL/SDA
 
 #define RCGCGPIO_B         (*((volatile uint32_t *)0x400FE608)) /*Register 65: Inter-Integrated Circuit Run Mode Clock Gating Control (RCGCI2C), offset 0x620 p.348*/
-  #define PORTB          (0x02)
+#define PORTB          (0x02)
 
 #define PORTB_BASE      (0x40005000)
-  #define GPIO_B_AFSEL  (*((volatile uint32_t *) (PORTB_BASE + 0x420))) 
-  #define GPIO_B_DEN    (*((volatile uint32_t *) (PORTB_BASE + 0x51C))) 
-  #define GPIO_B_PDR    (*((volatile uint32_t *) (PORTB_BASE + 0x514))) 
-  #define GPIO_B_PUR    (*((volatile uint32_t *) (PORTB_BASE + 0x510))) 
-  #define GPIO_B_PCTL   (*((volatile uint32_t *) (PORTB_BASE + 0x52C))) 
-  #define GPIO_B_CR     (*((volatile uint32_t *) (PORTB_BASE + 0x524))) 
+#define GPIO_B_AFSEL  (*((volatile uint32_t *) (PORTB_BASE + 0x420))) 
+#define GPIO_B_DEN    (*((volatile uint32_t *) (PORTB_BASE + 0x51C))) 
+#define GPIO_B_PDR    (*((volatile uint32_t *) (PORTB_BASE + 0x514))) 
+#define GPIO_B_PUR    (*((volatile uint32_t *) (PORTB_BASE + 0x510))) 
+#define GPIO_B_PCTL   (*((volatile uint32_t *) (PORTB_BASE + 0x52C))) 
+#define GPIO_B_CR     (*((volatile uint32_t *) (PORTB_BASE + 0x524))) 
 
 #define PIN2    (0x04)
 #define PIN3    (0x08)

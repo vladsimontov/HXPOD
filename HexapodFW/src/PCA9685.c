@@ -167,7 +167,7 @@ Counts will be passed back
   *lowCount = onCounts & 0xff;
 
 }
-void PCA9685_setServo(float degree, uint8_t leg)
+void PCA9685_setServo(uint8_t leg, float degree)
 /*
 Function to set the servos to a certain position. Passing in the degree will set
 the motor, while specifiying the leg will specifiy which leg to apply changes to.

@@ -2384,6 +2384,12 @@
             <name>$PROJ_DIR$\src\ADC.h</name>
         </file>
         <file>
+            <name>$PROJ_DIR$\src\Gaits.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\Gaits.h</name>
+        </file>
+        <file>
             <name>$PROJ_DIR$\src\GPIO.c</name>
         </file>
         <file>
