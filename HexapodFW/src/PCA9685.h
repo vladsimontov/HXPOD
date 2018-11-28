@@ -1,8 +1,7 @@
-#if !defined(PCA9685) 
+#ifndef PCA9685
+#define PCA9685
 
 #include <stdbool.h>
-
-#define PCA9685
 
 #define ONE_MSEC 0.001
 #define MAX_ROTATION 180 

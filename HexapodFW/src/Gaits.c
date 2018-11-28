@@ -1,11 +1,13 @@
 /*
 Source file for Vorpal Hexapod gaits and leg movements
 */
-
-#include <stdint.h>
-#include <stdio.h>
 #include "Gaits.h"
-#include "PCA9685.h"
+
+uint8_t deferServoSet = 0;
+uint32_t executeNextCommandAt = 0;
+
+int16_t ServoPos[2*NUM_LEGS]; //store last servo position instruction
+uint8_t servoOffset[2*NUM_LEGS] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};  /*knee offsets (6-11)*/
 
 /*
 Wrapper functions to be used for clarity in state machines and outside the source file
@@ -166,13 +168,11 @@ void gait_tripod(uint8_t reverse, uint8_t hipforward, uint8_t hipbackward,
   //long t = millis()%timeperiod;
   //long phase = (NUM_TRIPOD_PHASES*t)/timeperiod;
 static uint8_t phase = 0;
-  //Serial.print("PHASE: ");
-  //Serial.println(phase);
 
   transactServos(); // defer leg motions until after checking for crashes
   switch (phase) {
     case 0:
-      setLegs(TRIPOD1_LEGS, NOMOVE, KNEE_UP, 0, 0, leanangle);
+      setLegs(TRIPOD1_LEGS, NOMOVE, KNEE_NEUTRAL, 0, 0, leanangle);
     case 1:
       // in this phase, the center-left and noncenter-right legs move forward
       // at the hips, while the rest of the legs move backward at the hip
@@ -187,7 +187,7 @@ static uint8_t phase = 0;
 
     case 3:
       // lift up the other set of legs at the knee
-      setLegs(TRIPOD2_LEGS, NOMOVE, KNEE_UP, 0, 0, leanangle);
+      setLegs(TRIPOD2_LEGS, NOMOVE, KNEE_NEUTRAL, 0, 0, leanangle);
       break;
       
     case 4:
@@ -260,38 +260,110 @@ void gait_turn(uint8_t ccw, uint8_t hipforward, uint8_t hipbackward, uint8_t kne
 }
 
 void GaitHandler( gaitCommand_t lastCmd ){
-  static uint8_t positionPhase = 0;  //replace these uints with enumerated states
-  static uint8_t gaitPhase = 0;
+  static phase_t position = SITTING;  //replace these uints with enumerated states
   
-  switch(positionPhase){
-  case 0: //sit
+  switch(position){
+  case SITTING: //sit
     if (lastCmd == BOT_STAND) {
-      stand();
-      positionPhase = 1;
+      stand(); 
+      position = STANDING;
     }
-    //else do nothing until we get a command to stand up
     break;
-  case 1: //stand
+  case STANDING: //stand
     if (lastCmd == BOT_SIT) {
       laydown();
-      positionPhase = 0;
+      position = SITTING;
     } 
-    else if (lastCmd == BOT_STAND){
-      ;
-      }//do nothing
-    else {
+    else if (lastCmd != BOT_STAND){
       setKneesOnly(TRIPOD1_LEGS, KNEE_UP);
-      positionPhase = 2;
+      position = WALKING;
     }
     break;
-  case 2: //legs up
-    //switch (gaitPhase){}
-      
+  case WALKING: //run through both state machines simultaneously
+    if( (walk_FSM(lastCmd) || turn_FSM(lastCmd)) == DONE_WALKING)
+      stand();
+      position = STANDING;      
     break;
   default:
     break;
   }
 }    
-    
 
+#define WALK_MODE 0x00
+#define TURN_MODE 0x01
+// the gait consists of 6 phases. This code determines what phase
+  // we are currently in by using the millis clock modulo the 
+  // desired time period that all six  phases should consume.
+  // Right now each phase is an equal amount of time but this may not be optimal
+phase_t walk_FSM( gaitCommand_t newCmd ){
+  
+  static phase_t gaitPhase = TRIPOD1_LIFT;
+  phase_t returnPhase = gaitPhase;
+  
+  static uint8_t hipdir1 = HIP_FORWARD;
+  static uint8_t hipdir2 = HIP_BACKWARD;
+  static uint8_t servoShift = FBSHIFT;
+  static uint8_t moveType = WALK_MODE;
+  static uint8_t leanangle = 0;
+  
+  if (newCmd == BOT_STOP){
+    return STANDING;
+//    changeGaitVariables(newCmd, &hipdir1, &hipdir2, &shift, &moveType &gaitPhase);
+  }
+  
+  switch (gaitPhase) {
+    case TRIPOD1_LIFT:     
+      // in this phase, center-left and noncenter-right legs raise up at
+      // the knee
+      setLegs(TRIPOD1_LEGS, NOMOVE, KNEE_NEUTRAL, 0, 0, leanangle);
+      gaitPhase = TRIPOD1_SWIVEL;
+      break;
+      
+    case TRIPOD1_SWIVEL:
+      // in this phase, the center-left and noncenter-right legs move forward
+      // at the hips, while the rest of the legs move backward at the hip
+      setLegs(TRIPOD1_LEGS, hipdir1, NOMOVE, servoShift, moveType, leanangle);  
+      setLegs(TRIPOD2_LEGS, hipdir2, NOMOVE, servoShift, moveType, leanangle);
+      gaitPhase = TRIPOD1_SET;
+      break;
+      
+    case TRIPOD1_SET: 
+      // now put the first set of legs back down on the ground
+      setLegs(TRIPOD1_LEGS, NOMOVE, KNEE_DOWN, 0, 0, leanangle);
+      gaitPhase = TRIPOD2_LIFT;
+      break;
+      
+    case TRIPOD2_LIFT:
+      // lift up the other set of legs at the knee
+      setLegs(TRIPOD2_LEGS, NOMOVE, KNEE_NEUTRAL, 0, 0, leanangle);
+      gaitPhase = TRIPOD2_SWIVEL;
+      break;
+      
+    case TRIPOD2_SWIVEL:
+      // similar to phase 1, move raised legs forward and lowered legs backward
+      setLegs(TRIPOD1_LEGS, hipdir2, NOMOVE, servoShift, moveType, leanangle);
+      setLegs(TRIPOD2_LEGS, hipdir1, NOMOVE, servoShift, moveType, leanangle);
+      gaitPhase = TRIPOD2_SET;
+      break;
 
+    case TRIPOD2_SET:
+      // put the second set of legs down, and the cycle repeats
+      setLegs(TRIPOD2_LEGS, NOMOVE, KNEE_DOWN, 0, 0, leanangle);
+      gaitPhase = TRIPOD1_LIFT;
+      break;  
+  }
+  //commitServos(); // implement all leg motions
+  return returnPhase;
+}
+
+/*
+gaitCommand_t changeGaitVariables(gaitCommand_t newCmd, uint8_t * hipdir1, uint8_t * hipdir2, uint8_t * shift, uint8_t * moveType, uint8_t * gaitPhase){
+  
+}
+
+void reverseHips(uint8_t * hipforward, uint8_t * hipbackward){
+  *hipforward = HIP_BACKWARD;
+  *hipbackward = HIP_FORWARD;
+  return;
+}
+*/

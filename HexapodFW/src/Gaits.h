@@ -1,6 +1,9 @@
-#if !defined(GAITS_H) 
+#ifndef GAITS_H 
 #define GAITS_H
 
+#include <stdint.h>
+#include <stdio.h>
+#include "PCA9685.h"
 
 //==============================================================================
 #define NUM_LEGS 6
@@ -82,13 +85,23 @@
  #define FIGHT_CYCLE_TIME 660
  //==============================================================================
 
-uint8_t deferServoSet = 0;
-uint32_t executeNextCommandAt = 0;
+typedef enum phaseType
+{
+  SITTING,
+  STANDING,
+  INIT_WALK,
+  WALKING,
+  DONE_WALKING,
+  TRIPOD1_LIFT,
+  TRIPOD1_SWIVEL,
+  TRIPOD1_SET,
+  TRIPOD2_LIFT,
+  TRIPOD2_SWIVEL,
+  TRIPOD2_SET,
+} phase_t;
+  
 
-int16_t ServoPos[2*NUM_LEGS]; //store last servo position instruction
-uint8_t servoOffset[2*NUM_LEGS] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};  /*knee offsets (6-11)*/
-
-typedef enum gateCommand
+typedef enum gaitCommand
 {
   BOT_STAND,
   BOT_SIT,
@@ -117,5 +130,7 @@ typedef enum gateCommand
  void setHipRaw(uint8_t leg, int16_t pos);
  void setKnee(uint8_t leg, int16_t pos);
  void turn(uint8_t ccw, uint8_t hipforward, uint8_t hipbackward, int16_t kneeup, int16_t kneedown, long timeperiod, uint8_t leanangle);
+ phase_t walk_FSM( gaitCommand_t newCmd);
+ phase_t turn_FSM( gaitCommand_t newCmd);
 
 #endif

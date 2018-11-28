@@ -5,16 +5,17 @@
  #include "src/I2C.h"
  #include "src/Timer.h"
  #include "src/PCA9685.h"
-#include "src/Gaits.h"
-#include "src/UART.h"
+ #include "src/Gaits.h"
+ #include "src/UART.h"
+ #include "src/Bluetooth.h"
 
  // Other initializations
  //==============================================================================
 
 int main(void) {
-  //Initialize UART module 1, pin PC4 is Rx
-  UART_InitPort1();
   
+  //Initialize UART module 1, pin PC4 is Rx
+   BlueTooth_Init();
   //Initialize I2C to 100kHz clock and Servo Driver to 60Hz PWM
    I2C_InitPort1();
    PCA9685_Init();
@@ -23,26 +24,22 @@ int main(void) {
 
    //Chill until we send a wakeup command
    laydown();
-/*   
-   PCA9685_setServo(90, 5);
-   PCA9685_setServo(90, 0);
-   PCA9685_setServo(90, 11);
- */      
-
- gaitCommand_t newCmd = BOT_STOP;       
-  //Main loop: polls for Bluetooth commands
+ 
+   //Test UART (to remove)
+  if(UART1_DATA == 0x04) {
+    stand();
+    while(1);
+  }
+  
+  //Main loop: polls for Bluetooth commands and sends them to a single high-level state machine
    while(1){
-    //parseBluetoothInfo(&newCmd);
-    //checkUltrasonicSensor(&newCmd);
+     checkBlueTooth(&lastCmd);
+     runGaitFSM(lastCmd);
+   }
+  //OtherSensors
+    //checkUltrasonicSensor(&lastCmd);
     //Wishful thinking: getTiltData(&xTilt, &yTilt, &zTilt); monitorServoCurrent();
     //monitorbatterylife(); ??
-    
-    /*
-     if (executeNextCmdAt < millis()){ //set the next leg movement when the timer
-      GaitHandler(newCmd);
-     }
-    */
-   
-   }
+
  return 0;
  }
