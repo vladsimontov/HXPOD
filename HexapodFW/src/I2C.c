@@ -15,28 +15,28 @@ void I2C_InitPort1(void){
     //This assumes the system clock is 20 MHz.
 
     //1. Enable the I2C clock using the RCGCI2C register in the System Control module (see page 348).
-    SYSCTL_RCGCI2C_R=(1<<1);//selected i2c module 1 (will connect to portA pin 6 and 7 with I2C1_SCL and I2C1_SDA respectively
+    SYSCTL_RCGCI2C_R |= (1<<1);//selected i2c module 1 (will connect to portA pin 6 and 7 with I2C1_SCL and I2C1_SDA respectively
 
     //2. Enable the clock to the appropriate GPIO module via the RCGCGPIO register in the System
     //Control module (see page 340). To find out which GPIO port to enable, refer to Table
     //23-5 on page 1351.
-    SYSCTL_RCGCGPIO_R=(1<<0);//Clock to port A (pin 6 and 7 will have I2C1_SCL and I2C1_SDA respectively)
+    SYSCTL_RCGCGPIO_R |= (1<<0);//Clock to port A (pin 6 and 7 will have I2C1_SCL and I2C1_SDA respectively)
 
 
     //3. In the GPIO module, enable the appropriate pins for their alternate function using the
     //GPIOAFSEL register (see page 671). To determine which GPIOs to configure, see Table
     ///23-4 on page 1344.
-    GPIO_PORTA_AFSEL_R=0xC0;//pin 6 and 7 are assigned alternative function. Nanmely connecting to I2C1_SCL and I2C1_SDA respectively
-    GPIO_PORTA_DEN_R=(0xC0);//set pin 6 and 7 to be digitcal pins
-    GPIO_PORTA_PUR_R=0xC0;//SDA and SCL pulled up
+    GPIO_PORTA_AFSEL_R |= 0xC0;//pin 6 and 7 are assigned alternative function. Nanmely connecting to I2C1_SCL and I2C1_SDA respectively
+    GPIO_PORTA_DEN_R |= (0xC0);//set pin 6 and 7 to be digitcal pins
+    GPIO_PORTA_PUR_R |= 0xC0;//SDA and SCL pulled up
 
 
     //4. Enable the I2CSDA pin for open-drain operation. See page 676.
-    GPIO_PORTA_ODR_R=0x80;//set SDA pin to open drain (bit 7 (pin 8) is set to high)
+    GPIO_PORTA_ODR_R |= 0x80;//set SDA pin to open drain (bit 7 (pin 8) is set to high)
 
     //5. Configure the PMCn fields in the GPIOPCTL register to assign the I2C signals to the appropriate
     //pins. See page 688 and Table 23-5 on page 1351.
-    GPIO_PORTA_PCTL_R=(0x33 <<24);
+    GPIO_PORTA_PCTL_R |= (0x33 <<24);
 
     //6. Initialize the I2C Master by writing the I2CMCR register with a value of 0x0000.0010.
     I2C1_MCR_R=0x10;

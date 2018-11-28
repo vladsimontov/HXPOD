@@ -11,7 +11,7 @@ void UART_InitPort1( void ){
     //2. Enable the clock to the appropriate GPIO module via the RCGCGPIO register in the System
     //Control module (see page 340). To find out which GPIO port to enable, refer to Table
     //23-5 on page 1351.
-    RCGC_GPIO |= ( 0x01 << 2 );//Clock to port C (pin 4 and 5 for UART Rx and Tx respectively)
+    RCGCGPIO |= (0x04);//Clock to port C (pin 4 and 5 for UART Rx and Tx respectively)
 
     //3. In the GPIO module, enable the appropriate pins for their alternate function using the
     //GPIOAFSEL register (see page 671). To determine which GPIOs to configure, see Table
@@ -20,10 +20,14 @@ void UART_InitPort1( void ){
     
     //4. Set drive current and slew rate 
     //(use default 2-mA)
+    GPIO_C_DEN |= (0x30);//pin 4 and 5 are assigned alternative function
+    GPIO_C_DIR |= (0x20); //pin 5 is an output
+    GPIO_C_DR8R |= (0x30);//pin 4 and 5 are assigned alternative function
+    GPIO_C_SLR |= (0x30);//pin 4 and 5 are assigned alternative function
     
     //5. Configure the PMCn fields in the GPIOPCTL register to assign the UART signals to the appropriate
     //pins. See page 688 and Table 23-5 on page 1351.
-    GPIO_C_PCTL |= (0x22 << (4*4));
+    GPIO_C_PCTL |= (0x22 << (16));
 
     //6. Disable UART in UART_CTL register
     UART_CTL(1) &= ~UART_ENABLE;
@@ -43,33 +47,32 @@ void UART_InitPort1( void ){
     //10. UART_CC is set to the system clock by default
     
     //11. Re-enable UART module
-    UART_CTL(1) |= UART_ENABLE;
+    UART_CTL(1) |= 0x0001;
     
 }
 
-UART_status_t UART_ReadByte(uint8_t UART_portNum, uint8_t * dataByte){
+UART_status_t UART_ReadByte(uint8_t * dataByte){
 /*
 
-*/
-      UART_status_t FIFOStatus = UART_STATUS_UNKNOWN;
+*/     
+     *dataByte = UART1_DATA;
+     UART_status_t FIFOStatus = UART_STATUS_UNKNOWN;
       if ((UART_FR(1) & UART_RxFIFO_EMPTY_FLAG) != 0){
          FIFOStatus = UART_STATUS_RxEMPTY;
       }
       else {
         //could add in more error checking here but we don't need it presently
-        *dataByte = UART_DATA(1);
+        *dataByte = UART1_DATA;
         FIFOStatus = UART_STATUS_OK;
       }
       return FIFOStatus;
 }
 
-uint8_t BlueTooth_read( void ){
-  uint8_t dataByte = 0;
-  UART_ReadByte(1, &dataByte);
-  return dataByte;
+uint8_t UART_lastRxByte( void ){
+  return storedDataByte;
 }
 
-uint8_t BlueTooth_available( void ){
+uint8_t UART_Rx_available( void ){
   if ((UART_FR(1) & UART_RxFIFO_EMPTY_FLAG) != 0) return 0;
   else return 1;
 }

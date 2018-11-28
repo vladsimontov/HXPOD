@@ -1,4 +1,4 @@
-#if !defined(I2C_H) 
+#ifndef I2C_H
 #define I2C_H
 
 #define RCGCI2C         (*((volatile uint32_t *)0x400FE620)) /*Register 65: Inter-Integrated Circuit Run Mode Clock Gating Control (RCGCI2C), offset 0x620 p.348*/
