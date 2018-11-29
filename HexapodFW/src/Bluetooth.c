@@ -27,9 +27,10 @@ packetState_t BlueTooth_PacketHandler( void ) {
 
   static packetState_t packetState = P_WAITING_FOR_HEADER_55;
   static uint8_t checksum = 0;
+  uint8_t c;
   
   while (UART_Rx_available() > 0) {
-    uint8_t c = BlueTooth_read();
+    UART_ReadByte(&c);
     
     switch (packetState) {
       
@@ -37,7 +38,7 @@ packetState_t BlueTooth_PacketHandler( void ) {
         flushcount = 0;
         while ((UART_Rx_available() > 0) && (c != 0x55)) {
           //Discard everything up to the start of a new header, right here
-          c = BlueTooth_read();
+          UART_ReadByte(&c);
           flushcount++;
         }
         if (c == 0x55){
