@@ -3,7 +3,6 @@ Module for UART Serial Driver
 */
 
 #include "UART.h"
-#include "Gaits.h"
 uint8_t storedDataByte = 0;
 
 void UART_InitPort1( void ){

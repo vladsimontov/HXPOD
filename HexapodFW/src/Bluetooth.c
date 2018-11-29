@@ -1,5 +1,6 @@
 #include "Bluetooth.h"
 #include "UART.h"
+#include "Gaits.h"
 
 uint8_t GOBLE_ADDRESS = 0x11;
 uint8_t headerCHKSUM = 0x10;
@@ -15,12 +16,15 @@ void BlueTooth_Init( void ) {
    UART_InitPort1();
 }
 
-void checkBlueTooth(gaitCommand_t * cmd){
-  static gaitCommand_t lastCmd = BOT_STOP;
+void checkBlueTooth(gaitCommand_t * lastCmd){
   if (BlueTooth_PacketHandler() == P_NEW_DATA_AVAILABLE){
     //do some logic to set the new command;
+      *lastCmd = parsePacket();
+#if USE_GOBLE_AS_MOVEMENT_CLOCK
+      if (*lastCmd != BOT_DEMO) updateMillis(); //joystick will throw off the timing if we're using this
+#endif
   }
-  *cmd = BOT_STAND;
+  
 }
 
 packetState_t BlueTooth_PacketHandler( void ) {
@@ -75,7 +79,7 @@ packetState_t BlueTooth_PacketHandler( void ) {
           checksum = headerCHKSUM + c;       //start generating checksum from known header and variable length
           packetLength = c + 6;              //data length is the number of pressed buttons plus 4 analog, 2 digital (not incl. CHKSUM)
           packetLengthReceived = 0;
-          packetData[packetLengthReceived++] = packetLength;
+          packetData[packetLengthReceived++] = c;
           packetState = P_READING_DATA;
         } else {
           packetErrorCount++;
@@ -107,7 +111,6 @@ packetState_t BlueTooth_PacketHandler( void ) {
           return P_PACKET_ERROR;
         } else {          
 //          LastValidReceiveTime = millis();  // set the time we received a valid packet.  We can bring this back! --LI
-          decodePacket();
           packetState = P_WAITING_FOR_HEADER_55;
           return P_NEW_DATA_AVAILABLE; // new data arrived!
         }
@@ -118,43 +121,53 @@ packetState_t BlueTooth_PacketHandler( void ) {
   return packetState; // no new data arrived
 }
 
-uint8_t decodePacket( void ) {
-  uint8_t lastCmd = 0;
-  //uint8_t i = 0;
-  uint8_t buttonsPressed = packetData[0];
-  static uint8_t lastChangeFlag = 0x00;
-  uint8_t thisChangeFlag = 0;
+gaitCommand_t parsePacket( void ) {
+
+  gaitCommand_t newCmd = BOT_PARSE_ERROR;  //if all goes well, this will change by the end of the function
+
+  //clear the button press bitmask
+  uint8_t buttonsPressed = 0;
+
+   //if joystick is activated, set bit 0
+  if (packetData[1]) buttonsPressed |= 1;
   
-  while (buttonsPressed) { //consume the buttons from greatest to least
-    switch(packetData[1+buttonsPressed--]) {
-      case 0x06:
-        break;
-      case 0x05:
-        break;
-      case 0x04:
-        lastCmd = 'r';
-      //depending on movement state, rotate or walk sideways
-        break;
-      case 0x03:
-        lastCmd = 'b';//same as 4
-        break;
-      case 0x02:
-        lastCmd = '1';//same as 3/4 but walk backwards
-        break;
-      case 0x01:
-        lastCmd = 'f';//same as prev but walk forwards
-        break;
-      default:
-        lastCmd = 's';
-        break;
-    }
-  }
-  lastChangeFlag = thisChangeFlag;
+  //set mask for buttons 1-6
+    for (uint8_t b = packetData[0]; b > 0; b--){
+      buttonsPressed |= (1 << packetData[1+b]);
+   }
+ 
+  //decide which command to send
+ switch(buttonsPressed) {
+   case 0x40:  //1 << 6
+     newCmd = BOT_SIT;
+     break;
+   case 0x20:  //1 << 5
+     newCmd = BOT_STAND;
+     break;
+   case 0x10:  //1 << 4
+     newCmd = BOT_ROTATE_LEFT;
+     break;
+   case 0x04:  //1 << 2
+     newCmd = BOT_ROTATE_RIGHT;
+     break;
+   case 0x08:  //1 << 3
+   case 0x0C:  //1 << 3 | 1 << 2
+   case 0x18:  //1 << 3 | 1 << 4
+     newCmd = BOT_WALK_BACK;
+     break;
+   case 0x02:  //1 << 1
+   case 0x06:  //1 << 1 | 1 << 2
+   case 0x12:  //1 << 1 | 1 << 4
+     newCmd = BOT_WALK_FWD;
+     break;
+   case 0x01:  //Joystick
+     newCmd = BOT_DEMO;  //Yeah!
+     break;
+   default:
+     newCmd = BOT_STAND;
+     break;
+ }
   
-  if (packetData[1]) {
-    //i = packetData[0]+2;
-    //add in use for joystick here
-  }  
-  return lastCmd;
+  return newCmd;
 }
 

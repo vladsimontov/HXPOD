@@ -17,7 +17,7 @@ typedef enum packetStateType {
 
 void BlueTooth_Init( void );
 packetState_t BlueTooth_PacketHandler( void );
-uint8_t decodePacket( void );
+gaitCommand_t parsePacket( void );
 void checkBlueTooth(gaitCommand_t * cmd);
 
 
