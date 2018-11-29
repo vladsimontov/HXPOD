@@ -92,3 +92,10 @@ HexapodFW/settings/LEDBlinker.dbgdt
 *.crun
 *.dbgdt
 *.dnx
+HexapodFW/LEDBlinker.dep
+HexapodFW/settings/LabBlinker.wsdt
+HexapodFW/settings/LEDBlinker.Debug.cspy.bat
+HexapodFW/settings/LEDBlinker.Debug.cspy.ps1
+HexapodFW/settings/LEDBlinker.Debug.driver.xcl
+HexapodFW/settings/LEDBlinker.Debug.general.xcl
+HexapodFW/settings/LEDBlinker.dnx
