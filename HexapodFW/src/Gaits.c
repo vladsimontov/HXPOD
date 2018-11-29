@@ -2,9 +2,22 @@
 Source file for Vorpal Hexapod gaits and leg movements
 */
 #include "Gaits.h"
+#include "PCA9685.h"
 
 uint8_t deferServoSet = 0;
-uint32_t executeNextCommandAt = 0;
+uint32_t timeToMove = 0;
+volatile uint32_t ms_sinceStart = 0;
+
+#define POSITION_FEEDBACK_ENABLED 0
+
+void updateMillis( void ){
+  ms_sinceStart++;
+  return;
+}
+
+uint32_t millis( void ){
+   return ms_sinceStart;
+}
 
 int16_t ServoPos[2*NUM_LEGS]; //store last servo position instruction
 uint8_t servoOffset[2*NUM_LEGS] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};  /*knee offsets (6-11)*/
@@ -259,8 +272,8 @@ void gait_turn(uint8_t ccw, uint8_t hipforward, uint8_t hipbackward, uint8_t kne
   
 }
 
-void GaitHandler( gaitCommand_t lastCmd ){
-  static phase_t position = SITTING;  //replace these uints with enumerated states
+void runGaitFSM( gaitCommand_t lastCmd ){
+  static phase_t position = SITTING;
   
   switch(position){
   case SITTING: //sit
@@ -279,10 +292,13 @@ void GaitHandler( gaitCommand_t lastCmd ){
       position = WALKING;
     }
     break;
-  case WALKING: //run through both state machines simultaneously
-    if( (walk_FSM(lastCmd) || turn_FSM(lastCmd)) == DONE_WALKING)
-      stand();
-      position = STANDING;      
+  case WALKING: //handles walking, turning, and veering
+    if (timeToMove < millis() || POSITION_FEEDBACK_ENABLED){
+      if (GaitHandler(lastCmd) == DONE_WALKING){
+        stand();
+        position = STANDING;
+      }
+    }
     break;
   default:
     break;
@@ -291,11 +307,19 @@ void GaitHandler( gaitCommand_t lastCmd ){
 
 #define WALK_MODE 0x00
 #define TURN_MODE 0x01
-// the gait consists of 6 phases. This code determines what phase
-  // we are currently in by using the millis clock modulo the 
-  // desired time period that all six  phases should consume.
-  // Right now each phase is an equal amount of time but this may not be optimal
-phase_t runGaitFSM( gaitCommand_t newCmd ){
+
+//these "times" are multipliers for the incoming packet rate (~5 per second)
+#define TRIPOD_LIFT_TIME 0x02
+#define TRIPOD_SWIVEL_TIME 0x02
+#define TRIPOD_SET_TIME 0x02
+
+/*
+Each gait consists of 6 phases (walking, veering, turning)
+The gait parameters may be changed at any time (based on the incoming command)
+which allows for smooth transitions between different motions
+
+*/
+phase_t GaitHandler( gaitCommand_t newCmd ){
   
   static phase_t gaitPhase = TRIPOD1_LIFT;
   phase_t returnPhase = gaitPhase;
@@ -316,6 +340,7 @@ phase_t runGaitFSM( gaitCommand_t newCmd ){
       // in this phase, center-left and noncenter-right legs raise up at
       // the knee
       setLegs(TRIPOD1_LEGS, NOMOVE, KNEE_NEUTRAL, 0, 0, leanangle);
+      timeToMove = millis() + TRIPOD_LIFT_TIME;
       gaitPhase = TRIPOD1_SWIVEL;
       break;
       
@@ -324,18 +349,21 @@ phase_t runGaitFSM( gaitCommand_t newCmd ){
       // at the hips, while the rest of the legs move backward at the hip
       setLegs(TRIPOD1_LEGS, hipdir1, NOMOVE, servoShift, moveType, leanangle);  
       setLegs(TRIPOD2_LEGS, hipdir2, NOMOVE, servoShift, moveType, leanangle);
+      timeToMove = millis() + TRIPOD_SWIVEL_TIME;
       gaitPhase = TRIPOD1_SET;
       break;
       
     case TRIPOD1_SET: 
       // now put the first set of legs back down on the ground
       setLegs(TRIPOD1_LEGS, NOMOVE, KNEE_DOWN, 0, 0, leanangle);
+      timeToMove = millis() + TRIPOD_SET_TIME;
       gaitPhase = TRIPOD2_LIFT;
       break;
       
     case TRIPOD2_LIFT:
       // lift up the other set of legs at the knee
       setLegs(TRIPOD2_LEGS, NOMOVE, KNEE_NEUTRAL, 0, 0, leanangle);
+      timeToMove = millis() + TRIPOD_LIFT_TIME;
       gaitPhase = TRIPOD2_SWIVEL;
       break;
       
@@ -343,12 +371,14 @@ phase_t runGaitFSM( gaitCommand_t newCmd ){
       // similar to phase 1, move raised legs forward and lowered legs backward
       setLegs(TRIPOD1_LEGS, hipdir2, NOMOVE, servoShift, moveType, leanangle);
       setLegs(TRIPOD2_LEGS, hipdir1, NOMOVE, servoShift, moveType, leanangle);
+      timeToMove = millis() + TRIPOD_SWIVEL_TIME;
       gaitPhase = TRIPOD2_SET;
       break;
 
     case TRIPOD2_SET:
       // put the second set of legs down, and the cycle repeats
       setLegs(TRIPOD2_LEGS, NOMOVE, KNEE_DOWN, 0, 0, leanangle);
+      timeToMove = millis() + TRIPOD_SET_TIME;
       gaitPhase = TRIPOD1_LIFT;
       break;  
   }
