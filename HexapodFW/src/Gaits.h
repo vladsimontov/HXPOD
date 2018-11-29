@@ -4,6 +4,7 @@
 #include <stdint.h>
 #include <stdio.h>
 
+#define USE_GOBLE_AS_MOVEMENT_CLOCK 1
 //==============================================================================
 #define NUM_LEGS 6
 
@@ -86,6 +87,7 @@
 
 typedef enum phaseType
 {
+  FROZEN,
   SITTING,
   STANDING,
   INIT_WALK,
@@ -96,14 +98,16 @@ typedef enum phaseType
   TRIPOD1_SET,
   TRIPOD2_LIFT,
   TRIPOD2_SWIVEL,
-  TRIPOD2_SET,
+  TRIPOD2_SET
 } phase_t;
   
 
 typedef enum gaitCommand
 {
+  BOT_STOP,
   BOT_STAND,
   BOT_SIT,
+  BOT_DEMO,
   BOT_WALK_FWD,
   BOT_WALK_BACK,
   BOT_WALK_NW,
@@ -112,7 +116,7 @@ typedef enum gaitCommand
   BOT_WALK_SE,
   BOT_ROTATE_LEFT,
   BOT_ROTATE_RIGHT,
-  BOT_STOP
+  BOT_PARSE_ERROR
 } gaitCommand_t;
 
  //Prototype functions
@@ -129,5 +133,6 @@ typedef enum gaitCommand
  void turn(uint8_t ccw, uint8_t hipforward, uint8_t hipbackward, int16_t kneeup, int16_t kneedown, long timeperiod, uint8_t leanangle);
  void runGaitFSM( gaitCommand_t newCmd);
  phase_t GaitHandler( gaitCommand_t newCmd);
+ void updateMillis( void );
 
 #endif

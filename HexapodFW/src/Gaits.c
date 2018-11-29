@@ -298,7 +298,17 @@ void runGaitFSM( gaitCommand_t lastCmd ){
         stand();
         position = STANDING;
       }
+      else if (lastCmd == BOT_STOP){
+        //bot is frozen
+        position = FROZEN;
+      }
     }
+    break;
+  case FROZEN:
+    if (lastCmd == BOT_STAND) {
+      stand();
+      position = STANDING;
+    } 
     break;
   default:
     break;
@@ -308,10 +318,17 @@ void runGaitFSM( gaitCommand_t lastCmd ){
 #define WALK_MODE 0x00
 #define TURN_MODE 0x01
 
-//these "times" are multipliers for the incoming packet rate (~5 per second)
-#define TRIPOD_LIFT_TIME 0x02
-#define TRIPOD_SWIVEL_TIME 0x02
-#define TRIPOD_SET_TIME 0x02
+#ifdef USE_GOBLE_FOR_MOVEMENT_CLOCK
+ //these "times" are multipliers for the incoming packet rate (~5 per second)
+ #define TRIPOD_LIFT_TIME 2
+ #define TRIPOD_SWIVEL_TIME 2
+ #define TRIPOD_SET_TIME 2
+#else
+ //else use a (yet to be created) millis function which returns milliseconds
+ #define TRIPOD_LIFT_TIME 400
+ #define TRIPOD_SWIVEL_TIME 400
+ #define TRIPOD_SET_TIME 400
+#endif
 
 /*
 Each gait consists of 6 phases (walking, veering, turning)
@@ -331,10 +348,11 @@ phase_t GaitHandler( gaitCommand_t newCmd ){
   static uint8_t leanangle = 0;
   
   if (newCmd == BOT_STOP){
-    return STANDING;
-//    changeGaitVariables(newCmd, &hipdir1, &hipdir2, &shift, &moveType &gaitPhase);
+    //freeze and wait for a new command
+    return FROZEN;
   }
-  
+
+//    changeGaitVariables(newCmd, &hipdir1, &hipdir2, &shift, &moveType &gaitPhase);  
   switch (gaitPhase) {
     case TRIPOD1_LIFT:     
       // in this phase, center-left and noncenter-right legs raise up at

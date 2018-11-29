@@ -36,10 +36,5 @@ int main(void) {
      checkBlueTooth(&lastCmd);
      runGaitFSM(lastCmd);
    }
-  //OtherSensors
-    //checkUltrasonicSensor(&lastCmd);
-    //Wishful thinking: getTiltData(&xTilt, &yTilt, &zTilt); monitorServoCurrent();
-    //monitorbatterylife(); ??
-
  return 0;
  }
