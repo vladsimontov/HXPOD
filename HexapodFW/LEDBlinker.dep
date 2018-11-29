@@ -45,6 +45,18 @@
             <file>$PROJ_DIR$\Debug\Obj\Gaits.pbi</file>
             <file>$PROJ_DIR$\Debug\Obj\Bluetooth.pbi</file>
             <file>$PROJ_DIR$\Debug\Obj\Bluetooth.o</file>
+            <file>$TOOLKIT_DIR$\inc\c\stdint.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\DLib_Config_Normal.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\ysizet.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\stdbool.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\stdio.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\yvals.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\DLib_Product.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\ycheck.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\DLib_Defaults.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\..\..\ti\TivaWare_C_Series-2.1.3.156\inc\tm4c123gh6pm.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\math.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\DLib_float_setup.h</file>
         </outputs>
         <file>
             <name>[ROOT_NODE]</name>
@@ -80,6 +92,12 @@
                     <file> 21</file>
                 </tool>
             </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 46 45 47 8 2 41 42 44 14 49 48 40</file>
+                </tool>
+            </inputs>
         </file>
         <file>
             <name>$PROJ_DIR$\src\Bluetooth.c</name>
@@ -93,6 +111,12 @@
                     <file> 39</file>
                 </tool>
             </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 46 6 40 47 16 44 45 41 42 4 48</file>
+                </tool>
+            </inputs>
         </file>
         <file>
             <name>$PROJ_DIR$\src\Gaits.c</name>
@@ -106,6 +130,12 @@
                     <file> 36</file>
                 </tool>
             </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 40 45 12 44 47 48 6 41 46 42 43</file>
+                </tool>
+            </inputs>
         </file>
         <file>
             <name>$PROJ_DIR$\src\GPIO.c</name>
@@ -119,6 +149,12 @@
                     <file> 22</file>
                 </tool>
             </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 14 45 44 40 8 47 48 49 41 46 42</file>
+                </tool>
+            </inputs>
         </file>
         <file>
             <name>$PROJ_DIR$\src\I2C.c</name>
@@ -132,6 +168,12 @@
                     <file> 23</file>
                 </tool>
             </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 8 47 10 48 45 44 49 41 46 42 40</file>
+                </tool>
+            </inputs>
         </file>
         <file>
             <name>$PROJ_DIR$\src\PCA9685.c</name>
@@ -145,6 +187,12 @@
                     <file> 24</file>
                 </tool>
             </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 47 45 8 46 12 50 41 42 43 51 44 49 10 48 40</file>
+                </tool>
+            </inputs>
         </file>
         <file>
             <name>$PROJ_DIR$\src\Timer.c</name>
@@ -158,6 +206,12 @@
                     <file> 25</file>
                 </tool>
             </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 47 8 14 48 45 44 49 41 46 42 40</file>
+                </tool>
+            </inputs>
         </file>
         <file>
             <name>$PROJ_DIR$\src\UART.c</name>
@@ -171,6 +225,12 @@
                     <file> 18</file>
                 </tool>
             </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 46 40 47 48 6 44 45 41 42 16</file>
+                </tool>
+            </inputs>
         </file>
         <file>
             <name>$PROJ_DIR$\main.c</name>
@@ -184,6 +244,12 @@
                     <file> 26</file>
                 </tool>
             </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 16 10 47 48 42 44 12 40 43 49 14 6 4 45 41 46</file>
+                </tool>
+            </inputs>
         </file>
     </configuration>
     <configuration>
