@@ -21,8 +21,7 @@ void checkBlueTooth(gaitCommand_t * lastCmd){
     //do some logic to set the new command;
       *lastCmd = parsePacket();
 #ifdef USE_GOBLE_AS_MOVEMENT_CLOCK
-      //note that if we use the joystick, extra packets will be send, making this unreliable without an extra check
-      updateMillis();
+      if (*lastCmd != BOT_DEMO) updateMillis(); //joystick will throw off the timing if we're using this
 #endif
   }
   
@@ -126,14 +125,14 @@ gaitCommand_t parsePacket( void ) {
 
   gaitCommand_t newCmd = BOT_PARSE_ERROR;  //if all goes well, this will change by the end of the function
 
-  uint8_t b = packetData[0];  //number of buttons reported
+  //clear the button press bitmask
   uint8_t buttonsPressed = 0;
 
    //if joystick is activated, set bit 0
   if (packetData[1]) buttonsPressed |= 1;
   
-  //generate mask for buttons 1-6
-    for (b; b > 0; b--){  //the "no effect" warning is a lie (probably)
+  //set mask for buttons 1-6
+    for (uint8_t b = packetData[0]; b > 0; b--){
       buttonsPressed |= (1 << packetData[1+b]);
    }
  

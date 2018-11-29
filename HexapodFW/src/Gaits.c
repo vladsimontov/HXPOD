@@ -336,23 +336,22 @@ The gait parameters may be changed at any time (based on the incoming command)
 which allows for smooth transitions between different motions
 
 */
-phase_t GaitHandler( gaitCommand_t newCmd ){
+
+uint8_t hipdir1 = HIP_FORWARD;
+uint8_t hipdir2 = HIP_BACKWARD;
+uint8_t servoShift = FBSHIFT;
+uint8_t moveType = WALK_MODE;
+uint8_t leanangle = 0;
   
+phase_t GaitHandler( gaitCommand_t lastCmd ){
+
   static phase_t gaitPhase = TRIPOD1_LIFT;
-  phase_t returnPhase = gaitPhase;
   
-  static uint8_t hipdir1 = HIP_FORWARD;
-  static uint8_t hipdir2 = HIP_BACKWARD;
-  static uint8_t servoShift = FBSHIFT;
-  static uint8_t moveType = WALK_MODE;
-  static uint8_t leanangle = 0;
-  
-  if (newCmd == BOT_STOP){
+  if (lastCmd == BOT_STOP){
     //freeze and wait for a new command
     return FROZEN;
   }
-
-//    changeGaitVariables(newCmd, &hipdir1, &hipdir2, &shift, &moveType &gaitPhase);  
+  
   switch (gaitPhase) {
     case TRIPOD1_LIFT:     
       // in this phase, center-left and noncenter-right legs raise up at
@@ -364,7 +363,8 @@ phase_t GaitHandler( gaitCommand_t newCmd ){
       
     case TRIPOD1_SWIVEL:
       // in this phase, the center-left and noncenter-right legs move forward
-      // at the hips, while the rest of the legs move backward at the hip
+      // at the hips, while the rest of the legs move backward at the hip      
+      setGaitVariables(lastCmd, gaitPhase); 
       setLegs(TRIPOD1_LEGS, hipdir1, NOMOVE, servoShift, moveType, leanangle);  
       setLegs(TRIPOD2_LEGS, hipdir2, NOMOVE, servoShift, moveType, leanangle);
       timeToMove = millis() + TRIPOD_SWIVEL_TIME;
@@ -386,7 +386,8 @@ phase_t GaitHandler( gaitCommand_t newCmd ){
       break;
       
     case TRIPOD2_SWIVEL:
-      // similar to phase 1, move raised legs forward and lowered legs backward
+      // similar to phase 1, move raised legs forward and lowered legs backward     
+      setGaitVariables(lastCmd, gaitPhase); 
       setLegs(TRIPOD1_LEGS, hipdir2, NOMOVE, servoShift, moveType, leanangle);
       setLegs(TRIPOD2_LEGS, hipdir1, NOMOVE, servoShift, moveType, leanangle);
       timeToMove = millis() + TRIPOD_SWIVEL_TIME;
@@ -401,17 +402,36 @@ phase_t GaitHandler( gaitCommand_t newCmd ){
       break;  
   }
   //commitServos(); // implement all leg motions
-  return returnPhase;
+  return gaitPhase;
 }
 
-/*
-gaitCommand_t changeGaitVariables(gaitCommand_t newCmd, uint8_t * hipdir1, uint8_t * hipdir2, uint8_t * shift, uint8_t * moveType, uint8_t * gaitPhase){
-  
-}
 
-void reverseHips(uint8_t * hipforward, uint8_t * hipbackward){
-  *hipforward = HIP_BACKWARD;
-  *hipbackward = HIP_FORWARD;
+void setGaitVariables(gaitCommand_t lastCmd, phase_t gaitPhase){
+     switch(lastCmd){
+        case BOT_WALK_FWD:
+           hipdir1 = HIP_FORWARD;
+           hipdir2 = HIP_BACKWARD;
+           servoShift = FBSHIFT;
+           moveType = WALK_MODE;
+           break;
+        case BOT_WALK_BACK:
+           hipdir1 = HIP_BACKWARD;
+           hipdir2 = HIP_FORWARD;
+           servoShift = FBSHIFT;
+           moveType = WALK_MODE;
+           break;
+        case BOT_ROTATE_LEFT:
+           hipdir1 = HIP_FORWARD;
+           hipdir2 = HIP_BACKWARD;
+           servoShift = FBSHIFT_TURN;
+           moveType = TURN_MODE;
+           break;
+        case BOT_ROTATE_RIGHT:
+           hipdir1 = HIP_BACKWARD;
+           hipdir2 = HIP_FORWARD;
+           servoShift = FBSHIFT_TURN;
+           moveType = TURN_MODE;
+           break;
+     }
   return;
 }
-*/

@@ -131,8 +131,9 @@ typedef enum gaitCommand
  void setHipRaw(uint8_t leg, int16_t pos);
  void setKnee(uint8_t leg, int16_t pos);
  void turn(uint8_t ccw, uint8_t hipforward, uint8_t hipbackward, int16_t kneeup, int16_t kneedown, long timeperiod, uint8_t leanangle);
- void runGaitFSM( gaitCommand_t newCmd);
- phase_t GaitHandler( gaitCommand_t newCmd);
+ void runGaitFSM( gaitCommand_t lastCmd );
+ phase_t GaitHandler( gaitCommand_t lastCmd );
+ void setGaitVariables( gaitCommand_t lastCmd, phase_t gaitPhase );
  void updateMillis( void );
 
 #endif

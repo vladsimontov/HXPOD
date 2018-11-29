@@ -14,23 +14,23 @@
 
 int main(void) {
   
-  //Initialize UART module 1, pin PC4 is Rx
-   BlueTooth_Init();
   //Initialize I2C to 100kHz clock and Servo Driver to 60Hz PWM
    I2C_InitPort1();
    PCA9685_Init();
    PCA9685_UpdatePWMFrequency(60u);
    PCA9685_Restart();
-
-   //Chill until we send a wakeup command
+   
+   //Confirm I2C/PCA: chill until we send a wakeup command
    laydown();
- 
-   //Test UART (to remove)
-  if(UART1_DATA == 0x04) {
-    stand();
-    while(1);
-  }
-  gaitCommand_t lastCmd = BOT_STAND;
+
+   //Initialize UART module 1, pin PC4 is Rx
+   BlueTooth_Init(); 
+   
+   //Confirm UART: stand up and get ready to move
+   while(UART1_DATA != 0x05);
+   stand();  
+   gaitCommand_t lastCmd = BOT_STAND;
+  
   //Main loop: polls for Bluetooth commands and sends them to a single high-level state machine
    while(1){
      checkBlueTooth(&lastCmd);
