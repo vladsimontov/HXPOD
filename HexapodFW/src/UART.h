@@ -4,11 +4,9 @@
 #include <stdint.h>
 #include <stdio.h>
 
-
 #define SYSCTL_BASE  0x400FE000
-#define PORTB_BASE   0x40005000
-#define UART0_BASE   0x4000C000
 #define PORTC_BASE   0x40006000
+#define UART0_BASE   0x4000C000
 
 #define RCGC_UART       (*((volatile uint32_t *) (SYSCTL_BASE | 0x0618)))
 #define RCGCGPIO        (*((volatile uint32_t *) (SYSCTL_BASE | 0x0608)))

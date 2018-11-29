@@ -3,7 +3,6 @@
 
 #include <stdint.h>
 #include <stdio.h>
-#include "PCA9685.h"
 
 //==============================================================================
 #define NUM_LEGS 6
@@ -117,8 +116,6 @@ typedef enum gaitCommand
 } gaitCommand_t;
 
  //Prototype functions
- void setRotateLegs(uint8_t legmask, int16_t hip_pos, int16_t knee_pos, uint8_t adj);
- void setWalkLegs(uint8_t legmask, int16_t hip_pos, int16_t knee_pos, uint8_t adj);
  void setLegs(uint8_t legmask, int16_t hip_pos, int16_t knee_pos, uint8_t adj, uint8_t raw, int16_t leanangle);
  void setKneesOnly(uint8_t legMask, int16_t knee_pos);
  void stand();
@@ -130,7 +127,7 @@ typedef enum gaitCommand
  void setHipRaw(uint8_t leg, int16_t pos);
  void setKnee(uint8_t leg, int16_t pos);
  void turn(uint8_t ccw, uint8_t hipforward, uint8_t hipbackward, int16_t kneeup, int16_t kneedown, long timeperiod, uint8_t leanangle);
- phase_t runGaitFSM( gaitCommand_t newCmd);
- phase_t turn_FSM( gaitCommand_t newCmd);
+ void runGaitFSM( gaitCommand_t newCmd);
+ phase_t GaitHandler( gaitCommand_t newCmd);
 
 #endif
