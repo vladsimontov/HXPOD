@@ -20,7 +20,7 @@ void checkBlueTooth(gaitCommand_t * lastCmd){
   if (BlueTooth_PacketHandler() == P_NEW_DATA_AVAILABLE){
     //do some logic to set the new command;
       *lastCmd = parsePacket();
-#ifdef USE_GOBLE_AS_MOVEMENT_CLOCK
+#if USE_GOBLE_AS_MOVEMENT_CLOCK
       if (*lastCmd != BOT_DEMO) updateMillis(); //joystick will throw off the timing if we're using this
 #endif
   }
@@ -79,7 +79,7 @@ packetState_t BlueTooth_PacketHandler( void ) {
           checksum = headerCHKSUM + c;       //start generating checksum from known header and variable length
           packetLength = c + 6;              //data length is the number of pressed buttons plus 4 analog, 2 digital (not incl. CHKSUM)
           packetLengthReceived = 0;
-          packetData[packetLengthReceived++] = packetLength;
+          packetData[packetLengthReceived++] = c;
           packetState = P_READING_DATA;
         } else {
           packetErrorCount++;
@@ -147,6 +147,9 @@ gaitCommand_t parsePacket( void ) {
    case 0x10:  //1 << 4
      newCmd = BOT_ROTATE_LEFT;
      break;
+   case 0x04:  //1 << 2
+     newCmd = BOT_ROTATE_RIGHT;
+     break;
    case 0x08:  //1 << 3
    case 0x0C:  //1 << 3 | 1 << 2
    case 0x18:  //1 << 3 | 1 << 4
@@ -157,7 +160,7 @@ gaitCommand_t parsePacket( void ) {
    case 0x12:  //1 << 1 | 1 << 4
      newCmd = BOT_WALK_FWD;
      break;
-   case 0x00:  //Joystick
+   case 0x01:  //Joystick
      newCmd = BOT_DEMO;  //Yeah!
      break;
    default:

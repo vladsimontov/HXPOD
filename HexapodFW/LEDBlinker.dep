@@ -48,6 +48,7 @@
             <file>$TOOLKIT_DIR$\inc\c\stdint.h</file>
             <file>$TOOLKIT_DIR$\inc\c\DLib_Config_Normal.h</file>
             <file>$TOOLKIT_DIR$\inc\c\ysizet.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\stdbool.h</file>
             <file>$TOOLKIT_DIR$\inc\c\stdio.h</file>
             <file>$TOOLKIT_DIR$\inc\c\yvals.h</file>
             <file>$TOOLKIT_DIR$\inc\c\DLib_Product.h</file>
@@ -92,7 +93,7 @@
             <inputs>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 45 44 46 8 2 41 42 43 14 48 47 40</file>
+                    <file> 46 45 47 8 2 41 42 44 14 49 48 40</file>
                 </tool>
             </inputs>
         </file>
@@ -108,6 +109,12 @@
                     <file> 39</file>
                 </tool>
             </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 47 48 40 6 44 16 45 4 41 46 42</file>
+                </tool>
+            </inputs>
         </file>
         <file>
             <name>$PROJ_DIR$\src\Gaits.c</name>
@@ -121,6 +128,12 @@
                     <file> 36</file>
                 </tool>
             </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 40 45 12 44 47 48 6 41 46 42 43</file>
+                </tool>
+            </inputs>
         </file>
         <file>
             <name>$PROJ_DIR$\src\GPIO.c</name>
