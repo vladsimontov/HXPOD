@@ -46,7 +46,6 @@ typedef enum UART_status
 } UART_status_t;
 
 void UART_InitPort1( void );
-UART_status_t UART_ReadByte(uint8_t UART_portNum, uint8_t * data);
+UART_status_t UART_ReadByte(uint8_t * data);
 uint8_t UART_Rx_available( void );
-uint8_t BlueTooth_read( void );
 #endif

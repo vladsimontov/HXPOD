@@ -3,6 +3,7 @@ Module for UART Serial Driver
 */
 
 #include "UART.h"
+uint8_t storedDataByte = 0;
 
 void UART_InitPort1( void ){
     //1. Enable the I2C clock using the RCGCI2C register in the System Control module (see page 348).
@@ -56,6 +57,7 @@ UART_status_t UART_ReadByte(uint8_t * dataByte){
 
 */     
      *dataByte = UART1_DATA;
+     storedDataByte = *dataByte;
      UART_status_t FIFOStatus = UART_STATUS_UNKNOWN;
       if ((UART_FR(1) & UART_RxFIFO_EMPTY_FLAG) != 0){
          FIFOStatus = UART_STATUS_RxEMPTY;

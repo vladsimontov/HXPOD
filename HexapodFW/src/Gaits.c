@@ -295,7 +295,7 @@ void GaitHandler( gaitCommand_t lastCmd ){
   // we are currently in by using the millis clock modulo the 
   // desired time period that all six  phases should consume.
   // Right now each phase is an equal amount of time but this may not be optimal
-phase_t walk_FSM( gaitCommand_t newCmd ){
+phase_t runGaitFSM( gaitCommand_t newCmd ){
   
   static phase_t gaitPhase = TRIPOD1_LIFT;
   phase_t returnPhase = gaitPhase;

@@ -130,7 +130,7 @@ typedef enum gaitCommand
  void setHipRaw(uint8_t leg, int16_t pos);
  void setKnee(uint8_t leg, int16_t pos);
  void turn(uint8_t ccw, uint8_t hipforward, uint8_t hipbackward, int16_t kneeup, int16_t kneedown, long timeperiod, uint8_t leanangle);
- phase_t walk_FSM( gaitCommand_t newCmd);
+ phase_t runGaitFSM( gaitCommand_t newCmd);
  phase_t turn_FSM( gaitCommand_t newCmd);
 
 #endif
