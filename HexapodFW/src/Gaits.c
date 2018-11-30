@@ -3,12 +3,16 @@ Source file for Vorpal Hexapod gaits and leg movements
 */
 #include "Gaits.h"
 #include "PCA9685.h"
+#include "Timer.h"
+#include "GPIO.h"
 
 uint8_t deferServoSet = 0;
 uint32_t timeToMove = 0;
 volatile uint32_t ms_sinceStart = 0;
 
 #define POSITION_FEEDBACK_ENABLED 0
+
+
 
 void updateMillis( void ){
   ms_sinceStart++;
