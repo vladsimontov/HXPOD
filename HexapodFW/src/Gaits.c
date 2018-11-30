@@ -28,17 +28,6 @@ Wrapper functions to be used for clarity in state machines and outside the sourc
 * SetRotateLegs
 
 */
-
-//setWalkLegs
- void setWalkLegs(uint8_t legmask, int16_t hip_pos, int16_t knee_pos, uint8_t adj) {
-  setLegs(legmask, hip_pos, knee_pos, adj, 0, 0);  // invert left-side servo angles
-}
-
-//setRotateLegs
-void setRotateLegs(uint8_t legmask, int16_t hip_pos, int16_t knee_pos, uint8_t adj) {
-  setLegs(legmask, hip_pos, knee_pos, adj, 1, 0); //don't invert left side servo angles
-}
-
 //version for just the knees
 void setKneesOnly( uint8_t legmask, int16_t knee_pos ) {
   setLegs(legmask, NOMOVE, knee_pos, 0, 0, 0);
@@ -153,124 +142,6 @@ void setKnee(uint8_t leg, int16_t pos) {
   PCA9685_setServo(leg, (float)pos);
 }
 
-/*
-
-*/
-
-/*
-
-*/
-
-#define NUM_TRIPOD_PHASES 6
-#define FBSHIFT    15   // shift front legs back, back legs forward, this much
-
-void gait_tripod(uint8_t reverse, uint8_t hipforward, uint8_t hipbackward, 
-          uint8_t kneeup, uint8_t kneedown, long timeperiod, uint8_t leanangle) {
-
-  // the gait consists of 6 phases. This code determines what phase
-  // we are currently in by using the millis clock modulo the 
-  // desired time period that all six  phases should consume.
-  // Right now each phase is an equal amount of time but this may not be optimal
-
-  if (reverse) {
-    uint8_t tmp = hipforward;
-    hipforward = hipbackward;
-    hipbackward = tmp;
-  }
-  
-  //long t = millis()%timeperiod;
-  //long phase = (NUM_TRIPOD_PHASES*t)/timeperiod;
-static uint8_t phase = 0;
-
-  transactServos(); // defer leg motions until after checking for crashes
-  switch (phase) {
-    case 0:
-      setLegs(TRIPOD1_LEGS, NOMOVE, KNEE_NEUTRAL, 0, 0, leanangle);
-    case 1:
-      // in this phase, the center-left and noncenter-right legs move forward
-      // at the hips, while the rest of the legs move backward at the hip
-      setWalkLegs(TRIPOD1_LEGS, hipforward, NOMOVE, FBSHIFT);
-      setWalkLegs(TRIPOD2_LEGS, hipbackward, NOMOVE, FBSHIFT);
-      break;
-
-    case 2: 
-      // now put the first set of legs back down on the ground
-      setLegs(TRIPOD1_LEGS, NOMOVE, KNEE_DOWN, 0, 0, leanangle);
-      break;
-
-    case 3:
-      // lift up the other set of legs at the knee
-      setLegs(TRIPOD2_LEGS, NOMOVE, KNEE_NEUTRAL, 0, 0, leanangle);
-      break;
-      
-    case 4:
-      // similar to phase 1, move raised legs forward and lowered legs backward
-      setWalkLegs(TRIPOD1_LEGS, hipbackward, NOMOVE, FBSHIFT);
-      setWalkLegs(TRIPOD2_LEGS, hipforward, NOMOVE, FBSHIFT);
-      break;
-
-    case 5:
-      // put the second set of legs down, and the cycle repeats
-      setLegs(TRIPOD2_LEGS, NOMOVE, kneedown, 0, 0, leanangle);
-      break;  
-  }
-  commitServos(); // implement all leg motions
-}
-
-
-/*
-"Turn" gait state machine
-*/
-#define NUM_TURN_PHASES 6
-#define FBSHIFT_TURN    40
-
-void gait_turn(uint8_t ccw, uint8_t hipforward, uint8_t hipbackward, uint8_t kneeup, uint8_t kneedown, long timeperiod, uint8_t leanangle) { 
-  //reverse direction of hip movement if CCW variable is set
-  if (ccw) {
-    uint8_t tmp = hipforward;
-    hipforward = hipbackward;
-    hipbackward = tmp;
-  }
-  
-  static uint8_t phase = 0;
-
-  switch (phase) {
-    case 0:
-      // in this phase, center-left and noncenter-right legs raise up at
-      // the knee
-      setLegs(TRIPOD1_LEGS, NOMOVE, KNEE_UP, 0, 0, leanangle);
-      break;
-
-    case 1:
-      // in this phase, the center-left and noncenter-right legs move clockwise
-      // at the hips, while the rest of the legs move CCW at the hip
-      setRotateLegs(TRIPOD1_LEGS, hipforward, NOMOVE, FBSHIFT_TURN);
-      setRotateLegs(TRIPOD2_LEGS, hipbackward, NOMOVE, FBSHIFT_TURN);
-      break;
-
-    case 2: 
-      // now put the first set of legs back down on the ground
-      setLegs(TRIPOD1_LEGS, NOMOVE, KNEE_DOWN, 0, 0, leanangle);
-      break;
-
-    case 3:
-      // lift up the other set of legs at the knee
-      setLegs(TRIPOD2_LEGS, NOMOVE, KNEE_UP, 0, 0, leanangle);
-      break;
-      
-    case 4:
-      // similar to phase 1, move raised legs CW and lowered legs CCW
-      setRotateLegs(TRIPOD1_LEGS, hipbackward, NOMOVE, FBSHIFT_TURN);
-      setRotateLegs(TRIPOD2_LEGS, hipforward, NOMOVE, FBSHIFT_TURN);
-      break;
-
-    case 5:
-      // put the second set of legs down, and the cycle repeats
-      setLegs(TRIPOD2_LEGS, NOMOVE, KNEE_DOWN, 0, 0, leanangle);
-      break;  
-  }
-  
-}
 
 void runGaitFSM( gaitCommand_t lastCmd ){
   static phase_t position = SITTING;
@@ -317,6 +188,8 @@ void runGaitFSM( gaitCommand_t lastCmd ){
 
 #define WALK_MODE 0x00
 #define TURN_MODE 0x01
+#define FBSHIFT    15   // shift front legs back, back legs forward, this much
+#define FBSHIFT_TURN    40
 
 #if USE_GOBLE_AS_MOVEMENT_CLOCK
  //these "times" are multipliers for the incoming packet rate (~5 per second)
