@@ -5,37 +5,6 @@
     <configuration>
         <name>Debug</name>
         <outputs>
-            <file>$PROJ_DIR$\src\Bluetooth.h</file>
-            <file>$PROJ_DIR$\src\Bluetooth.c</file>
-            <file>$PROJ_DIR$\src\ADC.h</file>
-            <file>$PROJ_DIR$\src\ADC.c</file>
-            <file>$PROJ_DIR$\src\Gaits.c</file>
-            <file>$PROJ_DIR$\src\GPIO.c</file>
-            <file>$PROJ_DIR$\src\I2C.c</file>
-            <file>$PROJ_DIR$\src\GPIO.h</file>
-            <file>$PROJ_DIR$\src\I2C.h</file>
-            <file>$PROJ_DIR$\src\Gaits.h</file>
-            <file>$PROJ_DIR$\src\lib\cstartup_M.c</file>
-            <file>$PROJ_DIR$\Debug\Obj\GPIO.o</file>
-            <file>$PROJ_DIR$\src\Timer.h</file>
-            <file>$PROJ_DIR$\Debug\Obj\UART.o</file>
-            <file>$PROJ_DIR$\main.c</file>
-            <file>$PROJ_DIR$\Debug\Obj\PCA9685.o</file>
-            <file>$PROJ_DIR$\Debug\Obj\I2C.o</file>
-            <file>$PROJ_DIR$\src\UART.h</file>
-            <file>$PROJ_DIR$\src\Timer.c</file>
-            <file>$PROJ_DIR$\Debug\Obj\cstartup_M.o</file>
-            <file>$PROJ_DIR$\src\PCA9685.c</file>
-            <file>$PROJ_DIR$\src\PCA9685.h</file>
-            <file>$PROJ_DIR$\Debug\Obj\UART.pbi</file>
-            <file>$PROJ_DIR$\src\UART.c</file>
-            <file>$PROJ_DIR$\Debug\Obj\ADC.o</file>
-            <file>$PROJ_DIR$\Debug\Obj\Bluetooth.o</file>
-            <file>$TOOLKIT_DIR$\inc\c\DLib_Product.h</file>
-            <file>$TOOLKIT_DIR$\inc\c\math.h</file>
-            <file>$TOOLKIT_DIR$\inc\c\DLib_Defaults.h</file>
-            <file>$TOOLKIT_DIR$\inc\c\stdint.h</file>
-            <file>$TOOLKIT_DIR$\inc\c\DLib_Config_Normal.h</file>
             <file>$TOOLKIT_DIR$\inc\c\yvals.h</file>
             <file>$TOOLKIT_DIR$\inc\c\ycheck.h</file>
             <file>$PROJ_DIR$\Debug\Obj\Bluetooth.pbi</file>
@@ -57,42 +26,96 @@
             <file>$PROJ_DIR$\Debug\Obj\I2C.pbi</file>
             <file>$PROJ_DIR$\Debug\Obj\Gaits.pbi</file>
             <file>$PROJ_DIR$\Debug\Obj\cstartup_M.pbi</file>
+            <file>$PROJ_DIR$\src\lib\cstartup_M.c</file>
+            <file>$PROJ_DIR$\src\ADC.c</file>
+            <file>$PROJ_DIR$\src\ADC.h</file>
+            <file>$PROJ_DIR$\src\Bluetooth.c</file>
+            <file>$PROJ_DIR$\src\Bluetooth.h</file>
+            <file>$PROJ_DIR$\src\Gaits.c</file>
+            <file>$PROJ_DIR$\src\Gaits.h</file>
+            <file>$PROJ_DIR$\src\GPIO.c</file>
+            <file>$PROJ_DIR$\src\GPIO.h</file>
+            <file>$PROJ_DIR$\src\I2C.c</file>
+            <file>$PROJ_DIR$\src\I2C.h</file>
+            <file>$PROJ_DIR$\src\PCA9685.c</file>
+            <file>$PROJ_DIR$\src\PCA9685.h</file>
+            <file>$PROJ_DIR$\src\Timer.c</file>
+            <file>$PROJ_DIR$\src\Timer.h</file>
+            <file>$PROJ_DIR$\src\UART.c</file>
+            <file>$PROJ_DIR$\src\UART.h</file>
+            <file>$PROJ_DIR$\main.c</file>
+            <file>$PROJ_DIR$\Debug\Obj\GPIO.o</file>
+            <file>$PROJ_DIR$\Debug\Obj\UART.o</file>
+            <file>$PROJ_DIR$\Debug\Obj\PCA9685.o</file>
+            <file>$PROJ_DIR$\Debug\Obj\I2C.o</file>
+            <file>$PROJ_DIR$\Debug\Obj\cstartup_M.o</file>
+            <file>$PROJ_DIR$\Debug\Obj\UART.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\ADC.o</file>
+            <file>$PROJ_DIR$\Debug\Obj\Bluetooth.o</file>
+            <file>$TOOLKIT_DIR$\inc\c\DLib_Product.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\math.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\DLib_Defaults.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\stdint.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\DLib_Config_Normal.h</file>
+            <file>$PROJ_DIR$\src\lab3Main.c</file>
         </outputs>
         <file>
-            <name>$PROJ_DIR$\src\Bluetooth.c</name>
+            <name>[ROOT_NODE]</name>
             <outputs>
                 <tool>
-                    <name>BICOMP</name>
-                    <file> 33</file>
-                </tool>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 25</file>
+                    <name>ILINK</name>
+                    <file> 12</file>
                 </tool>
             </outputs>
-            <inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\lib\cstartup_M.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 43</file>
+                </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 32 28 29 9 35 17 31 0 30 26 37</file>
+                    <file> 20</file>
                 </tool>
-            </inputs>
+            </outputs>
         </file>
         <file>
             <name>$PROJ_DIR$\src\ADC.c</name>
             <outputs>
                 <tool>
-                    <name>BICOMP</name>
+                    <name>ICCARM</name>
                     <file> 45</file>
                 </tool>
                 <tool>
-                    <name>ICCARM</name>
-                    <file> 24</file>
+                    <name>BICOMP</name>
+                    <file> 14</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 26 31 32 7 2 30 37 35 12 36 28 29</file>
+                    <file> 47 0 1 29 23 51 6 4 35 5 49 50</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\Bluetooth.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 46</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 2</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 1 49 50 27 4 37 0 25 51 47 6</file>
                 </tool>
             </inputs>
         </file>
@@ -100,18 +123,18 @@
             <name>$PROJ_DIR$\src\Gaits.c</name>
             <outputs>
                 <tool>
-                    <name>BICOMP</name>
-                    <file> 50</file>
+                    <name>ICCARM</name>
+                    <file> 13</file>
                 </tool>
                 <tool>
-                    <name>ICCARM</name>
-                    <file> 44</file>
+                    <name>BICOMP</name>
+                    <file> 19</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 29 31 21 35 32 28 9 30 26 37 34</file>
+                    <file> 50 0 33 4 1 49 27 51 47 6 3</file>
                 </tool>
             </inputs>
         </file>
@@ -119,18 +142,18 @@
             <name>$PROJ_DIR$\src\GPIO.c</name>
             <outputs>
                 <tool>
-                    <name>BICOMP</name>
-                    <file> 46</file>
+                    <name>ICCARM</name>
+                    <file> 39</file>
                 </tool>
                 <tool>
-                    <name>ICCARM</name>
-                    <file> 11</file>
+                    <name>BICOMP</name>
+                    <file> 15</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 12 31 35 29 7 32 28 36 30 26 37</file>
+                    <file> 35 0 4 50 29 1 49 5 51 47 6</file>
                 </tool>
             </inputs>
         </file>
@@ -138,69 +161,18 @@
             <name>$PROJ_DIR$\src\I2C.c</name>
             <outputs>
                 <tool>
-                    <name>BICOMP</name>
-                    <file> 49</file>
-                </tool>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 16</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 7 32 8 28 31 35 36 30 26 37 29</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\src\lib\cstartup_M.c</name>
-            <outputs>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 51</file>
-                </tool>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 19</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\main.c</name>
-            <outputs>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 41</file>
-                </tool>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 39</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 17 8 32 28 37 35 21 34 29 36 12 9 0 31 30 26</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\src\Timer.c</name>
-            <outputs>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 48</file>
-                </tool>
-                <tool>
                     <name>ICCARM</name>
                     <file> 42</file>
                 </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 18</file>
+                </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 32 7 12 28 31 35 36 30 26 37 29</file>
+                    <file> 29 1 31 49 0 4 5 51 47 6 50</file>
                 </tool>
             </inputs>
         </file>
@@ -208,18 +180,37 @@
             <name>$PROJ_DIR$\src\PCA9685.c</name>
             <outputs>
                 <tool>
-                    <name>BICOMP</name>
-                    <file> 47</file>
+                    <name>ICCARM</name>
+                    <file> 41</file>
                 </tool>
                 <tool>
-                    <name>ICCARM</name>
-                    <file> 15</file>
+                    <name>BICOMP</name>
+                    <file> 16</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 32 31 7 26 21 27 30 37 34 38 35 36 8 28 29</file>
+                    <file> 1 0 29 47 33 48 51 6 3 7 4 5 31 49 50</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\Timer.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 11</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 17</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 1 29 35 49 0 4 5 51 47 6 50</file>
                 </tool>
             </inputs>
         </file>
@@ -227,29 +218,39 @@
             <name>$PROJ_DIR$\src\UART.c</name>
             <outputs>
                 <tool>
-                    <name>BICOMP</name>
-                    <file> 22</file>
+                    <name>ICCARM</name>
+                    <file> 40</file>
                 </tool>
                 <tool>
-                    <name>ICCARM</name>
-                    <file> 13</file>
+                    <name>BICOMP</name>
+                    <file> 44</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 30 37 29 31 35 32 26 17 28</file>
+                    <file> 51 6 50 0 4 1 47 37 49</file>
                 </tool>
             </inputs>
         </file>
         <file>
-            <name>[ROOT_NODE]</name>
+            <name>$PROJ_DIR$\main.c</name>
             <outputs>
                 <tool>
-                    <name>ILINK</name>
-                    <file> 43</file>
+                    <name>ICCARM</name>
+                    <file> 8</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 10</file>
                 </tool>
             </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 37 31 1 49 6 4 33 3 50 5 35 27 25 0 51 47</file>
+                </tool>
+            </inputs>
         </file>
     </configuration>
     <configuration>
