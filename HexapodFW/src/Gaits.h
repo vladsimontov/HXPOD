@@ -120,21 +120,31 @@ typedef enum gaitCommand
   BOT_PARSE_ERROR
 } gaitCommand_t;
 
- //Prototype functions
- void setLegs(uint8_t legmask, int16_t hip_pos, int16_t knee_pos, uint8_t adj, uint8_t raw, int16_t leanangle);
+ /*
+Prototype functions
+*/
+
+ //global position wrapper functions
  void setKneesOnly(uint8_t legMask, int16_t knee_pos);
  void stand();
  void laydown();
- void gait_tripod(uint8_t reverse, uint8_t hipforward, uint8_t hipbackward, uint8_t kneeup, uint8_t kneedown, long timeperiod, uint8_t leanangle);
- void transactServos();
- void commitServos();
+ 
+ //joint position wrappers
+ void setLegs(uint8_t legmask, int16_t hip_pos, int16_t knee_pos, uint8_t adj, uint8_t raw, int16_t leanangle);
  void setHip(uint8_t leg, int16_t pos, uint8_t adj);
  void setHipRaw(uint8_t leg, int16_t pos);
  void setKnee(uint8_t leg, int16_t pos);
- void turn(uint8_t ccw, uint8_t hipforward, uint8_t hipbackward, int16_t kneeup, int16_t kneedown, long timeperiod, uint8_t leanangle);
+
+ //tripod walk gait state machines
  void runGaitFSM( gaitCommand_t lastCmd );
  phase_t GaitHandler( gaitCommand_t lastCmd );
  void setGaitVariables( gaitCommand_t lastCmd, phase_t gaitPhase );
- void updateMillis( void );
+
+ //
+ void transactServos();
+ void commitServos();
+
+ //timing
+ void updateMillis( void ); 
 
 #endif
