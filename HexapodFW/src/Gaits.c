@@ -45,7 +45,7 @@ void stand( void ) {
 
 //return to default sit position
 void laydown( void ) {
-  setLegs(ALL_LEGS, HIP_NEUTRAL, KNEE_UP, 0, 0, 0);
+  setLegs(ALL_LEGS, HIP_NEUTRAL, KNEE_UP_MAX, 0, 0, 0);
 }
 
  
@@ -337,3 +337,4 @@ void setGaitVariables(gaitCommand_t lastCmd, phase_t gaitPhase){
      }
   return;
 }
+
