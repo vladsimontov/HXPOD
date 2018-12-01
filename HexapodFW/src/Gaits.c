@@ -8,6 +8,7 @@ Source file for Vorpal Hexapod gaits and leg movements
 
 uint8_t deferServoSet = 0;
 uint32_t timeToMove = 0;
+uint32_t timeToMoveDemo = 0;
 volatile uint32_t ms_sinceStart = 0;
 
 #define POSITION_FEEDBACK_ENABLED 0
@@ -338,3 +339,67 @@ void setGaitVariables(gaitCommand_t lastCmd, phase_t gaitPhase){
   return;
 }
 
+void demo() {
+  
+    /*Circle legs*/
+  //loop to cycle through each leg
+  for(int i = 0; i < 12; i++) {
+    
+  }
+  
+  
+    /*Swim*/
+    timeToMoveDemo = millis() + 1000;
+    while(millis() < timeToMoveDemo) {}//small delay before the next move half a sec
+    //Set legs to not interfere with movement of middle legs and middle legs to a neutral position
+    setLegs(BACK_LEGS, HIP_BACKWARD_MAX, KNEE_UP_MAX, 0, 0, leanangle);
+    setLegs(FRONT_LEGS, HIP_FORWARD_MAX, KNEE_UP_MAX, 0, 0, leanangle);
+    setLegs(MIDDLE_LEGS, HIP_NEUTRAL, KNEE_UP, 0, 0, leanangle);
+    
+    timeToMoveDemo = millis() + 1000;
+    while(millis() < timeToMoveDemo) {}//small delay before the next move half a sec
+      
+    for(int i = 0; i < 6; i++) {
+      
+      //move middle legs forward and knees up
+      timeToMoveDemo = millis() + 200;
+      while(millis() < timeToMoveDemo) {}//small delay before the next move 1/10th of a sec
+      setLegs(MIDDLE_LEGS, HIP_FORWARD_MAX, KNEE_UP, 0, 0, leanangle);
+      
+      //dont move legs and have knees push off surface
+      timeToMoveDemo = millis() + 100;
+      while(millis() < timeToMoveDemo) {}//small delay before the next move 1/20th of a sec
+      setLegs(MIDDLE_LEGS, NOMOVE, KNEE_UP, 0, 0, leanangle);
+      
+      //move legs back to neutral position with knee pushing off surface
+      timeToMoveDemo = millis() + 200;
+      while(millis() < timeToMoveDemo) {}//small delay before the next move 1/10th of a sec
+      setLegs(MIDDLE_LEGS, HIP_NEUTRAL, NOMOVE, 0, 0, leanangle);
+      
+      //move legs back to back position with knee pushing off surface
+      timeToMoveDemo = millis() + 200;
+      while(millis() < timeToMoveDemo) {}//small delay before the next move 1/10th of a sec
+      setLegs(MIDDLE_LEGS, HIP_BACKWARD_MAX, NOMOVE, 0, 0, leanangle);
+      
+      timeToMoveDemo = millis() + 100;
+      while(millis() < timeToMoveDemo) {}//small delay before the next move 1/20th of a sec
+      setLegs(MIDDLE_LEGS, NOMOVE, KNEE_UP, 0, 0, leanangle);
+    }
+    
+    
+    /*Bow*/
+    timeToMoveDemo = millis() + 1000;
+    while(millis() < timeToMoveDemo) {}//small delay before the next move 1/10th of a sec
+    stand();
+    timeToMoveDemo = millis() + 1000;
+    while(millis() < timeToMoveDemo) {}//small delay before the next move 1/10th of a sec
+      setLegs(BACK_LEGS, HIP_NEUTRAL, KNEE_STAND, 0, 0, leanangle);
+      setLegs(MIDDLE_LEGS, HIP_NEUTRAL, KNEE_UP, 0, 0, leanangle);
+      setLegs(FRONT_LEGS, HIP_NEUTRAL, KNEE_UP_MAX, 0, 0, leanangle);
+      
+      timeToMoveDemo = millis() + 1000;
+      while(millis() < timeToMoveDemo) {}//small delay before the next move half a sec
+      stand();
+      timeToMoveDemo = millis() + 2000;
+      while(millis() < timeToMoveDemo) {}//small delay before the next move half a sec
+}

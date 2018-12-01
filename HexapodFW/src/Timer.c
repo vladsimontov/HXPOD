@@ -91,6 +91,7 @@ void TIMER_InitSystemClock(uint32_t clkSpeed){
 }
 
 */
+
 void TIMER_ChangeSpeed(uint32_t clkSpeed){
 
 SYSCTL_RCC2_R = (SYSCTL_RCC2_R&~ SYS_CLK_CLR)  // clear system clock divider                  

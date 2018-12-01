@@ -43,7 +43,7 @@
 
  // Default positions for knee and hip. Note that hip position is automatically 
  // reversed for the left side by the setHip function. These are in degrees.
- #define KNEE_UP_MAX 180
+ #define KNEE_UP_MAX 175
  #define KNEE_UP     150
  #define KNEE_RELAX  120  
  #define KNEE_NEUTRAL 90 
@@ -62,13 +62,13 @@
  #define HIPSWING 25      // how far to swing hips on gaits like tripod or quadruped
  #define HIPSMALLSWING 10  // when in fine adjust mode how far to move hips
  #define HIPSWING_RIPPLE 20
- #define HIP_FORWARD_MAX 175
+ #define HIP_FORWARD_MAX 165
  #define HIP_FORWARD (HIP_NEUTRAL+HIPSWING)
  #define HIP_FORWARD_SMALL (HIP_NEUTRAL+HIPSMALLSWING)
  #define HIP_NEUTRAL 90
  #define HIP_BACKWARD (HIP_NEUTRAL-HIPSWING)
  #define HIP_BACKWARD_SMALL (HIP_NEUTRAL-HIPSMALLSWING)
- #define HIP_BACKWARD_MAX 0
+ #define HIP_BACKWARD_MAX 15
  #define HIP_FORWARD_RIPPLE (HIP_NEUTRAL+HIPSWING_RIPPLE)
  #define HIP_BACKWARD_RIPPLE (HIP_NEUTRAL-HIPSWING_RIPPLE)
  #define HIP_FOLD 150
@@ -147,4 +147,6 @@ Prototype functions
  //timing
  void updateMillis( void ); 
 
+ //demo function
+ void demo(void);
 #endif
