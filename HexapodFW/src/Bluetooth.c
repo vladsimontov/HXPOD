@@ -150,14 +150,22 @@ gaitCommand_t parsePacket( void ) {
    case 0x04:  //1 << 2
      newCmd = BOT_ROTATE_RIGHT;
      break;
-   case 0x08:  //1 << 3
    case 0x0C:  //1 << 3 | 1 << 2
+     newCmd = BOT_WALK_SE;
+     break;
    case 0x18:  //1 << 3 | 1 << 4
+     newCmd = BOT_WALK_SW;
+     break;
+   case 0x08:  //1 << 3
      newCmd = BOT_WALK_BACK;
      break;
-   case 0x02:  //1 << 1
-   case 0x06:  //1 << 1 | 1 << 2
+   case 0x06:  //1 << 1 | 1 << 2  
+     newCmd = BOT_WALK_NE;
+     break;
    case 0x12:  //1 << 1 | 1 << 4
+     newCmd = BOT_WALK_NW;
+     break;
+   case 0x02:  //1 << 1
      newCmd = BOT_WALK_FWD;
      break;
    case 0x01:  //Joystick
