@@ -296,6 +296,30 @@ phase_t GaitHandler( gaitCommand_t lastCmd ){
 
 
 void setGaitVariables(gaitCommand_t lastCmd, phase_t gaitPhase){
+  if (gaitPhase == TRIPOD1_SWIVEL){
+    switch(lastCmd){    
+       case BOT_WALK_NW:
+       case BOT_WALK_NE:
+         lastCmd = BOT_WALK_FWD;
+         break;
+       case BOT_WALK_SW:
+       case BOT_WALK_SE:        
+         lastCmd = BOT_WALK_BACK;
+         break;
+    }
+  }
+  else if (gaitPhase == TRIPOD1_SWIVEL){
+    switch(lastCmd){    
+       case BOT_WALK_NW:
+       case BOT_WALK_SE:
+         lastCmd = BOT_ROTATE_LEFT;
+         break;
+       case BOT_WALK_SW:
+       case BOT_WALK_NE:        
+         lastCmd = BOT_ROTATE_RIGHT;
+         break;
+    }
+  }
      switch(lastCmd){
         case BOT_WALK_FWD:
            hipdir1 = HIP_FORWARD;
@@ -329,6 +353,6 @@ void setGaitVariables(gaitCommand_t lastCmd, phase_t gaitPhase){
            moveType = WALK_MODE;
            break;
        
-     }
+     }        
   return;
 }
