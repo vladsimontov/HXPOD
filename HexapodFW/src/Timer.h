@@ -45,10 +45,13 @@
 //#define GPIOF_INT       (0x40000000) /*30th Interupt Location*/
 #define TIMERA_INT      (0x01 << 19)   /*19th Interupt Location*/
 
+
+void setUp(void);
+uint32_t millis( void );
 void TIMER_InitTimerA(uint32_t systemSpeed);
 void TIMER_Wait(uint32_t milliseconds);
 void TIMER_ChangeSpeed(uint32_t clockSpeed);
 void TIMER_InitSystemClock(uint32_t clkSpeed);
-void  enableTimerInterrupt(void);
+void enableTimerInterrupt(void);
 void TIMER_Delay(uint32_t milliseconds);
 #endif

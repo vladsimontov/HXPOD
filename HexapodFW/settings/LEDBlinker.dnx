@@ -12,11 +12,11 @@
         <ByteLimit>50</ByteLimit>
     </Stack>
     <LMIFTDIDriver>
-        <LMIFTDIserialNo>0E22DE68</LMIFTDIserialNo>
+        <LMIFTDIserialNo>0E226D89</LMIFTDIserialNo>
         <LMIFTDIfoundProbes />
     </LMIFTDIDriver>
     <DebugChecksum>
-        <Checksum>3431960677</Checksum>
+        <Checksum>1172679745</Checksum>
     </DebugChecksum>
     <Exceptions>
         <StopOnUncaught>_ 0</StopOnUncaught>
@@ -32,6 +32,11 @@
         <LoggingEnabled>_ 0</LoggingEnabled>
         <LogFile>_ ""</LogFile>
     </TermIOLog>
+    <LogFile>
+        <LoggingEnabled>_ 0</LoggingEnabled>
+        <LogFile>_ ""</LogFile>
+        <Category>_ 0</Category>
+    </LogFile>
     <CallStackLog>
         <Enabled>0</Enabled>
     </CallStackLog>
@@ -44,11 +49,6 @@
     <Breakpoints>
         <Count>0</Count>
     </Breakpoints>
-    <LogFile>
-        <LoggingEnabled>_ 0</LoggingEnabled>
-        <LogFile>_ ""</LogFile>
-        <Category>_ 0</Category>
-    </LogFile>
     <Aliases>
         <Count>0</Count>
         <SuppressDialog>0</SuppressDialog>
