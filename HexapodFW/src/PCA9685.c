@@ -16,8 +16,8 @@ Initialization function to prep PCA9685 for use. This function will set the MODE
 and MODE2 registers per datasheet.
 */
 {
-  i2c_status_t writePrescale = I2C_WriteBytes(PCA_9685_ADDR, MODE1,0x81,WRITE);  
-  i2c_status_t writePrescaleMOde2 = I2C_WriteBytes(PCA_9685_ADDR, MODE2,0x04,WRITE);
+  i2c_status_t writePrescale = I2C_WriteBytes(PCA_9685_ADDR, MODE1,0x81);  
+  i2c_status_t writePrescaleMOde2 = I2C_WriteBytes(PCA_9685_ADDR, MODE2,0x04);
   //Need to #def the 0x81 and 0x04
 }
 
@@ -33,8 +33,8 @@ frequency has changed
   uint8_t verifyRestart = 0x0;
   
   //All leds off (write 1 to 4th bit of ALL_LED_OFF_H register)
-i2c_status_t writeOff = I2C_WriteBytes(PCA_9685_ADDR, ALL_LED_OFF_H, (0x01 << 4), WRITE);
-i2c_status_t writeOff1 = I2C_WriteBytes(PCA_9685_ADDR, ALL_LED_OFF_L, (0x01 << 4), WRITE);
+i2c_status_t writeOff = I2C_WriteBytes(PCA_9685_ADDR, ALL_LED_OFF_H, (0x01 << 4));
+i2c_status_t writeOff1 = I2C_WriteBytes(PCA_9685_ADDR, ALL_LED_OFF_L, (0x01 << 4));
 
   //get current MODE register value
   i2c_status_t prescaleStatus = I2C_Read(PCA_9685_ADDR, MODE1, &modeStatus);
@@ -48,7 +48,7 @@ i2c_status_t writeOff1 = I2C_WriteBytes(PCA_9685_ADDR, ALL_LED_OFF_L, (0x01 << 4
       delayCounter++;
     }
     
-    i2c_status_t writePrescale = I2C_WriteBytes(PCA_9685_ADDR, MODE1, (modeStatus | RESTART), WRITE);
+    i2c_status_t writePrescale = I2C_WriteBytes(PCA_9685_ADDR, MODE1, (modeStatus | RESTART));
     
     //arbitrary delay here. Need to scope out this delay
     while(delayCounter < 100000u){
@@ -69,7 +69,7 @@ pca9685_status_t PCA9685_Sleep(void)
   //write a 1 to the sleep bit on MODE1 register, this will 
   i2c_status_t prescaleStatus = I2C_Read(PCA_9685_ADDR, MODE1, &modeStatus);
   
-  i2c_status_t writePrescale = I2C_WriteBytes(PCA_9685_ADDR, MODE1, (modeStatus | SLEEP), WRITE);  
+  i2c_status_t writePrescale = I2C_WriteBytes(PCA_9685_ADDR, MODE1, (modeStatus | SLEEP));  
   
   //read MODE register and make sure unit is sleeping
   i2c_status_t prescaleStatus1 = I2C_Read(PCA_9685_ADDR, MODE1, &sleepResponse);
@@ -91,7 +91,7 @@ pca9685_status_t PCA9685_Wake(void)
   uint8_t enableSleep = (currentVal1 & (~SLEEP)); //should be 0xEE
   
   
-  i2c_status_t writePrescale = I2C_WriteBytes(PCA_9685_ADDR, MODE1,enableSleep,WRITE); 
+  i2c_status_t writePrescale = I2C_WriteBytes(PCA_9685_ADDR, MODE1,enableSleep); 
   i2c_status_t prescaleStatus4 = I2C_Read(PCA_9685_ADDR, MODE1, &updatedVal);
 
   if ((~updatedVal & SLEEP) == SLEEP)
@@ -121,13 +121,13 @@ Sets the new desired frequency of the pwm. Must be between 24hz and 1526hz
   i2c_status_t oldModeStatus = I2C_Read(PCA_9685_ADDR, MODE1, &oldMode);
 
   uint8_t newMode = ((oldMode & 0x7f) | SLEEP); // check if sleep is 1, otherwise prescale writes are blocked
-  i2c_status_t writePrescale = I2C_WriteBytes(PCA_9685_ADDR, MODE1, (uint8_t)(newMode),WRITE);  
+  i2c_status_t writePrescale = I2C_WriteBytes(PCA_9685_ADDR, MODE1, (uint8_t)(newMode));  
  
   //write new value
-  i2c_status_t prescaleStatus = I2C_WriteBytes(PCA_9685_ADDR, PRESCALE, (uint8_t) prescale,WRITE);  
+  i2c_status_t prescaleStatus = I2C_WriteBytes(PCA_9685_ADDR, PRESCALE, (uint8_t) prescale);  
   
   //reset the original mode register
-  i2c_status_t writePrescale1 = I2C_WriteBytes(PCA_9685_ADDR, MODE1, (uint8_t)(oldMode),WRITE);  
+  i2c_status_t writePrescale1 = I2C_WriteBytes(PCA_9685_ADDR, MODE1, (uint8_t)(oldMode));  
   
   //bit of a delay here to allow things to stabilize
   while(delayCounter < 100000u){
@@ -195,10 +195,10 @@ the motor, while specifiying the leg will specifiy which leg to apply changes to
   PCA9685_convertDutyCycleToCounts(dutyCycle, &highCount, &lowCount);
   
   //Write to the address
-  i2c_status_t write1 = I2C_WriteBytes(PCA_9685_ADDR, addr_off_h, (uint8_t)highCount, WRITE);
-  i2c_status_t write2 = I2C_WriteBytes(PCA_9685_ADDR, addr_off_l, lowCount, WRITE);
-  i2c_status_t write3 = I2C_WriteBytes(PCA_9685_ADDR, addr_on_h,  0x0F, WRITE);
-  i2c_status_t write4 = I2C_WriteBytes(PCA_9685_ADDR, addr_on_l,  0xFF, WRITE);
+  i2c_status_t write1 = I2C_WriteBytes(PCA_9685_ADDR, addr_off_h, (uint8_t)highCount);
+  i2c_status_t write2 = I2C_WriteBytes(PCA_9685_ADDR, addr_off_l, lowCount);
+  i2c_status_t write3 = I2C_WriteBytes(PCA_9685_ADDR, addr_on_h,  0x0F);
+  i2c_status_t write4 = I2C_WriteBytes(PCA_9685_ADDR, addr_on_l,  0xFF);
   
 }
 

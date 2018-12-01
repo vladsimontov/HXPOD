@@ -30,22 +30,27 @@ void setUp( void ) {
 void TimerA_Handler( void ){
   if((GPTMRIS & 0x00000001) == 0x1){	//Check for interrupt
      timerCounter++;                     //increment counter by 1
+#if 0
    //  if(timerCounter == 1000){           //1 second (1000 milliseconds)
    //  timerCounter = 0;                   //reset counter
    //  }
    //  GPTMICR |= 0x01; 	                //Clear the interrupt
+#endif
+     
    }
+    GPTMICR |= 0x01; 	                //Clear the interrupt
+
 }
 
 uint32_t millis( void ){
   return timerCounter;
 }
 
-/*
+#if 0
 void TIMER_InitTimerA(uint32_t systemSpeed){ 
  /*Initialize Timer A to be a 32 Bit periodic counter, 
   which counts down from 16,000,000 to 0.
-
+*/
   //Initialization instructions on p.722  
   RCGCTIMER |= TIMER0;           //Enable TImer 0 
   GPTMCTL   &= (~GPTMCTL_ENABLE); //Disable Counter for now, drive pin low
@@ -90,7 +95,7 @@ void TIMER_InitSystemClock(uint32_t clkSpeed){
   SYSCTL_RCC2_R &= ~BYPASSPLL;
 }
 
-*/
+#endif
 void TIMER_ChangeSpeed(uint32_t clkSpeed){
 
 SYSCTL_RCC2_R = (SYSCTL_RCC2_R&~ SYS_CLK_CLR)  // clear system clock divider                  
@@ -105,7 +110,7 @@ if (clkSpeed == SYS_CLK_4MHZ)
 
 
 }
-/*
+#if 0
 void TIMER_Delay(uint32_t milliseconds){
   
   //Clock speed is set to 20MHz, 1 tick is 1/25Mhz
@@ -117,6 +122,5 @@ void TIMER_Delay(uint32_t milliseconds){
     delayCounter++;
   }
 }
-
- */ 
+#endif
   

@@ -36,7 +36,7 @@ typedef enum UART_status
 {
 /*@{*/
   UART_STATUS_OK,    //!<Default "success" code
-  UART_STATUS_ERROR,      //!<Default ërror: code (more to come?)
+  UART_STATUS_ERROR,      //!<Default error: code (more to come?)
   UART_STATUS_TxFULL,
   UART_STATUS_RxEMPTY,
   UART_STATUS_UNKNOWN   //!<Default Status

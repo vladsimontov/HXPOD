@@ -48,22 +48,20 @@
 typedef enum i2c_status
 /*! -- */
 {
-/*@{*/
+  /*@{*/
   i2c_OK,    //!<I2C Port Ready for Use
   i2c_ERROR,      //!<I2C acknowledged command
   i2c_NO_ACK,   //!<I2C Did not acknowledge command
-i2c_NO_ADDR_ACK,
+  i2c_NO_ADDR_ACK,
   i2c_TIMEOUT,  //!<I2C bus timed out
-i2c_CLK_TO, //!<CLK timed out
+  i2c_CLK_TO, //!<CLK timed out
   i2c_WRITE_ERROR,  //!<I2C bus timed out
   i2c_UNKNOWN   //!<Default Status
-/*@}*/
+  /*@}*/
 } i2c_status_t;
 
-void I2C_initialize(void);
 void I2C_InitPort1(void);
 i2c_status_t I2C_WriteByte(uint8_t address, uint8_t data);
 i2c_status_t I2C_Read(uint8_t address,uint8_t controlRegister, uint8_t * data);
-i2c_status_t I2C_WriteBytes(uint8_t address,uint8_t controlRegister, uint8_t data, uint8_t operation);
-i2c_status_t I2C_WriteManyBytes(uint8_t address,uint8_t controlRegister, uint8_t data[4], uint8_t operation);
+i2c_status_t I2C_WriteBytes(uint8_t address,uint8_t controlRegister, uint8_t data);
 #endif

@@ -1,6 +1,25 @@
-/*
-Module for all I2C related Drivers
-*/
+/*! \file  12c.c
+*
+* \brief
+* I2C control functions to be used with the TIVA TM4C123G Development Kit
+*
+* \details
+* All functions:
+*    - use the return value to communicate driver status.
+*    - return information through pointer arguments.
+*
+*
+* \author vsimontov
+*
+* \info
+* Based on TIVA User Reference manual, starting on pg.997
+*
+* This code was tested using an osciliscope to verify proper packet transfer
+*
+* For details on programming, refer to TM4C123G datasheet :
+* http://www.ti.com/lit/ds/spms376e/spms376e.pdf
+*
+******************************************************************************/
 
 #include <stdint.h>
 #include <stdio.h>
@@ -52,44 +71,27 @@ void I2C_InitPort1(void){
 
 }
 
-void I2C_initialize(void){
-/*1. Enable the I2C clock using the RCGCI2C register in the System Control module (see page 348).*/
-  RCGCI2C |= R0; //Enable clock on I2C
+i2c_status_t I2C_WriteByte(uint8_t address, uint8_t data)
+/*!\brief   Write one byte to the client
+\details: This function will send one byte to the client, then check for any 
+          error condition after transfer. Reference p.1008 in datasheet
+\return i2c_status_t : status of i2c bus
+                i2c_OK : I2C transfer completed successfully
+                i2c_CLK_TO : Clock timeout error has occurred.
+                i2c_NO_ACK : I2C did not acknowledge
+                i2c_ERROR : The error can be from the slave address not being 
+                            acknowledged or the transmit data not being acknowledged.
+*/
+{
+  I2C1_MSA_R = ((address << 1) | WRITE); //Write Address
+  I2C1_MDR_R= data;     //write one byte to the bus
+  I2C1_MCS_R= (GEN_START | GEN_RUN | GEN_STOP); //Single  TX
   
-  /*2. Enable the clock to the appropriate GPIO module via the RCGCGPIO register 
-       in the System Control module (see page 340). To find out which GPIO port 
-       to enable, refer to Table 23-5 on page 1351.*/
-  RCGCGPIO_B |= PORTB; //Enable Port B for I2C_0 block
+  while(I2C1_MCS_R & BUSBSY == BUSBSY); // wait for bus to become idle after tx
   
-  /*3. In the GPIO module, enable the appropriate pins for their alternate 
-       function using the GPIOAFSEL register (see page 671). To determine 
-       which GPIOs to configure, see Table 23-4 on page 1344.*/
+  while(I2C1_MCS_R & BUSY == BUSY); //wait for controller to become idle after tx
   
-  GPIO_B_PCTL |= 0x3;
-  GPIO_B_CR |= (1 << PIN2); 
-  GPIO_B_CR |= (1 << PIN3); 
-  
-  
-  GPIO_B_PCTL |= (0x3 << PMC2);
-  GPIO_B_PCTL |= (0x3 << PMC3);
-    
-  I2CMCR |= MFE; //Enable Master Mode
-  I2CMCR |= CLK_100KBPS;
-  
-  I2CMDR = (0xFF);
-  I2CMCS = (0x00000007);
-  while(I2CMCS & BUSY == BUSY);
-    
-}
-
-i2c_status_t I2C_WriteByte(uint8_t address, uint8_t data){
-//function to write, as detailed on p.1008
-  I2C1_MSA_R = ((address << 1) | WRITE);
-  I2C1_MDR_R= data;//write the register to read from
-  I2C1_MCS_R= (GEN_START | GEN_RUN | GEN_STOP); //Single byte TX
-  while(I2C1_MCS_R & BUSBSY == BUSBSY);
-  while(I2C1_MCS_R & BUSY == BUSY); //wait for finish
-  
+  //Check below for errors that occured
   if ((I2C1_MCS_R & ERROR) == ERROR){    
     return i2c_ERROR;
   }
@@ -99,92 +101,69 @@ i2c_status_t I2C_WriteByte(uint8_t address, uint8_t data){
   else if ((I2C1_MCS_R & CLKTO) == CLKTO){    
     return i2c_CLK_TO;
   }
+  //All is well, return an Ok
   else{    
     return i2c_OK;
   }
 }
-#if 0 
-i2c_status_t I2C_WriteBytes(uint8_t address,uint8_t controlRegister, uint8_t data, uint8_t operation){
-//function to write, as detailed on p.1008
-  
-  uint8_t ad_ack = 0;
-  uint8_t dat_ack = 0;
 
-  uint8_t op =  ((address << 1) | operation);
-  I2C1_MSA_R = op;
-  I2C1_MCS_R |= (GEN_START | GEN_RUN);
-  while(I2C1_MCS_R & BUSY == BUSY); //wait for finish
-  while(I2C1_MCS_R & BUSBSY == BUSBSY);
-  if (I2C1_MCS_R & ADRACK == ADRACK){ 
-    ad_ack++;
-  }
+i2c_status_t I2C_WriteBytes(uint8_t address,uint8_t controlRegister, uint8_t data)
+/*!\brief   Writes one byte to control address and client address in function.
+            This is useful for I2C devices that have control address that 
+            need to be specifically written before data is written. 
+            For reference p.1008 in datasheet
+\return i2c_status_t : status of i2c bus
+                i2c_OK : I2C transfer completed successfully
+                i2c_CLK_TO : Clock timeout error has occurred.
+                i2c_NO_ACK : I2C did not acknowledge
+                i2c_ERROR : The error can be from the slave address not being 
+                            acknowledged or the transmit data not being acknowledged.
+*/
+{  
+  I2C1_MSA_R = ((address << 1) | WRITE); //Specifiy client address
+  I2C1_MDR_R= controlRegister;               //Specifiy clients control address
 
-    
-    
-  I2C1_MDR_R= controlRegister;//write the register to read from
-  I2C1_MCS_R |= (GEN_RUN); //Single byte TX
-  while(I2C1_MCS_R & BUSY == BUSY); //wait for finish
-  while(I2C1_MCS_R & BUSBSY == BUSBSY);
-  
-  if (I2C1_MCS_R & DATACK == DATACK){ 
-    dat_ack++;
-  }
-  I2C1_MDR_R= data;//write the register to read from
-  I2C1_MCS_R |= (GEN_RUN | GEN_STOP ); //Single byte TX
+  I2C1_MCS_R |= (GEN_START | GEN_RUN);       //Generate start condition and tx
+  while(I2C1_MCS_R & BUSBSY == BUSBSY);      //Wait for bus to become idle 
+  while(I2C1_MCS_R & BUSY == BUSY);          //Wait for controller to become idle
 
-  while(I2C1_MCS_R & BUSY == BUSY); //wait for finish
-  while(I2C1_MCS_R & BUSBSY == BUSBSY);
-  if (I2C1_MCS_R & DATACK == DATACK){ 
-      dat_ack++;
-    }
-  if (I2C1_MCS_R & ERROR == ERROR){    
+
+  I2C1_MDR_R= data;                          //Write data to client
+  I2C1_MCS_R |= (GEN_RUN | GEN_STOP );       //TX data and generate stop condition
+
+  while(I2C1_MCS_R & BUSBSY == BUSBSY);      //Wait for bus to become idle 
+  while(I2C1_MCS_R & BUSY == BUSY);          //Wait for controller to become idle
+
+    //Check below for errors that occured
+  if ((I2C1_MCS_R & ERROR) == ERROR){    
     return i2c_ERROR;
   }
+  else if ((I2C1_MCS_R & DATACK) == DATACK){    
+    return i2c_NO_ACK;
+  }
+  else if ((I2C1_MCS_R & CLKTO) == CLKTO){    
+    return i2c_CLK_TO;
+  }
+  //All is well, return an Ok
   else{    
     return i2c_OK;
   }
 
 }
-
-#else
-i2c_status_t I2C_WriteBytes(uint8_t address,uint8_t controlRegister, uint8_t data, uint8_t operation){
-//function to write, as detailed on p.1008
-  
-  uint8_t ad_ack = 0;
-  uint8_t dat_ack = 0;
-
-  I2C1_MSA_R = ((address << 1) | operation);
-  I2C1_MDR_R= controlRegister;//write the register to read from
-
-  I2C1_MCS_R |= (GEN_START | GEN_RUN);
-  while(I2C1_MCS_R & BUSY == BUSY); //wait for finish
-  while(I2C1_MCS_R & BUSBSY == BUSBSY);
-  if (I2C1_MCS_R & ADRACK == ADRACK){ 
-    ad_ack++;
-  }
-
-  I2C1_MDR_R= data;//write the register to read from
-  I2C1_MCS_R |= (GEN_RUN | GEN_STOP ); //Single byte TX
-
-  while(I2C1_MCS_R & BUSY == BUSY); //wait for finish
-  while(I2C1_MCS_R & BUSBSY == BUSBSY);
-  if (I2C1_MCS_R & DATACK == DATACK){ 
-      dat_ack++;
-    }
-  if (I2C1_MCS_R & ERROR == ERROR){    
-    return i2c_ERROR;
-  }
-  else{    
-    return i2c_OK;
-  }
-
-}
-#endif
-i2c_status_t I2C_Read(uint8_t address,uint8_t controlRegister, uint8_t * data){
-  i2c_status_t writeStatus = I2C_WriteByte(address,controlRegister);
-  
-  
-  if (writeStatus == i2c_OK){
+i2c_status_t I2C_Read(uint8_t address,uint8_t controlRegister, uint8_t * data)
+/*!\brief   Requests to read one byte from the client. Sends the Read Request to 
+            specific control register, then performs read
+            For reference p.1008 in datasheet
+\return i2c_status_t : status of i2c bus
+                i2c_OK : I2C transfer completed successfully
+                i2c_CLK_TO : Clock timeout error has occurred.
+                i2c_NO_ACK : I2C did not acknowledge
+                i2c_ERROR : The error can be from the slave address not being 
+                            acknowledged or the transmit data not being acknowledged.
+*/
+{
+    
+  if (I2C_WriteByte(address,controlRegister) == i2c_OK){
     I2C1_MSA_R = ((address << 1) | READ);
     I2C1_MCS_R = (GEN_START | GEN_RUN | GEN_STOP);   //Single byte TX
     while(I2C1_MCS_R & BUSY == BUSY);
@@ -202,53 +181,4 @@ i2c_status_t I2C_Read(uint8_t address,uint8_t controlRegister, uint8_t * data){
   else{
     return i2c_WRITE_ERROR;
   }
-}
-
-i2c_status_t I2C_WriteManyBytes(uint8_t address,uint8_t controlRegister, uint8_t data[4], uint8_t operation){
-//function to write, as detailed on p.1008
-  
-  uint8_t ad_ack = 0;
-  uint8_t dat_ack = 0;
-
-  I2C1_MSA_R = ((address << 1) | operation);
-    I2C1_MDR_R= controlRegister;//write the register to read from
-
-  I2C1_MCS_R |= (GEN_START | GEN_RUN);
-  while(I2C1_MCS_R & BUSY == BUSY); //wait for finish
-  while(I2C1_MCS_R & BUSBSY == BUSBSY);
-  if (I2C1_MCS_R & ADRACK == ADRACK){ 
-    ad_ack++;
-  }
-
-    
-#if 0 
-  I2C1_MDR_R= controlRegister;//write the register to read from
-  I2C1_MCS_R |= (GEN_RUN); //Single byte TX
-  while(I2C1_MCS_R & BUSY == BUSY); //wait for finish
-  while(I2C1_MCS_R & BUSBSY == BUSBSY);
-  
-  if (I2C1_MCS_R & DATACK == DATACK){ 
-    dat_ack++;
-  }
-#else
-  for (uint8_t i = 0; i < 4; i++){
-         I2C1_MDR_R= data[i];//write the register to read fro
-     I2C1_MCS_R |= (GEN_RUN); //Single byte TX
-  
-
-     while(I2C1_MCS_R & BUSY == BUSY); //wait for finish
-     while(I2C1_MCS_R & BUSBSY == BUSBSY);
-     if (I2C1_MCS_R & DATACK == DATACK){ 
-         dat_ack++;
-       }
-  }
-#endif
-  I2C1_MCS_R |= (GEN_STOP ); //Single byte TX
-  if (I2C1_MCS_R & ERROR == ERROR){    
-    return i2c_ERROR;
-  }
-  else{    
-    return i2c_OK;
-  }
-
 }
