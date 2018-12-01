@@ -18,10 +18,11 @@ void updateMillis( void ){
   ms_sinceStart++;
   return;
 }
-
+#if USE_GOBLE_AS_MOVEMENT_CLOCK
 uint32_t millis( void ){
    return ms_sinceStart;
 }
+#endif
 
 int16_t ServoPos[2*NUM_LEGS]; //store last servo position instruction
 uint8_t servoOffset[2*NUM_LEGS] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};  /*knee offsets (6-11)*/
@@ -202,9 +203,9 @@ void runGaitFSM( gaitCommand_t lastCmd ){
  #define TRIPOD_SET_TIME 1
 #else
  //else use a (yet to be created) millis function which returns milliseconds
- #define TRIPOD_LIFT_TIME 400
- #define TRIPOD_SWIVEL_TIME 400
- #define TRIPOD_SET_TIME 400
+ #define TRIPOD_LIFT_TIME 50
+ #define TRIPOD_SWIVEL_TIME 50
+ #define TRIPOD_SET_TIME 50
 #endif
 
 /*

@@ -15,6 +15,9 @@
 
 int main(void) {
   
+  //Initialize Timer for millis() function
+  setUp();
+  
   //Initialize I2C to 100kHz clock and Servo Driver to 60Hz PWM
    I2C_InitPort1();
    PCA9685_Init();
@@ -34,6 +37,7 @@ int main(void) {
   
   //Main loop: polls for Bluetooth commands and sends them to a single high-level state machine
    while(1){
+     //stand();
      checkBlueTooth(&lastCmd);
      runGaitFSM(lastCmd);
    }

@@ -4,7 +4,7 @@
 #include <stdint.h>
 #include <stdio.h>
 
-#define USE_GOBLE_AS_MOVEMENT_CLOCK 1
+#define USE_GOBLE_AS_MOVEMENT_CLOCK 0
 //==============================================================================
 #define NUM_LEGS 6
 

@@ -46,19 +46,8 @@
 #define TIMERA_INT      (0x01 << 19)   /*19th Interupt Location*/
 
 
-void setUp() {
-  ENABLEINT = (0x01 << 19);
-  SYSCTL_RCGC2_R |= 0x20;
-  RCGCTIMER |= 0x01;
-  GPTMCTL &= ~0x01;
-  GPTMCFG = 0x00;
-  GPTMTAMR = 0x02;
-  GPTMTAMR &= ~0x10;
-  GPTMTAILR = 0x3E80;
-  GPTMIMR = 0x00000001;
-  GPTMCTL |= 0x01u;
-  {
-
+void setUp(void);
+uint32_t millis( void );
 void TIMER_InitTimerA(uint32_t systemSpeed);
 void TIMER_Wait(uint32_t milliseconds);
 void TIMER_ChangeSpeed(uint32_t clockSpeed);
