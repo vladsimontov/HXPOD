@@ -110,16 +110,16 @@ pca9685_status_t PCA9685_UpdatePWMFrequency(uint16_t newFrequency)
   uint8_t prescale = (uint8_t)floor(prescaleVal);  
   
   
-  i2c_status_t oldModeStatus = I2C_Read(PCA_9685_ADDR, MODE1, &oldMode);
+  I2C_Read(PCA_9685_ADDR, MODE1, &oldMode);
 
   uint8_t newMode = ((oldMode & ~RESTART) | SLEEP); // check if sleep is 1, otherwise prescale writes are blocked
-  i2c_status_t writePrescale = I2C_WriteBytes(PCA_9685_ADDR, MODE1, (uint8_t)(newMode));  
+  I2C_WriteBytes(PCA_9685_ADDR, MODE1, (uint8_t)(newMode));  
  
   //write new value
-  i2c_status_t prescaleStatus = I2C_WriteBytes(PCA_9685_ADDR, PRESCALE, (uint8_t) prescale);  
+  I2C_WriteBytes(PCA_9685_ADDR, PRESCALE, (uint8_t) prescale);  
   
   //reset the original mode register
-  i2c_status_t writePrescale1 = I2C_WriteBytes(PCA_9685_ADDR, MODE1, (uint8_t)(oldMode));  
+  I2C_WriteBytes(PCA_9685_ADDR, MODE1, (uint8_t)(oldMode));  
   
   //bit of a delay here to allow things to stabilize
   while(delayCounter < 100000u){
@@ -129,7 +129,7 @@ pca9685_status_t PCA9685_UpdatePWMFrequency(uint16_t newFrequency)
   i2c_status_t verifyModeStatus = I2C_Read(PCA_9685_ADDR, MODE1, &verifyOldMode);
 
   //check to make sure the old mode was reset
-  if(verifyOldMode == oldMode)
+  if((verifyOldMode == oldMode) && (verifyModeStatus == i2c_OK))
     return PCA_9685_OK;
   else
     return PCA_9685_NOT_SET;

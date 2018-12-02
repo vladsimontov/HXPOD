@@ -36,18 +36,17 @@ void I2C_InitPort1(void)
 */
 {
     //Enable the I2C clock using the RCGCI2C register in the System Control module (see page 348).
-    SYSCTL_RCGCI2C_R |= (1<<1);//selected i2c module 1 (will connect to portA pin 6 and 7 with I2C1_SCL and I2C1_SDA respectively
+    SYSCTL_RCGCI2C_R |= (1<<1);
 
     //Enable the clock to the appropriate GPIO module via the RCGCGPIO register in the System
-    SYSCTL_RCGCGPIO_R |= (1<<0);//Clock to port A (pin 6 and 7 will have I2C1_SCL and I2C1_SDA respectively)
+    SYSCTL_RCGCGPIO_R |= (1<<0);
+
+    GPIO_PORTA_AFSEL_R |= (PIN6 | PIN7);   
+    GPIO_PORTA_DEN_R   |= (PIN6 | PIN7);     //set pin 6 and 7 to be digital pins
+    GPIO_PORTA_PUR_R   |= (PIN6 | PIN7);     //SDA and SCL pulled up
 
 
-    GPIO_PORTA_AFSEL_R |= (PIN6 | PIN7);   //pin 6 and 7 are assigned alternative function. Namely connecting to I2C1_SCL and I2C1_SDA respectively
-    GPIO_PORTA_DEN_R |= (PIN6 | PIN7);     //set pin 6 and 7 to be digitcal pins
-    GPIO_PORTA_PUR_R |= (PIN6 | PIN7);     //SDA and SCL pulled up
-
-
-    GPIO_PORTA_ODR_R |= (PIN7); //set SDA pin to open drain (bit 7 (pin 8) is set to high)
+    GPIO_PORTA_ODR_R |= (PIN7); //set SDA pin to open drain 
     
     GPIO_PORTA_PCTL_R |= (0x33 <<24);
 
@@ -76,7 +75,6 @@ i2c_status_t I2C_WriteByte(uint8_t address, uint8_t data)
   I2C1_MCS_R= (GEN_START | GEN_RUN | GEN_STOP); //Single  TX
   
   while(I2C1_MCS_R & BUSBSY == BUSBSY); // wait for bus to become idle after tx
-  
   while(I2C1_MCS_R & BUSY == BUSY); //wait for controller to become idle after tx
   
   //Check below for errors that occured
