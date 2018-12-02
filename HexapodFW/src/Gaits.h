@@ -120,9 +120,7 @@ typedef enum gaitCommand
   BOT_PARSE_ERROR
 } gaitCommand_t;
 
- /*
-Prototype functions
-*/
+ /*Prototype functions*/
 
  //global position wrapper functions
  void setKneesOnly(uint8_t legMask, int16_t knee_pos);
@@ -140,7 +138,6 @@ Prototype functions
  phase_t GaitHandler( gaitCommand_t lastCmd );
  void setGaitVariables( gaitCommand_t lastCmd, phase_t gaitPhase );
 
- //
  void transactServos();
  void commitServos();
 
