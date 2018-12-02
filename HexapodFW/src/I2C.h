@@ -41,6 +41,8 @@
 #define GEN_RUN   (0x01)
 #define GEN_STOP (0x04)
 #define GEN_ACK (0x08)
+#define PIN7 (0x80)
+#define PIN6 (0x40)
 
 #define ERROR (0x02)
 #define READ (0x01)

@@ -107,3 +107,5 @@ HexapodFW/settings/LEDBlinker.dbgdt
 HexapodFW/settings/LEDBlinker.crun
 HexapodFW/settings/LabBlinker.wsdt
 HexapodFW/LEDBlinker.dep
+HexapodFW/settings/LabBlinker.wsdt
+HexapodFW/settings/LEDBlinker.dnx
