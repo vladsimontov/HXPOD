@@ -339,12 +339,13 @@ void setGaitVariables(gaitCommand_t lastCmd, phase_t gaitPhase){
            moveType = WALK_MODE;
            break;
         case BOT_ROTATE_LEFT:
+        case BOT_ROTATE_RIGHT:
            hipdir1 = HIP_FORWARD;
            hipdir2 = HIP_BACKWARD;
            servoShift = FBSHIFT_TURN;
            moveType = TURN_MODE;
            break;
-        case BOT_ROTATE_RIGHT:
+        case BOT_ROTATE_LEFT:
            hipdir1 = HIP_BACKWARD;
            hipdir2 = HIP_FORWARD;
            servoShift = FBSHIFT_TURN;
