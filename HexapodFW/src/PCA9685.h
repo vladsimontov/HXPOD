@@ -4,6 +4,8 @@
 #include <stdbool.h>
 
 #define ONE_MSEC 0.001
+#define MAX_PW 0.0025
+#define MIN_PW 0.0009
 #define MAX_ROTATION 180 
 #define PERIOD ((1.0/60.0))
 

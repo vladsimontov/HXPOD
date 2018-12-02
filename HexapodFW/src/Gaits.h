@@ -62,13 +62,13 @@
  #define HIPSWING 25      // how far to swing hips on gaits like tripod or quadruped
  #define HIPSMALLSWING 10  // when in fine adjust mode how far to move hips
  #define HIPSWING_RIPPLE 20
- #define HIP_FORWARD_MAX 165
+ #define HIP_FORWARD_MAX 120
  #define HIP_FORWARD (HIP_NEUTRAL+HIPSWING)
  #define HIP_FORWARD_SMALL (HIP_NEUTRAL+HIPSMALLSWING)
  #define HIP_NEUTRAL 90
  #define HIP_BACKWARD (HIP_NEUTRAL-HIPSWING)
  #define HIP_BACKWARD_SMALL (HIP_NEUTRAL-HIPSMALLSWING)
- #define HIP_BACKWARD_MAX 15
+ #define HIP_BACKWARD_MAX 60
  #define HIP_FORWARD_RIPPLE (HIP_NEUTRAL+HIPSWING_RIPPLE)
  #define HIP_BACKWARD_RIPPLE (HIP_NEUTRAL-HIPSWING_RIPPLE)
  #define HIP_FOLD 150
@@ -149,4 +149,7 @@ Prototype functions
 
  //demo function
  void demo(void);
+ 
+ //delay function
+ void delay(int milliSec);
 #endif

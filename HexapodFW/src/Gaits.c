@@ -41,6 +41,8 @@ void setKneesOnly( uint8_t legmask, int16_t knee_pos ) {
 
 //return to default stand position
 void stand( void ) {
+  setLegs(ALL_LEGS, HIP_NEUTRAL, NOMOVE, 0, 0, 0);
+  delay(200);
   setLegs(ALL_LEGS, HIP_NEUTRAL, KNEE_STAND, 0, 0, 0);
 }
 
@@ -340,66 +342,98 @@ void setGaitVariables(gaitCommand_t lastCmd, phase_t gaitPhase){
 }
 
 void demo() {
-  
-    /*Circle legs*/
+  stand();
+    delay(500);//small delay before the next move 1/2 sec
+  /*Circle legs*/
+    uint8_t currentLeg = 0;
   //loop to cycle through each leg
-  for(int i = 0; i < 12; i++) {
+  for(int i = 0; i < NUM_LEGS; i++) {
     
+    switch(i) {
+      case 0:
+        currentLeg = LEG0;
+        break;
+      case 1:
+        currentLeg = LEG1;
+        break;
+      case 2:
+        currentLeg = LEG2;
+        break;
+      case 3:
+        currentLeg = LEG3;
+        break;
+      case 4:
+        currentLeg = LEG4;
+        break;
+      case 5:
+        currentLeg = LEG5;
+        break;
+    default:
+      currentLeg = -1;
+        break;
+    }
+    
+    setLegs(currentLeg, HIP_NEUTRAL, KNEE_UP_MAX, 0, 0, 0);
+    delay(200);//small delay before the next move 1 sec
+    setLegs(currentLeg, HIP_FORWARD_MAX, KNEE_NEUTRAL, 0, 0, 0);
+    delay(200);//small delay before the next move 1 sec
+    setLegs(currentLeg, HIP_NEUTRAL, KNEE_TIPTOES, 0, 0, 0);
+    delay(200);//small delay before the next move 1 sec
+    setLegs(currentLeg, HIP_BACKWARD_MAX, KNEE_NEUTRAL, 0, 0, 0);
+    delay(200);//small delay before the next move 1 sec
+    setLegs(currentLeg, HIP_BACKWARD_MAX, KNEE_STAND, 0, 0, 0);
+    delay(200);//small delay before the next move 1 sec
   }
-  
+  setLegs(currentLeg, HIP_NEUTRAL, KNEE_STAND, 0, 0, 0);
+  delay(200);//small delay before the next move 1 sec
   
     /*Swim*/
-    timeToMoveDemo = millis() + 1000;
-    while(millis() < timeToMoveDemo) {}//small delay before the next move half a sec
+    delay(500);//small delay before the next move 1 sec
     //Set legs to not interfere with movement of middle legs and middle legs to a neutral position
     setLegs(BACK_LEGS, HIP_BACKWARD_MAX, KNEE_UP_MAX, 0, 0, leanangle);
     setLegs(FRONT_LEGS, HIP_FORWARD_MAX, KNEE_UP_MAX, 0, 0, leanangle);
     setLegs(MIDDLE_LEGS, HIP_NEUTRAL, KNEE_UP, 0, 0, leanangle);
     
-    timeToMoveDemo = millis() + 1000;
-    while(millis() < timeToMoveDemo) {}//small delay before the next move half a sec
+    delay(500);//small delay before the next move 1 sec
       
     for(int i = 0; i < 6; i++) {
       
       //move middle legs forward and knees up
-      timeToMoveDemo = millis() + 200;
-      while(millis() < timeToMoveDemo) {}//small delay before the next move 1/10th of a sec
-      setLegs(MIDDLE_LEGS, HIP_FORWARD_MAX, KNEE_UP, 0, 0, leanangle);
+      delay(100);//small delay before the next move 1/10th sec
+      setLegs(MIDDLE_LEGS, HIP_FORWARD_MAX, KNEE_UP_MAX, 0, 0, leanangle);
       
       //dont move legs and have knees push off surface
-      timeToMoveDemo = millis() + 100;
-      while(millis() < timeToMoveDemo) {}//small delay before the next move 1/20th of a sec
-      setLegs(MIDDLE_LEGS, NOMOVE, KNEE_UP, 0, 0, leanangle);
+      delay(100);//small delay before the next move 1/10th sec
+      setLegs(MIDDLE_LEGS, NOMOVE, 50, 0, 0, leanangle);
       
       //move legs back to neutral position with knee pushing off surface
-      timeToMoveDemo = millis() + 200;
-      while(millis() < timeToMoveDemo) {}//small delay before the next move 1/10th of a sec
+      delay(200);//small delay before the next move 1/5th sec
       setLegs(MIDDLE_LEGS, HIP_NEUTRAL, NOMOVE, 0, 0, leanangle);
       
       //move legs back to back position with knee pushing off surface
-      timeToMoveDemo = millis() + 200;
-      while(millis() < timeToMoveDemo) {}//small delay before the next move 1/10th of a sec
+      delay(200);//small delay before the next move 1/5th sec
       setLegs(MIDDLE_LEGS, HIP_BACKWARD_MAX, NOMOVE, 0, 0, leanangle);
       
-      timeToMoveDemo = millis() + 100;
-      while(millis() < timeToMoveDemo) {}//small delay before the next move 1/20th of a sec
-      setLegs(MIDDLE_LEGS, NOMOVE, KNEE_UP, 0, 0, leanangle);
+      delay(100);//small delay before the next move 1/10th sec
+      setLegs(MIDDLE_LEGS, NOMOVE, KNEE_UP_MAX, 0, 0, leanangle);
     }
     
     
     /*Bow*/
-    timeToMoveDemo = millis() + 1000;
-    while(millis() < timeToMoveDemo) {}//small delay before the next move 1/10th of a sec
+    delay(500);//small delay before the next move 1 sec
     stand();
-    timeToMoveDemo = millis() + 1000;
-    while(millis() < timeToMoveDemo) {}//small delay before the next move 1/10th of a sec
+    delay(500);//small delay before the next move 1 sec
       setLegs(BACK_LEGS, HIP_NEUTRAL, KNEE_STAND, 0, 0, leanangle);
       setLegs(MIDDLE_LEGS, HIP_NEUTRAL, KNEE_UP, 0, 0, leanangle);
       setLegs(FRONT_LEGS, HIP_NEUTRAL, KNEE_UP_MAX, 0, 0, leanangle);
       
-      timeToMoveDemo = millis() + 1000;
-      while(millis() < timeToMoveDemo) {}//small delay before the next move half a sec
+      delay(1000);//small delay before the next move 1 sec
       stand();
-      timeToMoveDemo = millis() + 2000;
-      while(millis() < timeToMoveDemo) {}//small delay before the next move half a sec
+      delay(2000);//small delay before the next move 2 sec
 }
+
+void delay(int milliSec){
+  timeToMoveDemo = millis() + milliSec;
+  while(millis() < timeToMoveDemo){}
+}
+

@@ -188,8 +188,8 @@ the motor, while specifiying the leg will specifiy which leg to apply changes to
   uint8_t addr_on_l = (6 + (4*leg));
   
   //find out on time
-  float onTime = ((ONE_MSEC/ MAX_ROTATION) * degree) + ONE_MSEC; //0 degrees = 1ms on time, 180 degrees = 2ms
-  //onTime = ((onTime* 1.0489) - 0.0039); //calibrating the cycle time.
+  float onTime = (((MAX_PW-MIN_PW)/ MAX_ROTATION) * degree) + MIN_PW; //0 degrees = 1ms on time, 180 degrees = 2ms
+  //onTime = ((onTime* 1.0489) - (0.0039/1000)); //calibrating the cycle time.
   float dutyCycle = (onTime/PERIOD) * 100.0;
   
   PCA9685_convertDutyCycleToCounts(dutyCycle, &highCount, &lowCount);
@@ -216,7 +216,7 @@ void PCA9685_SetLeg(float dutyCycle, uint8_t legNum){
   PCA9685_convertDutyCycleToCounts(dutyCycle, &highCount, &lowCount);
   
   i2c_status_t write1 = I2C_WriteBytes(PCA_9685_ADDR, addr_off_h, (uint8_t)highCount, WRITE);
-  i2c_status_t write2 = I2C_WriteBytes(PCA_9685_ADDR, addr_off_l, lowCount, WRITE);
+  i2c_status_t write2 = I2C_WriteBytes(PCA_9685_ADDR, addr_off_l, (uint8_t)lowCount, WRITE);
   i2c_status_t write3 = I2C_WriteBytes(PCA_9685_ADDR, addr_on_h,  0x0F, WRITE);
   i2c_status_t write4 = I2C_WriteBytes(PCA_9685_ADDR, addr_on_l,  0xFF, WRITE);
 }
