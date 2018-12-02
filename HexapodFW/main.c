@@ -35,11 +35,14 @@ int main(void) {
    stand();  
    gaitCommand_t lastCmd = BOT_STAND;
   
+
   //Main loop: polls for Bluetooth commands and sends them to a single high-level state machine
    while(1){
+     
+     demo();
      //stand();
-     checkBlueTooth(&lastCmd);
-     runGaitFSM(lastCmd);
+     //checkBlueTooth(&lastCmd);
+     //runGaitFSM(lastCmd);
    }
  return 0;
  }

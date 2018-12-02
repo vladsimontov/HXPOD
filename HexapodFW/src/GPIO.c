@@ -7,7 +7,7 @@ Module for controlling the GPIO functions of the TIVA.
 #include <stdio.h>
 #include "GPIO.h"
 #include "Timer.h"
-
+#if 0
 
 int SW1_PRESSED;
 int SW2_PRESSED;
@@ -82,3 +82,4 @@ void GPIO_LED_OFF(void){
  /*Turn off all LEDS on Port F*/
   PORTF_DATA = 0x00000000;
 }
+#endif

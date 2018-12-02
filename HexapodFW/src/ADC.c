@@ -11,6 +11,7 @@ Module to Control ADC.
 #include <stdint.h>
 #include <stdio.h>
 
+#if 0
 void ADC0_Handler( void ){
   volatile int result = SSFIFO3;
   float vref= (((float)result) *3.3)/4095.0;
@@ -57,3 +58,5 @@ void ADC_Init(void){
   ADC0_SequencerInit();
   ENABLEINT |= ADC0_INT;
 }
+
+#endif
