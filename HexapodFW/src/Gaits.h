@@ -153,10 +153,7 @@ Prototype functions
  //delay function
  void delay(int milliSec);
  
- void walkForward(void);
+ //function to rotate each leg
+ void rotateLegs(void);
  
- void walkBackward(void);
- 
- void gait_tripod(int reverse, int hipforward, int hipbackward, 
-          int kneeup, int kneedown, long timeperiod, int leanangle);
 #endif
