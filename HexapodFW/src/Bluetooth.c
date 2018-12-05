@@ -139,7 +139,7 @@ gaitCommand_t parsePacket( void ) {
   //decide which command to send
  switch(buttonsPressed) {
    case 0x40:  //1 << 6
-     newCmd = BOT_SIT;
+     newCmd = BOT_DEMO;
      break;
    case 0x20:  //1 << 5
      newCmd = BOT_STAND;
@@ -151,25 +151,14 @@ gaitCommand_t parsePacket( void ) {
      newCmd = BOT_ROTATE_RIGHT;
      break;
    case 0x0C:  //1 << 3 | 1 << 2
-     newCmd = BOT_WALK_SE;
-     break;
    case 0x18:  //1 << 3 | 1 << 4
-     newCmd = BOT_WALK_SW;
-     break;
    case 0x08:  //1 << 3
      newCmd = BOT_WALK_BACK;
      break;
    case 0x06:  //1 << 1 | 1 << 2  
-     newCmd = BOT_WALK_NE;
-     break;
    case 0x12:  //1 << 1 | 1 << 4
-     newCmd = BOT_WALK_NW;
-     break;
    case 0x02:  //1 << 1
      newCmd = BOT_WALK_FWD;
-     break;
-   case 0x01:  //Joystick
-     newCmd = BOT_DEMO;  //Yeah!
      break;
    default:
      newCmd = BOT_STAND;

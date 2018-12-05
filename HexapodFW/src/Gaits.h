@@ -88,6 +88,7 @@
 typedef enum phaseType
 {
   FROZEN,
+  DEMOING,
   SITTING,
   STANDING,
   INIT_WALK,
@@ -155,5 +156,5 @@ Prototype functions
  
  //function to rotate each leg
  void rotateLegs(void);
- 
+
 #endif

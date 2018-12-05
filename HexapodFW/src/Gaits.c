@@ -134,16 +134,15 @@ void runGaitFSM( gaitCommand_t lastCmd ){
   static phase_t position = SITTING;
   
   switch(position){
-  case SITTING: //sit
+  case DEMOING: //sit
     if (lastCmd == BOT_STAND) {
       stand(); 
       position = STANDING;
     }
     break;
   case STANDING: //stand
-    if (lastCmd == BOT_SIT) {
-      laydown();
-      position = SITTING;
+    if (lastCmd == BOT_DEMO) {
+      demo();
     } 
     else if (lastCmd != BOT_STAND){
       setKneesOnly(TRIPOD1_LEGS, KNEE_UP);
@@ -348,69 +347,9 @@ void demo() {
   //Start by standing:
   stand();
   delay(500);//small delay before the next move 1/2 sec
-    
+  
   /*Call function to rotate each leg*/
   rotateLegs();
-  /*
-    uint8_t currentLeg = 0;
-  //loop to cycle through each leg, 6 legs
-  for(int i = 0; i < NUM_LEGS; i++) {
-    
-    switch(i) {
-      case 0:
-        currentLeg = LEG0;
-        break;
-      case 1:
-        currentLeg = LEG1;
-        break;
-      case 2:
-        currentLeg = LEG2;
-        break;
-      case 3:
-        currentLeg = LEG3;
-        break;
-      case 4:
-        currentLeg = LEG4;
-        break;
-      case 5:
-        currentLeg = LEG5;
-        break;
-    default:
-      currentLeg = -1;
-        break;
-    }
-    
-    setLegs(currentLeg, HIP_NEUTRAL, KNEE_UP_MAX, 0, 0, 0);
-    delay(50);//small delay before the next move
-    
-    setLegs(currentLeg, HIP_FORWARD_MAX - 15, KNEE_UP - 10, 0, 0, 0);
-    delay(50);//small delay before the next move
-    
-    setLegs(currentLeg, HIP_FORWARD_MAX, KNEE_CROUCH, 0, 0, 0);
-    delay(50);//small delay before the next move
-    
-    setLegs(currentLeg, HIP_FORWARD_MAX - 15, KNEE_HALF_CROUCH, 0, 0, 0);
-    delay(50);//small delay before the next move
-    
-    setLegs(currentLeg, HIP_NEUTRAL, KNEE_CROUCH - 10, 0, 0, 0);
-    delay(50);//small delay before the next move
-    
-    setLegs(currentLeg, HIP_BACKWARD_MAX + 15, KNEE_HALF_CROUCH, 0, 0, 0);
-    delay(50);///small delay before the next move
-    
-    setLegs(currentLeg, HIP_BACKWARD_MAX, KNEE_CROUCH, 0, 0, 0);
-    delay(50);///small delay before the next move
-    
-    setLegs(currentLeg, HIP_BACKWARD_MAX + 15, KNEE_UP - 10, 0, 0, 0);
-    delay(50);///small delay before the next move
-
-    setLegs(currentLeg, HIP_NEUTRAL, KNEE_UP_MAX, 0, 0, 0);
-    delay(50);///small delay before the next move
-    
-    setLegs(currentLeg, HIP_NEUTRAL, KNEE_STAND, 0, 0, 0);
-    delay(50);///small delay before the next move
-  }
-*/
   
     /*Swim*/
     delay(500);//small delay before the next move 1 sec
@@ -480,15 +419,24 @@ void demo() {
       delay(1000);//small delay before the next move 1 sec
 }
 
+/*
+  This is a delay function used to give the servos time to complete their tasks.
+*/
 void delay(int milliSec){
   timeToMoveDemo = millis() + milliSec;
   while(millis() < timeToMoveDemo){}
 }
 
+/*
+  This function creates circular motions with each of the 6 legs individually.
+*/
 void rotateLegs(){
+  
+  //Loop to go through each of the legs
   uint8_t currentLeg = 0;
     for(int i = 0; i < NUM_LEGS; i++) {
     
+      //Check what leg will be moved
     switch(i) {
       case 0:
         currentLeg = LEG0;
@@ -512,6 +460,8 @@ void rotateLegs(){
       currentLeg = -1;
         break;
     }
+    
+    //Move hip from neutral to front and knee from high to mid
     int KNEE_LOCATION = 175; 
     int HIP_LOCATION = 90;  
     while(HIP_LOCATION < 130){
@@ -521,6 +471,7 @@ void rotateLegs(){
       KNEE_LOCATION--;
     }
     
+    //Move hip from front to neutral and knee from mid to low
     KNEE_LOCATION = 110;
     HIP_LOCATION = 130;
     while(HIP_LOCATION > 90){
@@ -530,6 +481,7 @@ void rotateLegs(){
       KNEE_LOCATION--;
     }
     
+    //Move hip from neutral to back and knee from low to mid
     KNEE_LOCATION = 45;
     HIP_LOCATION = 90;
     while(HIP_LOCATION > 50){
@@ -539,6 +491,7 @@ void rotateLegs(){
       KNEE_LOCATION++;
     }
     
+    //Move hip from back to neutral and knee from mid to high
     KNEE_LOCATION = 110;
     HIP_LOCATION = 50;
     while(HIP_LOCATION < 90){
@@ -547,6 +500,7 @@ void rotateLegs(){
       HIP_LOCATION++;
       KNEE_LOCATION++;
     }
+    //Set leg back to standing position
     setLegs(currentLeg, HIP_LOCATION, KNEE_STAND, 0, 0, 0);
   }
 }
