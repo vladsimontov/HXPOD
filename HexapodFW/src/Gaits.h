@@ -99,7 +99,8 @@ typedef enum phaseType
   TRIPOD1_SET,
   TRIPOD2_LIFT,
   TRIPOD2_SWIVEL,
-  TRIPOD2_SET
+  TRIPOD2_SET,
+  DEMOING
 } phase_t;
   
 

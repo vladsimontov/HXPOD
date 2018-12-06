@@ -16,25 +16,25 @@
 @REM                     session afterwards.
 @REM   --silent          Omits the sign-on message.
 @REM   --timeout         Limits the maximum allowed execution time.
-@REM
+@REM 
 
 
-@echo off
+@echo off 
 
-if not "%~1" == "" goto debugFile
+if not "%~1" == "" goto debugFile 
 
-@echo on
+@echo on 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.1\common\bin\cspybat" -f "C:\Users\Lauren\Documents\GitHub\HXPOD\HexapodFW\settings\LEDBlinker.Debug.general.xcl" --backend -f "C:\Users\Lauren\Documents\GitHub\HXPOD\HexapodFW\settings\LEDBlinker.Debug.driver.xcl"
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.1\common\bin\cspybat" -f "\\Mac\Home\Documents\GitHub\HXPOD\HexapodFW\settings\LEDBlinker.Debug.general.xcl" --backend -f "\\Mac\Home\Documents\GitHub\HXPOD\HexapodFW\settings\LEDBlinker.Debug.driver.xcl" 
 
-@echo off
-goto end
+@echo off 
+goto end 
 
-:debugFile
+:debugFile 
 
-@echo on
+@echo on 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.1\common\bin\cspybat" -f "C:\Users\Lauren\Documents\GitHub\HXPOD\HexapodFW\settings\LEDBlinker.Debug.general.xcl" "--debug_file=%~1" --backend -f "C:\Users\Lauren\Documents\GitHub\HXPOD\HexapodFW\settings\LEDBlinker.Debug.driver.xcl"
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.1\common\bin\cspybat" -f "\\Mac\Home\Documents\GitHub\HXPOD\HexapodFW\settings\LEDBlinker.Debug.general.xcl" "--debug_file=%~1" --backend -f "\\Mac\Home\Documents\GitHub\HXPOD\HexapodFW\settings\LEDBlinker.Debug.driver.xcl" 
 
-@echo off
+@echo off 
 :end

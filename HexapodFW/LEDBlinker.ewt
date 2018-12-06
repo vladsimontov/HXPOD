@@ -2378,12 +2378,6 @@
             </file>
         </group>
         <file>
-            <name>$PROJ_DIR$\src\ADC.c</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\src\ADC.h</name>
-        </file>
-        <file>
             <name>$PROJ_DIR$\src\Bluetooth.c</name>
         </file>
         <file>
@@ -2394,12 +2388,6 @@
         </file>
         <file>
             <name>$PROJ_DIR$\src\Gaits.h</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\src\GPIO.c</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\src\GPIO.h</name>
         </file>
         <file>
             <name>$PROJ_DIR$\src\I2C.c</name>

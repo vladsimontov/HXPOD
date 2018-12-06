@@ -16,7 +16,7 @@
 int main(void) {
   
   //Initialize Timer for millis() function
-  setUp();
+  Timer_setUp();
   
   //Initialize I2C to 100kHz clock and Servo Driver to 60Hz PWM
    I2C_InitPort1();

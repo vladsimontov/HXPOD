@@ -20,7 +20,7 @@ void updateMillis( void ){
   return;
 }
 #if USE_GOBLE_AS_MOVEMENT_CLOCK
-uint32_t millis( void ){
+uint32_t Timer_millis( void ){
    return ms_sinceStart;
 }
 #endif
@@ -150,7 +150,7 @@ void runGaitFSM( gaitCommand_t lastCmd ){
     }
     break;
   case WALKING: //handles walking, turning, and veering
-    if (timeToMove < millis() || POSITION_FEEDBACK_ENABLED){
+    if (timeToMove < Timer_millis() || POSITION_FEEDBACK_ENABLED){
       if (GaitHandler(lastCmd) == DONE_WALKING){
         stand();
         position = STANDING;
@@ -183,7 +183,7 @@ void runGaitFSM( gaitCommand_t lastCmd ){
  #define TRIPOD_SWIVEL_TIME 1
  #define TRIPOD_SET_TIME 1
 #else
- //else use a (yet to be created) millis function which returns milliseconds
+ //else use a (yet to be created) Timer_millis function which returns milliseconds
  #define TRIPOD_LIFT_TIME 50
  #define TRIPOD_SWIVEL_TIME 50
  #define TRIPOD_SET_TIME 50
@@ -216,7 +216,7 @@ phase_t GaitHandler( gaitCommand_t lastCmd ){
       // in this phase, center-left and noncenter-right legs raise up at
       // the knee
       setLegs(TRIPOD1_LEGS, NOMOVE, KNEE_NEUTRAL, 0, 0, leanangle);
-      timeToMove = millis() + TRIPOD_LIFT_TIME;
+      timeToMove = Timer_millis() + TRIPOD_LIFT_TIME;
       gaitPhase = TRIPOD1_SWIVEL;
       break;
       
@@ -226,7 +226,7 @@ phase_t GaitHandler( gaitCommand_t lastCmd ){
       setGaitVariables(lastCmd, gaitPhase); 
       setLegs(TRIPOD1_LEGS, hipdir1, NOMOVE, servoShift, moveType, leanangle);  
       setLegs(TRIPOD2_LEGS, hipdir2, NOMOVE, servoShift, moveType, leanangle);
-      timeToMove = millis() + TRIPOD_SWIVEL_TIME;
+      timeToMove = Timer_millis() + TRIPOD_SWIVEL_TIME;
       if (lastCmd == BOT_STAND || lastCmd == BOT_SIT){
         gaitPhase = WALK_STOPPING;
       }else {
@@ -237,14 +237,14 @@ phase_t GaitHandler( gaitCommand_t lastCmd ){
     case TRIPOD1_SET: 
       // now put the first set of legs back down on the ground
       setLegs(TRIPOD1_LEGS, NOMOVE, KNEE_DOWN, 0, 0, leanangle);
-      timeToMove = millis() + TRIPOD_SET_TIME;
+      timeToMove = Timer_millis() + TRIPOD_SET_TIME;
       gaitPhase = TRIPOD2_LIFT;
       break;
       
     case TRIPOD2_LIFT:
       // lift up the other set of legs at the knee
       setLegs(TRIPOD2_LEGS, NOMOVE, KNEE_NEUTRAL, 0, 0, leanangle);
-      timeToMove = millis() + TRIPOD_LIFT_TIME;
+      timeToMove = Timer_millis() + TRIPOD_LIFT_TIME;
       gaitPhase = TRIPOD2_SWIVEL;
       break;
       
@@ -253,7 +253,7 @@ phase_t GaitHandler( gaitCommand_t lastCmd ){
       setGaitVariables(lastCmd, gaitPhase); 
       setLegs(TRIPOD1_LEGS, hipdir2, NOMOVE, servoShift, moveType, leanangle);
       setLegs(TRIPOD2_LEGS, hipdir1, NOMOVE, servoShift, moveType, leanangle);
-      timeToMove = millis() + TRIPOD_SWIVEL_TIME;
+      timeToMove = Timer_millis() + TRIPOD_SWIVEL_TIME;
       if (lastCmd == BOT_STAND || lastCmd == BOT_SIT){
         gaitPhase = WALK_STOPPING;
       }else {
@@ -264,7 +264,7 @@ phase_t GaitHandler( gaitCommand_t lastCmd ){
     case TRIPOD2_SET:
       // put the second set of legs down, and the cycle repeats
       setLegs(TRIPOD2_LEGS, NOMOVE, KNEE_DOWN, 0, 0, leanangle);
-      timeToMove = millis() + TRIPOD_SET_TIME;
+      timeToMove = Timer_millis() + TRIPOD_SET_TIME;
       gaitPhase = TRIPOD1_LIFT;
       break;
       
@@ -423,8 +423,8 @@ void demo() {
   This is a delay function used to give the servos time to complete their tasks.
 */
 void delay(int milliSec){
-  timeToMoveDemo = millis() + milliSec;
-  while(millis() < timeToMoveDemo){}
+  timeToMoveDemo = Timer_millis() + milliSec;
+  while(Timer_millis() < timeToMoveDemo){}
 }
 
 /*
