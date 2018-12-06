@@ -28,18 +28,8 @@ void setUp( void ) {
 }
 
 void TimerA_Handler( void ){
-  if((GPTMRIS & 0x00000001) == 0x1){	//Check for interrupt
-     timerCounter++;                     //increment counter by 1
-#if 0
-   //  if(timerCounter == 1000){           //1 second (1000 milliseconds)
-   //  timerCounter = 0;                   //reset counter
-   //  }
-   //  GPTMICR |= 0x01; 	                //Clear the interrupt
-#endif
-     
-   }
-    GPTMICR |= 0x01; 	                //Clear the interrupt
-
+      timerCounter++;                     //increment counter by 1
+     GPTMICR |= 0x01; 	                //Clear the interrupt
 }
 
 uint32_t millis( void ){
@@ -95,7 +85,9 @@ void TIMER_InitSystemClock(uint32_t clkSpeed){
   SYSCTL_RCC2_R &= ~BYPASSPLL;
 }
 
+
 #endif
+
 void TIMER_ChangeSpeed(uint32_t clkSpeed){
 
 SYSCTL_RCC2_R = (SYSCTL_RCC2_R&~ SYS_CLK_CLR)  // clear system clock divider                  

@@ -8,6 +8,7 @@ Source file for Vorpal Hexapod gaits and leg movements
 
 uint8_t deferServoSet = 0;
 uint32_t timeToMove = 0;
+uint32_t timeToMoveDemo = 0;
 volatile uint32_t ms_sinceStart = 0;
 
 #define POSITION_FEEDBACK_ENABLED 0
@@ -40,12 +41,14 @@ void setKneesOnly( uint8_t legmask, int16_t knee_pos ) {
 
 //return to default stand position
 void stand( void ) {
+  setLegs(ALL_LEGS, HIP_NEUTRAL, NOMOVE, 0, 0, 0);
+  delay(200);
   setLegs(ALL_LEGS, HIP_NEUTRAL, KNEE_STAND, 0, 0, 0);
 }
 
 //return to default sit position
 void laydown( void ) {
-  setLegs(ALL_LEGS, HIP_NEUTRAL, KNEE_UP, 0, 0, 0);
+  setLegs(ALL_LEGS, HIP_NEUTRAL, KNEE_UP_MAX, 0, 0, 0);
 }
 
  
@@ -84,28 +87,7 @@ void setLegs(uint8_t legmask, int16_t hip_pos, int16_t knee_pos, uint8_t adj, ui
     legmask = (legmask>>1);  // shift down one bit position
   }
 }
- 
-/*
-???? -LI
-*/
-void transactServos() {
-  deferServoSet = 1;
-}
 
-/*
-also ?? --LI
-*/
-void commitServos() {
-  //checkForCrashingHips();
-  deferServoSet = 0;
-  for (uint8_t servo = 0; servo < 12; servo++) {
-    PCA9685_setServo(servo, ServoPos[servo]);
-  }
-}
-
-/*
-
-*/
 // this version of setHip adjusts not only for left and right,
 // but also shifts the front legs a little back and the back legs
 // forward to make a better balance for certain gaits like tripod or quadruped
@@ -152,16 +134,15 @@ void runGaitFSM( gaitCommand_t lastCmd ){
   static phase_t position = SITTING;
   
   switch(position){
-  case SITTING: //sit
+  case DEMOING: //sit
     if (lastCmd == BOT_STAND) {
       stand(); 
       position = STANDING;
     }
     break;
   case STANDING: //stand
-    if (lastCmd == BOT_SIT) {
-      laydown();
-      position = SITTING;
+    if (lastCmd == BOT_DEMO) {
+      demo();
     } 
     else if (lastCmd != BOT_STAND){
       setKneesOnly(TRIPOD1_LEGS, KNEE_UP);
@@ -295,7 +276,6 @@ phase_t GaitHandler( gaitCommand_t lastCmd ){
       break;
       
   }
-  //commitServos(); // implement all leg motions
   return gaitPhase;
 }
 
@@ -360,4 +340,167 @@ void setGaitVariables(gaitCommand_t lastCmd, phase_t gaitPhase){
        
      }        
   return;
+}
+
+void demo() {
+  
+  //Start by standing:
+  stand();
+  delay(500);//small delay before the next move 1/2 sec
+  
+  /*Call function to rotate each leg*/
+  rotateLegs();
+  
+    /*Swim*/
+    delay(500);//small delay before the next move 1 sec
+    //Set legs to not interfere with movement of middle legs and middle legs to a neutral position
+    setLegs(BACK_LEGS, HIP_BACKWARD_MAX, KNEE_RELAX, 0, 0, leanangle);
+    setLegs(FRONT_LEGS, HIP_FORWARD_MAX, KNEE_RELAX, 0, 0, leanangle);
+    setLegs(MIDDLE_LEGS, HIP_NEUTRAL, KNEE_UP, 0, 0, leanangle);
+    
+    delay(500);//small delay before the next move 1 sec
+      
+    //Swim forward
+    for(int i = 0; i < 6; i++) {
+      
+      //move middle legs forward and knees up
+      delay(100);//small delay before the next move 1/10th sec
+      setLegs(MIDDLE_LEGS, HIP_FORWARD_MAX, KNEE_UP_MAX, 0, 0, leanangle);
+      
+      //dont move legs and have knees push off surface
+      delay(100);//small delay before the next move 1/10th sec
+      setLegs(MIDDLE_LEGS, NOMOVE, 50, 0, 0, leanangle);
+      
+      //move legs back to neutral position with knee pushing off surface
+      delay(200);//small delay before the next move 1/5th sec
+      setLegs(MIDDLE_LEGS, HIP_NEUTRAL, NOMOVE, 0, 0, leanangle);
+      
+      //move legs back to back position with knee pushing off surface
+      delay(200);//small delay before the next move 1/5th sec
+      setLegs(MIDDLE_LEGS, HIP_BACKWARD_MAX, NOMOVE, 0, 0, leanangle);
+      
+      delay(100);//small delay before the next move 1/10th sec
+      setLegs(MIDDLE_LEGS, NOMOVE, KNEE_UP_MAX, 0, 0, leanangle);
+    }
+    
+    //Swim backward
+    for(int i = 0; i < 6; i++) {
+      
+      //move middle legs forward and knees up
+      delay(100);//small delay before the next move 
+      setLegs(MIDDLE_LEGS, HIP_BACKWARD_MAX, KNEE_UP_MAX, 0, 0, leanangle);
+      
+      //dont move legs and have knees push off surface
+      delay(100);//small delay before the next move 
+      setLegs(MIDDLE_LEGS, NOMOVE, 50, 0, 0, leanangle);
+      
+      //move legs back to neutral position with knee pushing off surface
+      delay(200);//small delay before the next move 
+      setLegs(MIDDLE_LEGS, HIP_NEUTRAL, NOMOVE, 0, 0, leanangle);
+      
+      //move legs back to back position with knee pushing off surface
+      delay(200);//small delay before the next move 
+      setLegs(MIDDLE_LEGS, HIP_FORWARD_MAX, NOMOVE, 0, 0, leanangle);
+      
+      delay(100);//small delay before the next move 
+      setLegs(MIDDLE_LEGS, NOMOVE, KNEE_UP_MAX, 0, 0, leanangle);
+    }
+    
+    /*Bow*/
+    delay(500);//small delay before the next move .5 sec
+    stand();
+    delay(500);//small delay before the next move .5 sec
+      setLegs(BACK_LEGS, HIP_NEUTRAL, KNEE_STAND, 0, 0, leanangle);
+      setLegs(MIDDLE_LEGS, HIP_NEUTRAL, KNEE_HALF_CROUCH, 0, 0, leanangle);
+      setLegs(FRONT_LEGS, HIP_NEUTRAL, KNEE_CROUCH, 0, 0, leanangle);
+      
+      delay(1500);//small delay before the next move 1.5 sec
+      stand();
+      delay(1000);//small delay before the next move 1 sec
+}
+
+/*
+  This is a delay function used to give the servos time to complete their tasks.
+*/
+void delay(int milliSec){
+  timeToMoveDemo = millis() + milliSec;
+  while(millis() < timeToMoveDemo){}
+}
+
+/*
+  This function creates circular motions with each of the 6 legs individually.
+*/
+void rotateLegs(){
+  
+  //Loop to go through each of the legs
+  uint8_t currentLeg = 0;
+    for(int i = 0; i < NUM_LEGS; i++) {
+    
+      //Check what leg will be moved
+    switch(i) {
+      case 0:
+        currentLeg = LEG0;
+        break;
+      case 1:
+        currentLeg = LEG1;
+        break;
+      case 2:
+        currentLeg = LEG2;
+        break;
+      case 3:
+        currentLeg = LEG3;
+        break;
+      case 4:
+        currentLeg = LEG4;
+        break;
+      case 5:
+        currentLeg = LEG5;
+        break;
+    default:
+      currentLeg = -1;
+        break;
+    }
+    
+    //Move hip from neutral to front and knee from high to mid
+    int KNEE_LOCATION = 175; 
+    int HIP_LOCATION = 90;  
+    while(HIP_LOCATION < 130){
+      setLegs(currentLeg, HIP_LOCATION, KNEE_LOCATION, 0, 0, 0);
+      delay(5);
+      HIP_LOCATION++;
+      KNEE_LOCATION--;
+    }
+    
+    //Move hip from front to neutral and knee from mid to low
+    KNEE_LOCATION = 110;
+    HIP_LOCATION = 130;
+    while(HIP_LOCATION > 90){
+      setLegs(currentLeg, HIP_LOCATION, KNEE_LOCATION, 0, 0, 0);
+      delay(5);
+      HIP_LOCATION--;
+      KNEE_LOCATION--;
+    }
+    
+    //Move hip from neutral to back and knee from low to mid
+    KNEE_LOCATION = 45;
+    HIP_LOCATION = 90;
+    while(HIP_LOCATION > 50){
+      setLegs(currentLeg, HIP_LOCATION, KNEE_LOCATION, 0, 0, 0);
+      delay(5);
+      HIP_LOCATION--;
+      KNEE_LOCATION++;
+    }
+    
+    //Move hip from back to neutral and knee from mid to high
+    KNEE_LOCATION = 110;
+    HIP_LOCATION = 50;
+    while(HIP_LOCATION < 90){
+      setLegs(currentLeg, HIP_LOCATION, KNEE_LOCATION, 0, 0, 0);
+      delay(5);
+      HIP_LOCATION++;
+      KNEE_LOCATION++;
+    }
+    //Set leg back to standing position
+    setLegs(currentLeg, HIP_LOCATION, KNEE_STAND, 0, 0, 0);
+  }
 }

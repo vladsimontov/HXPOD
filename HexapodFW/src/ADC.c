@@ -10,6 +10,7 @@ Module to Control ADC.
 #include <tm4c123gh6pm.h>
 #include <stdint.h>
 #include <stdio.h>
+
 #if 0 // Stub out ADC codes
 void ADC0_Handler( void ){
   volatile int result = SSFIFO3;

@@ -187,11 +187,12 @@ void PCA9685_setServo(uint8_t leg, float degree)
   
   
   //find out on time
+
   float onTime = ((ONE_MSEC/ MAX_ROTATION) * degree) + ONE_MSEC; //0 degrees = 1ms on time, 180 degrees = 2ms
   
   //Calibrate PCA9685 pulse width to be what we expect (small error)
   //onTime = ((onTime* 1.0489) - 0.0039); //calibrating the cycle time.
-  
+
 
   float dutyCycle = (onTime/PERIOD) * 100.0;
 

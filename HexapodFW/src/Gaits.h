@@ -122,6 +122,19 @@ typedef enum gaitCommand
 
  /*Prototype functions*/
 
+ //timing
+ void updateMillis( void ); 
+
+ //demo function
+ void demo(void);
+ 
+ //delay function
+ void delay(int milliSec);
+ 
+ //function to rotate each leg
+ void rotateLegs(void);
+
+
  //global position wrapper functions
  void setKneesOnly(uint8_t legMask, int16_t knee_pos);
  void stand();
