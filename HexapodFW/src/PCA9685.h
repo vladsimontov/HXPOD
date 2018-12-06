@@ -39,12 +39,12 @@ typedef enum pca9685_status
 /*! -- */
 {
 /*@{*/
-  PCA_9685_OK,           //!<PCA
-  PCA_9685_NOT_SET,      //!<I2C acknowledged command
-  PCA_9685_UNRESPONSIVE, //!<I2C Did not acknowledge command
-  PCA_9685_TIMEOUT,      //!<I2C bus timed out
-  PCA_9685_OTHER,        //!<I2C bus timed out
-  PCA_9685_UNKNOWN       //!<Default Status
+  PCA_9685_OK,           //!<PCA is ok
+  PCA_9685_NOT_SET,      //!<PCA has not been configured
+  PCA_9685_UNRESPONSIVE, //!<Comms attempts are unsuccesful
+  PCA_9685_TIMEOUT,      //!<Timeout error condition
+  PCA_9685_OTHER,        //!<Unknown error state
+  PCA_9685_UNKNOWN       //!<default setting
 /*@}*/
 } pca9685_status_t;
 

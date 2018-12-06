@@ -51,14 +51,14 @@ typedef enum i2c_status
 /*! -- */
 {
   /*@{*/
-  i2c_OK,    //!<I2C Port Ready for Use
-  i2c_ERROR,      //!<I2C acknowledged command
-  i2c_NO_ACK,   //!<I2C Did not acknowledge command
-  i2c_NO_ADDR_ACK,
-  i2c_TIMEOUT,  //!<I2C bus timed out
-  i2c_CLK_TO, //!<CLK timed out
-  i2c_WRITE_ERROR,  //!<I2C bus timed out
-  i2c_UNKNOWN   //!<Default Status
+  i2c_OK,               //!<I2C Port Ready for Use
+  i2c_ERROR,            //!<I2C acknowledged command
+  i2c_NO_ACK,           //!<I2C Did not acknowledge command
+  i2c_NO_ADDR_ACK,      //!<I2C Did not acknowledge address command
+  i2c_TIMEOUT,          //!<I2C bus timed out
+  i2c_CLK_TO,           //!<CLK timed out
+  i2c_WRITE_ERROR,      //!<I2C bus timed out
+  i2c_UNKNOWN           //!<Default Status
   /*@}*/
 } i2c_status_t;
 

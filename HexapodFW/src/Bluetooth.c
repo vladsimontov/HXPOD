@@ -1,3 +1,24 @@
+/*! \file  Bluetooth.c
+*
+* \brief
+* Module for interfacing with the Bluetooth module 
+*
+* \details
+*  This modules uses the UART.c module to interface with the TIVA and be able
+*  to establish communications with the bluetooth 4.0 module
+*
+* \author livey
+*
+* \info
+* Bluetooth compatability: 
+*
+* This code was tested using an osciliscope to verify proper packet transfers
+*
+* For details on programming, refer to TM4C123G datasheet :
+* http://www.ti.com/lit/ds/spms376e/spms376e.pdf
+*
+******************************************************************************/
+
 #include "Bluetooth.h"
 #include "UART.h"
 #include "Gaits.h"
@@ -12,11 +33,23 @@ uint8_t packetLengthReceived = 0;
 uint32_t flushcount = 0;
 uint32_t packetErrorCount = 0; 
 
-void BlueTooth_Init( void ) {
+void BlueTooth_Init( void )
+/*!\brief   Initialize bluetooth, by initializing UART 
+\details none
+\return none
+*/
+{
    UART_InitPort1();
 }
 
-void checkBlueTooth(gaitCommand_t * lastCmd){
+void checkBlueTooth(gaitCommand_t * lastCmd)
+/*!\brief   Query bluetooth module, set new command
+\details: Check to see if anything is in the buffer of the uart, read and pass
+          back data via pointer
+\param lastCmd [out]: sets which movement hexapod will perform next
+\return none
+*/
+{
   if (BlueTooth_PacketHandler() == P_NEW_DATA_AVAILABLE){
     //do some logic to set the new command;
       *lastCmd = parsePacket();
@@ -27,7 +60,13 @@ void checkBlueTooth(gaitCommand_t * lastCmd){
   
 }
 
-packetState_t BlueTooth_PacketHandler( void ) {
+packetState_t BlueTooth_PacketHandler( void )
+/*!\brief   Matches new data packet to what action should be
+\details: 
+\param none
+\return packetState_t
+*/
+{
 
   static packetState_t packetState = P_WAITING_FOR_HEADER_55;
   static uint8_t checksum = 0;
@@ -121,7 +160,15 @@ packetState_t BlueTooth_PacketHandler( void ) {
   return packetState; // no new data arrived
 }
 
-gaitCommand_t parsePacket( void ) {
+gaitCommand_t parsePacket( void ) 
+/*!\brief  Sets new state based off of which button was pressed 
+\details: By analyzing the global variable (packetData), this function will
+          figure out which button has been pressed and decide its new action
+          accordingly
+\param none
+\return gaitCommand_t
+*/
+{
 
   gaitCommand_t newCmd = BOT_PARSE_ERROR;  //if all goes well, this will change by the end of the function
 

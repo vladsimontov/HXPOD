@@ -35,10 +35,10 @@ typedef enum UART_status
 /*! -- */
 {
 /*@{*/
-  UART_STATUS_OK,    //!<Default "success" code
-  UART_STATUS_ERROR,      //!<Default error: code (more to come?)
-  UART_STATUS_TxFULL,
-  UART_STATUS_RxEMPTY,
+  UART_STATUS_OK,       //!<All is well
+  UART_STATUS_ERROR,    //!<Generic error condition
+  UART_STATUS_TxFULL,   //!<Buffer full
+  UART_STATUS_RxEMPTY,  //!<Buffer empty
   UART_STATUS_UNKNOWN   //!<Default Status
 /*@}*/
 } UART_status_t;
