@@ -7,6 +7,7 @@ Module for controlling the GPIO functions of the TIVA.
 #include <stdio.h>
 #include "GPIO.h"
 #include "Timer.h"
+
 #if 0
 
 int SW1_PRESSED;

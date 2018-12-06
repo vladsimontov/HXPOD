@@ -35,7 +35,7 @@ int main(void) {
   
   //Main loop: polls for Bluetooth commands and sends them to a single high-level state machine
    while(1){
-     //demo();
+
      checkBlueTooth(&lastCmd);
      runGaitFSM(lastCmd);
    }

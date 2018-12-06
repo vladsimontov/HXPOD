@@ -43,7 +43,7 @@
 
  // Default positions for knee and hip. Note that hip position is automatically 
  // reversed for the left side by the setHip function. These are in degrees.
- #define KNEE_UP_MAX 175
+ #define KNEE_UP_MAX 180
  #define KNEE_UP     150
  #define KNEE_RELAX  120  
  #define KNEE_NEUTRAL 90 
@@ -62,13 +62,13 @@
  #define HIPSWING 25      // how far to swing hips on gaits like tripod or quadruped
  #define HIPSMALLSWING 10  // when in fine adjust mode how far to move hips
  #define HIPSWING_RIPPLE 20
- #define HIP_FORWARD_MAX 120
+ #define HIP_FORWARD_MAX 175
  #define HIP_FORWARD (HIP_NEUTRAL+HIPSWING)
  #define HIP_FORWARD_SMALL (HIP_NEUTRAL+HIPSMALLSWING)
  #define HIP_NEUTRAL 90
  #define HIP_BACKWARD (HIP_NEUTRAL-HIPSWING)
  #define HIP_BACKWARD_SMALL (HIP_NEUTRAL-HIPSMALLSWING)
- #define HIP_BACKWARD_MAX 60
+ #define HIP_BACKWARD_MAX 0
  #define HIP_FORWARD_RIPPLE (HIP_NEUTRAL+HIPSWING_RIPPLE)
  #define HIP_BACKWARD_RIPPLE (HIP_NEUTRAL-HIPSWING_RIPPLE)
  #define HIP_FOLD 150
@@ -88,7 +88,6 @@
 typedef enum phaseType
 {
   FROZEN,
-  DEMOING,
   SITTING,
   STANDING,
   INIT_WALK,
@@ -121,9 +120,20 @@ typedef enum gaitCommand
   BOT_PARSE_ERROR
 } gaitCommand_t;
 
- /*
-Prototype functions
-*/
+ /*Prototype functions*/
+
+ //timing
+ void updateMillis( void ); 
+
+ //demo function
+ void demo(void);
+ 
+ //delay function
+ void delay(int milliSec);
+ 
+ //function to rotate each leg
+ void rotateLegs(void);
+
 
  //global position wrapper functions
  void setKneesOnly(uint8_t legMask, int16_t knee_pos);
@@ -141,20 +151,10 @@ Prototype functions
  phase_t GaitHandler( gaitCommand_t lastCmd );
  void setGaitVariables( gaitCommand_t lastCmd, phase_t gaitPhase );
 
- //
  void transactServos();
  void commitServos();
 
  //timing
  void updateMillis( void ); 
-
- //demo function
- void demo(void);
- 
- //delay function
- void delay(int milliSec);
- 
- //function to rotate each leg
- void rotateLegs(void);
 
 #endif
