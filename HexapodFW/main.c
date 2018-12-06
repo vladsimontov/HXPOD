@@ -26,16 +26,16 @@ int main(void) {
    
    //Confirm I2C/PCA: chill until we send a wakeup command
    stand();
-
+    demo();
    //Initialize UART module 1, pin PC4 is Rx
    BlueTooth_Init(); 
    
    //Confirm UART: stand up and get ready to move
    gaitCommand_t lastCmd = BOT_STAND;
   
-  //demo();
   //Main loop: polls for Bluetooth commands and sends them to a single high-level state machine
    while(1){
+     //demo();
      checkBlueTooth(&lastCmd);
      runGaitFSM(lastCmd);
    }
