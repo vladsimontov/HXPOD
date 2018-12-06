@@ -10,7 +10,7 @@
 * \author livey
 *
 * \info
-* Bluetooth compatability: 
+* Bluetooth compatability: CC-41-A and HM-10
 *
 * This code was tested using an osciliscope to verify proper packet transfers
 *
