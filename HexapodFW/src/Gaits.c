@@ -1,6 +1,43 @@
-/*
-Source file for Vorpal Hexapod gaits and leg movements
-*/
+/*! \file  Gaits.c
+*
+* \brief
+* Module for controlling the gait of the Vorpal Hexapod
+*
+*  Most functions are ported directly from the Vorpal Hexapod Control Program
+*
+*  Copyright (C) 2017, 2018 Vorpal Robotics, LLC.
+*  https://github.com/vorpalrobotics/VorpalHexapod
+
+*  \license (copied directly from Vorpal Source Code)
+*  This work is licensed under the Creative Commons 
+*  Attribution-NonCommercial-ShareAlike 4.0 International License.
+*  To view a copy of this license, visit http:* creativecommons.org/licenses/by-nc-sa/4.0/.
+*  Attribution for derivations of this work should be made to: Vorpal Robotics, LLC
+*  
+*  You may use this work for noncommercial purposes without cost as long as you give us
+*  credit for our work (attribution) and any improvements you make are licensed in a way
+*  no more restrictive than our license.
+* 
+*  For example, you may build a Hexapod yourself and use this code for your own experiments,
+*  or you can build one and give the hexapod running this code to a friend, as long as you
+*  don't charge for it.
+* 
+*  If you have a question about whether a contemplated use is in compliance with the license,
+*  just ask us. We're friendly. Email us at support@vorpalrobotics.com
+* 
+*  For information on licensing this work for commercial purposes, 
+*  please send email to support@vorpalrobotics.com and we'll work with you to come up with
+*  something fair.
+* 
+*  This is the program that goes on the Robot, not the gamepad!
+* 
+*  For more technical informatio, see http://www.vorpalrobotics.com
+*
+* 
+* \author Vorpal Robotics
+          livey
+*
+******************************************************************************/
 #include "Gaits.h"
 #include "PCA9685.h"
 #include "Timer.h"
@@ -12,8 +49,6 @@ uint32_t timeToMoveDemo = 0;
 volatile uint32_t ms_sinceStart = 0;
 
 #define POSITION_FEEDBACK_ENABLED 0
-
-
 
 void updateMillis( void ){
   ms_sinceStart++;

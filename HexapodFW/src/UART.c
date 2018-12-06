@@ -1,11 +1,33 @@
-/*
-Module for UART Serial Driver
-*/
+/*! \file  UART.c
+*
+* \brief
+* UART control functions to be used with the TIVA TM4C123G Development Kit
+*
+* \details
+*  This modules sets up the uart serial driver for receiving communication from
+*  any serial device
+*
+* \author livey
+*
+* \info
+* Based on TIVA User Reference manual, starting on pg.893
+*
+* This code was tested using an osciliscope to verify proper packet transfers
+*
+* For details on programming, refer to TM4C123G datasheet :
+* http://www.ti.com/lit/ds/spms376e/spms376e.pdf
+*
+******************************************************************************/
 
 #include "UART.h"
 uint8_t storedDataByte = 0;
 
-void UART_InitPort1( void ){
+void UART_InitPort1( void )
+/*!\brief   Initialize UART for Port 1. 
+\details set the port to 38400 8N1
+\return none
+*/
+{
     //1. Enable the I2C clock using the RCGCI2C register in the System Control module (see page 348).
     RCGC_UART |= (0x01 << 1); //enable UART 1
 
@@ -52,10 +74,16 @@ void UART_InitPort1( void ){
     
 }
 
-UART_status_t UART_ReadByte(uint8_t * dataByte){
-/*
+UART_status_t UART_ReadByte(uint8_t * dataByte)
+/*!\brief   Read one byte from the client
+\details: This function will read one data byte and pass back via pointer
+\return UART_status_t : status of i2c bus 
+              UART_STATUS_OK : UART packet succesfully read
+              UART_STATUS_UNKNOWN: default state. Assume the worst and hope for the best
+              UART_STATUS_RxEMPTY : The RX buffer is empy
+*/
+{
 
-*/     
      *dataByte = UART1_DATA;
      storedDataByte = *dataByte;
      UART_status_t FIFOStatus = UART_STATUS_UNKNOWN;
@@ -70,11 +98,21 @@ UART_status_t UART_ReadByte(uint8_t * dataByte){
       return FIFOStatus;
 }
 
-uint8_t UART_lastRxByte( void ){
+uint8_t UART_lastRxByte( void )
+/*!\brief   Read back last byte received
+\return One byte of data representing last byte received
+*/
+{
   return storedDataByte;
 }
 
-uint8_t UART_Rx_available( void ){
+uint8_t UART_Rx_available( void )
+/*!\brief   Check if RX data is availble
+\details Poll the UART registers to see if data has arrived. 
+\return 0 if false
+        1 if true
+*/
+{
   if ((UART_FR(1) & UART_RxFIFO_EMPTY_FLAG) != 0) return 0;
   else return 1;
 }

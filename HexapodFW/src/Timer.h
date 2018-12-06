@@ -42,14 +42,16 @@
 #define DISABLEINT      (*((volatile uint32_t *)0xE000E180)) /*Set Disable EN0, pg. 144*/
 
 #define TIMERA_INT      (0x01 << 19)   /*19th Interupt Location*/
-
+#define ONE_MS (0x3E80)
+#define COUNT_DIR (0x10)
+#define PERIODIC_MODE (0x02)
+#define TIMEOUT_INT (0x00000001)
+#define SET_32K_MODE (0x00)
+#define ENABLE (0x01)
+#define EN_RUN_GCR (0x20)
+#define SEL_TIMER0_GCR (0x01)
 
 void Timer_setUp(void);
 uint32_t Timer_millis( void );
-void TIMER_InitTimerA(uint32_t systemSpeed);
-void TIMER_Wait(uint32_t milliseconds);
-void TIMER_ChangeSpeed(uint32_t clockSpeed);
-void TIMER_InitSystemClock(uint32_t clkSpeed);
-void enableTimerInterrupt(void);
-void TIMER_Delay(uint32_t milliseconds);
+
 #endif
