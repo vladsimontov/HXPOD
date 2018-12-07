@@ -11,9 +11,9 @@
 *   https://github.com/vorpalrobotics/VorpalHexapod
 *
 *
-* \author vsimontov
-*         livey
-*         clopez
+* \author Vlad Simontov
+*         Lauren Ivey
+*         Carlos Lopez
 * \info
 * All licesning agreements defined by Vorpal Robotics, LLC are in effect
 *
