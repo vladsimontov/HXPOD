@@ -117,7 +117,7 @@ pca9685_status_t PCA9685_UpdatePWMFrequency(uint16_t newFrequency)
  
   //write new value
   I2C_WriteBytes(PCA_9685_ADDR, PRESCALE, (uint8_t) prescale);  
-  
+
   //reset the original mode register
   I2C_WriteBytes(PCA_9685_ADDR, MODE1, (uint8_t)(oldMode));  
   
